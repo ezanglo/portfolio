@@ -18,6 +18,26 @@ export default function HeroSection() {
   return (
     <section className="lg:py-16">
       <div className="grid grid-cols-1 md:grid-cols-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            type: "tween",
+            duration: 0.2,
+          }}
+          className="col-span-4 place-self-center mt-4 block sm:hidden"
+        >
+          <Image
+            src={photo}
+            alt="Ezra portrait"
+            quality={95}
+            priority
+            className={cn(
+              "rounded-full object-cover border-[0.35rem] border-secondary shadow-xl shadow-black/20",
+              "w-[80px] h-[80px] mb-10"
+            )}
+          />
+        </motion.div>
         <div className="col-span-8 place-self-center text-center md:text-left justify-self-center md:justify-self-start">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -49,8 +69,7 @@ export default function HeroSection() {
             </h1>
             <p className="text-primary md:text-lg mb-6 lg:text-xl">
               with 9 years of development experience. I enjoy building
-              applications for Web, Mobile, Desktop and IoT Devices. I currently
-              focus on{" "}
+              applications for Web, Mobile, Desktop. I currently focus on{" "}
               <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-600">
                 React, PHP and .NET
               </span>
@@ -127,7 +146,7 @@ export default function HeroSection() {
             type: "tween",
             duration: 0.2,
           }}
-          className="col-span-4 place-self-center mt-4"
+          className="col-span-4 place-self-center mt-4 hidden sm:block"
         >
           <Image
             src={photo}

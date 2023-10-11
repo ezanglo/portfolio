@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          "bg-background text-foreground relative h-[5000px] pt-14 sm:pt-36"
+          "bg-background text-foreground relative h-[5000px] pt-28 sm:pt-36"
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
