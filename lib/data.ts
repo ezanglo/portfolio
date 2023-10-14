@@ -156,6 +156,8 @@ export const skillsData = [
   "C#",
   "WPF",
   "ASP.NET",
+  "Windows IoT",
+  "Raspberry Pi",
   "PostgreSQL",
   "MongoDB",
   "Firebase",
