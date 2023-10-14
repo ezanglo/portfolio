@@ -16,7 +16,10 @@ import { Button } from "./ui/button";
 
 export default function HeroSection() {
   return (
-    <section className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]">
+    <section
+      id="home"
+      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+    >
       <div className="grid grid-cols-1">
         <motion.div
           initial={{ opacity: 0, scale: 0 }}

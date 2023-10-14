@@ -18,8 +18,7 @@ export default function AboutSection() {
         Graduating with a degree in{" "}
         <span className="font-medium">Computer Science</span>, I initially
         worked as a <span className="font-medium">.NET Developer</span> while
-        also accepting freelance projects. Afterward, I had the opportunity to
-        migrate to Cayman Islands and start my journey into{" "}
+        also accepting freelance projects. Afterward, I started my journey into{" "}
         <span className="font-medium">full-stack web development</span>.
         Leveraging my experience with{" "}
         <span className="italic">.NET and Object Oriented Programming</span>, I
