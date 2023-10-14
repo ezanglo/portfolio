@@ -16,8 +16,8 @@ import { Button } from "./ui/button";
 
 export default function HeroSection() {
   return (
-    <section className="lg:py-16">
-      <div className="grid grid-cols-1 md:grid-cols-12">
+    <section className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]">
+      <div className="grid grid-cols-1">
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -25,7 +25,7 @@ export default function HeroSection() {
             type: "tween",
             duration: 0.2,
           }}
-          className="col-span-4 place-self-center mt-4 block sm:hidden"
+          className="col-span-4 place-self-center mt-4"
         >
           <Image
             src={photo}
@@ -34,11 +34,11 @@ export default function HeroSection() {
             priority
             className={cn(
               "rounded-full object-cover border-[0.35rem] border-secondary shadow-xl shadow-black/20",
-              "w-[80px] h-[80px] mb-10"
+              "w-[100px] h-[100px] mb-10"
             )}
           />
         </motion.div>
-        <div className="col-span-8 place-self-center text-center md:text-left justify-self-center md:justify-self-start">
+        <div className="col-span-8 place-self-center text-center justify-self-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -76,7 +76,7 @@ export default function HeroSection() {
             </p>
           </motion.div>
           <motion.div
-            className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start"
+            className="flex flex-col sm:flex-row gap-3 justify-center"
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -139,28 +139,6 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            type: "tween",
-            duration: 0.2,
-          }}
-          className="col-span-4 place-self-center mt-4 hidden sm:block"
-        >
-          <Image
-            src={photo}
-            alt="Ezra portrait"
-            width={300}
-            height={300}
-            quality={95}
-            priority
-            className={cn(
-              "rounded-full object-cover border-[0.35rem] border-secondary shadow-2xl shadow-black/50",
-              "w-[250px] h-[250px] lg:w-[300px] lg:h-[300px]"
-            )}
-          />
-        </motion.div>
       </div>
     </section>
   );

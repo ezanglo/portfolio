@@ -1,10 +1,14 @@
+import AboutSection from "@/components/about-section";
 import HeroSection from "@/components/hero-section";
+import SectionDivider from "@/components/section-divider";
 
 export default function Home() {
   return (
     <main>
-      <div className="container mt-24 mx-auto px-8 py-3">
+      <div className="flex flex-col items-center px-4">
         <HeroSection />
+        <SectionDivider />
+        <AboutSection />
       </div>
     </main>
   );
