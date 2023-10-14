@@ -142,6 +142,7 @@ export const skillsData = [
   "HTML",
   "CSS",
   "Javascript",
+  "PHP",
   "ReactJS",
   "NextJS",
   "VueJS",
@@ -149,7 +150,6 @@ export const skillsData = [
   "Prisma",
   "Typescript",
   "Framer Motion",
-  "PHP",
   "Node.js",
   "React Native",
   "Redux",
@@ -178,6 +178,10 @@ export const skillsData = [
   "GitHub",
   "BitBucket",
   "AWS Code Commit",
+  "AWS API Gateway",
+  "AWS Lambda",
+  "Google Vertex AI",
+  "Google Generative AI",
 ];
 
 export const skillsDatax = [
