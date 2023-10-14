@@ -165,7 +165,6 @@ export const skillsData = [
   "CodeIgniter",
   "Symfony",
   "Xamarin",
-  "Cross Platform Development",
   "Ionic Framework",
   "Quasar Framework",
   "SQL Server",
