@@ -1,5 +1,11 @@
 import React from "react";
 
+import aiPersonaChatBot from "@/public/ai-persona-chatbot.png";
+import plokerNow from "@/public/ploker-now.png";
+import mariBot from "@/public/mari-bot.png";
+import mariWeb from "@/public/mari-web.png";
+import shopDiggy from "@/public/shop-diggy.png";
+
 export const links = [
   {
     name: "Home",
@@ -59,84 +65,117 @@ export const experiencesData = [
 
 export const projectsData = [
   {
-    title: "CorpComment",
+    title: "Real-time RFID Registration",
     description:
-      "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
+      "I worked as full-stack developer on this project, working with a team. Appointment system for the company's customers to install their RFID Stickers to be used in the expressway Toll Systems.",
+    type: "mobile",
+    tags: ["ReactJS", "Vite", "ASP.NET", "MSSQL"],
     imageUrl: "",
-    // imageUrl: corpcommentImg,
   },
   {
-    title: "rmtDev",
+    title: "AI Persona Chat Bot",
     description:
-      "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
-    imageUrl: "",
-    // imageUrl: rmtdevImg,
+      "An AI Persona Chat Bot that helps you with specific topics the model is trained on. I worked solo on this project using the latest tech stack with NextJS and AI Technology",
+    type: "mobile",
+    tags: [
+      "NextJS",
+      "ReactJS",
+      "Prisma",
+      "Clerk",
+      "Vercel",
+      "Generative AI",
+      "Vertex AI",
+      "text-bison",
+    ],
+    imageUrl: aiPersonaChatBot,
   },
   {
-    title: "Word Analytics",
+    title: "SaaS Platform Mobile Application",
     description:
-      "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
+      "I was lead front-end developer for this project, helped plan, design and setup initial back-end. This project is the mobile version of an existing SaaS Platform",
+    type: "mobile",
+    tags: [
+      "React Native",
+      "PHP",
+      "Symfony",
+      "api-platform",
+      "PostgreSQL",
+      "MongoDB",
+    ],
     imageUrl: "",
-    // imageUrl: wordanalyticsImg,
+  },
+  {
+    title: "PlokerNow",
+    description:
+      "A public web application for easily setting up a Planning Poker Session. This is a personal project",
+    type: "web",
+    tags: ["VueJS", "Quasar", "Firebase", "Firestore"],
+    imageUrl: plokerNow,
+  },
+  {
+    title: "Plant Tea-ta",
+    description:
+      "Web Application for our local Milk Tea business. This serves as the POS System as well as inventory system and gives us sales analytics. I have a also integrated rewards systems for frequent buyers.",
+    type: "web",
+    tags: ["VueJS", "Quasar", "Firebase", "Firestore"],
+    imageUrl: "",
+  },
+  {
+    title: "Disguised Mari Web",
+    description:
+      "Web Application of my discord bot for managing and administering data",
+    type: "web",
+    tags: ["VueJS", "AWS Api Gateway", "AWS Lambda", "DiscordJS", "Heroku"],
+    imageUrl: mariWeb,
+  },
+  {
+    title: "Disguised Mari Bot",
+    description:
+      "A Discord Bot I created for the game Grand Chase. This bot accepts commands and gives specific recommendations based on the user input.",
+    type: "web",
+    tags: ["NodeJS", "AWS S3", "Canvas", "DiscordJS", "Heroku"],
+    imageUrl: mariBot,
+  },
+  {
+    title: "Shop Diggy",
+    description:
+      "I worked as the front-end developer on this project, this is a bobile application to help users get the best deal from different e-commerce websites",
+    type: "mobile",
+    tags: ["C#", "Xamarin", "Cross Platform"],
+    imageUrl: shopDiggy,
+  },
+  {
+    title: "TARA: Tracking and Routing",
+    description:
+      "Tracking and routing application like Grab and Uber to reserve seats and view user location",
+    type: "mobile",
+    tags: [
+      "C#",
+      "Xamarin",
+      "Cross Platform",
+      "Web API",
+      "ASP.NET",
+      "Google Maps",
+    ],
+    imageUrl: "",
+  },
+  {
+    title: "HOME VISION: Face Recognition",
+    description:
+      "Security system that uses face recognition to detect unrecognized persons entering the home",
+    type: "mobile",
+    tags: ["C#", "Image Processing", "EmguCV", "WPF"],
+    imageUrl: "",
+  },
+  {
+    title: "HALOMET: Voice Command Navigation System",
+    description:
+      "A navigating system embedded on a helmet that utilizes speech recognition to navigate, including collision sensors.",
+    type: "mobile",
+    tags: ["Raspberry Pi", "C#", "Web API", "Google Maps", "Windows 10 IoT"],
+    imageUrl: "",
   },
 ] as const;
-
-// export const skillsData = {
-//   web: {
-//     label: "Web",
-//     skills: [
-//       "ReactJS",
-//       "NextJS",
-//       "VueJS",
-//       "PHP",
-//       "ASP.NET",
-//       "REST API",
-//       "CodeIgniter",
-//       "Symfony",
-//       "Ionic Framework",
-//       "Quasar Framework",
-//       "HTML",
-//       "CSS",
-//       "Javascript",
-//     ],
-//   },
-//   mobileSoftware: {
-//     label: "Mobile and Software",
-//     skills: [
-//       "Android",
-//       "iOS",
-//       "React Native",
-//       "Xamarin",
-//       "Firebase Cloud Messaging",
-//       "Cross Platform Development",
-//       ".NET",
-//       "C#",
-//       "WPF",
-//     ],
-//   },
-//   others: {
-//     label: "Others",
-//     skills: [
-//       "PostgreSQL",
-//       "SQL Server",
-//       "MySQL",
-//       "MongoDB",
-//       "Firestore",
-//       "AWS",
-//       "Firebase",
-//       "JIRA",
-//       "VersionOne",
-//       "Mantis",
-//       "git",
-//       "Github",
-//       "Bitbucket",
-//       "VS Team Services",
-//     ],
-//   },
-// };
 
 export const skillsData = [
   "HTML",
@@ -185,25 +224,3 @@ export const skillsData = [
   "Google Vertex AI",
   "Google Generative AI",
 ];
-
-export const skillsDatax = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Git",
-  "Tailwind",
-  "Prisma",
-  "MongoDB",
-  "Redux",
-  "GraphQL",
-  "Apollo",
-  "Express",
-  "PostgreSQL",
-  "Python",
-  "Django",
-  "Framer Motion",
-] as const;
