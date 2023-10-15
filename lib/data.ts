@@ -85,7 +85,6 @@ export const projectsData = [
       "Vercel",
       "Generative AI",
       "Vertex AI",
-      "text-bison",
     ],
     imageUrl: aiPersonaChatBot,
   },
@@ -123,7 +122,7 @@ export const projectsData = [
   {
     title: "Disguised Mari Web",
     description:
-      "Web Application of my discord bot for managing and administering data",
+      "Web Application of the Discord Bot for managing and updating recommendation data.",
     type: "web",
     tags: ["VueJS", "AWS Api Gateway", "AWS Lambda", "DiscordJS", "Heroku"],
     imageUrl: mariWeb,

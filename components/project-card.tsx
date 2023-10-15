@@ -1,15 +1,17 @@
-import { projectsData } from "@/lib/data";
-import Image from "next/image";
-import React from "react";
+"use client";
+
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { projectsData } from "@/lib/data";
 import { Badge } from "./ui/badge";
+import { useScroll } from "framer-motion";
+import { useRef } from "react";
+import { motion } from "framer-motion";
 
 type ProjectCardProps = (typeof projectsData)[number];
 
@@ -19,15 +21,28 @@ export default function ProjectCard({
   tags,
   imageUrl,
 }: ProjectCardProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["0 1", "1.33 1"],
+  });
+
   return (
-    <article>
-      <Card className="grid grid-cols-1 sm:grid-cols-2 text-start h-auto sm:h-[18rem] max-w-[42rem] bg-secondary/70 shadow-none border-none overflow-hidden gap-3">
-        <div className="flex flex-col ">
+    <motion.div
+      ref={ref}
+      style={{
+        scale: scrollYProgress,
+        position: scrollYProgress,
+      }}
+      className="h-full w-full sm:max-w-[20rem] text-start"
+    >
+      <section className="h-full w-full">
+        <Card className="flex flex-col gap-3 h-full w-full bg-secondary/70 shadow-none border-none">
           <CardHeader>
             <CardTitle>{title}</CardTitle>
             <CardDescription>{description}</CardDescription>
           </CardHeader>
-          <CardContent className="mt-auto">
+          <CardFooter className="mt-auto">
             <ul className="flex flex-wrap mt-4 gap-1 sm:mt-auto">
               {tags.map((tag, index) => (
                 <li key={index}>
@@ -37,15 +52,9 @@ export default function ProjectCard({
                 </li>
               ))}
             </ul>
-          </CardContent>
-        </div>
-        <Image
-          src={imageUrl}
-          alt={title}
-          quality={95}
-          className="w-[28.25rem] hidden sm:block rounded-t-xl shadow-2xl mt-auto"
-        />
-      </Card>
-    </article>
+          </CardFooter>
+        </Card>
+      </section>
+    </motion.div>
   );
 }
