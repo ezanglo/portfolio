@@ -13,19 +13,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
 import { Button } from "./ui/button";
-import { useActiveSectionContext } from "@/context/active-section-context";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useSectionInView } from "@/hooks/use-section-in-view";
 
 export default function HeroSection() {
-  const { setActiveSection, isClicked } = useActiveSectionContext();
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-  });
-
-  useEffect(() => {
-    inView && isClicked && setActiveSection("Home");
-  }, [inView, isClicked]);
+  const { ref } = useSectionInView("Home", 0.5);
 
   return (
     <section

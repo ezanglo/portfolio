@@ -1,11 +1,9 @@
 "use client";
 
+import { useSectionInView } from "@/hooks/use-section-in-view";
 import { skillsData } from "@/lib/data";
 import { motion } from "framer-motion";
 import SectionHeading from "./section-heading";
-import { useEffect } from "react";
-import { useActiveSectionContext } from "@/context/active-section-context";
-import { useInView } from "react-intersection-observer";
 
 const fadeInAnimationVariants = {
   initial: {
@@ -22,14 +20,8 @@ const fadeInAnimationVariants = {
 };
 
 export default function SkillsSection() {
-  const { setActiveSection, isClicked } = useActiveSectionContext();
-  const { ref, inView } = useInView({
-    threshold: 0.75,
-  });
+  const { ref } = useSectionInView("Skills", 0.75);
 
-  useEffect(() => {
-    inView && isClicked && setActiveSection("Skills");
-  }, [inView, isClicked]);
   return (
     <section
       id="skills"
@@ -37,7 +29,7 @@ export default function SkillsSection() {
       className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40"
     >
       <SectionHeading>My skills</SectionHeading>
-      <ul className="flex flex-wrap justify-center gap-2 text-sm text-primary">
+      <ul className="flex flex-wrap justify-center gap-2 text-md text-primary">
         {skillsData.map((skill, index) => (
           <motion.li
             className="bg-secondary-foreground/10 py-1 px-3 rounded-xl"

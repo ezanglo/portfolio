@@ -1,21 +1,12 @@
 "use client";
 
+import { useSectionInView } from "@/hooks/use-section-in-view";
 import { projectsData } from "@/lib/data";
-import SectionHeading from "./section-heading";
 import ProjectCard from "./project-card";
-import { useEffect } from "react";
-import { useActiveSectionContext } from "@/context/active-section-context";
-import { useInView } from "react-intersection-observer";
+import SectionHeading from "./section-heading";
 
 export default function ProjectsSection() {
-  const { setActiveSection, isClicked } = useActiveSectionContext();
-  const { ref, inView } = useInView({
-    threshold: 0.2,
-  });
-
-  useEffect(() => {
-    inView && isClicked && setActiveSection("Projects");
-  }, [inView, isClicked]);
+  const { ref } = useSectionInView("Projects", 0.2);
 
   return (
     <section
