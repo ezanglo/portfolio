@@ -11,7 +11,6 @@ import { useBreakpoint } from "@/hooks/use-breakpoint";
 import { experiencesData } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 export const fadeInAnimationVariants = {
   initial: (index: number) => ({
@@ -72,7 +71,7 @@ export default function ExperienceCard({
           <Card
             className={cn(
               "flex flex-col gap-3 h-full bg-secondary/70 border-none shadow-md",
-              "ml-10 md:ml-[initial] md:group-even:ml-10 md:group-odd:mr-10"
+              "ml-5 md:ml-[initial] md:group-even:ml-5 md:group-odd:mr-10"
             )}
           >
             <CardHeader className="pb-0">
