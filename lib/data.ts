@@ -42,23 +42,44 @@ export const links = [
 
 export const experiencesData = [
   {
-    year: "2010 - 2014",
-    company: "Cavite State University",
-    title: "BS Computer Science",
-    date: "June 2010 - April 2014",
-    location: "Cavite, PH",
+    year: "2023 - Present",
+    company: "Freelance",
+    title: "Freelance Full Stack Developer",
+    date: "July 2023 - Present",
+    location: "Georgetown, KY",
     description:
-      "I graduated with a degree in BS Computer Science, my main programming language was C#. I also started accepting project commissions for non-IT students to help with their thesis.",
-    icon: React.createElement(GraduationCap),
+      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, PHP and PostgreSQL. I'm open to full-time opportunities.",
+    responsibilities: [],
+    icon: React.createElement(StarIcon),
   },
   {
-    year: "2014 - 2018",
-    company: "Freelance",
-    title: "Freelance Software Developer",
-    date: "April 2014 - December 2018",
-    location: "Cavite, PH",
+    year: "2019 - 2023",
+    company: "NET(net) Inc.",
+    title: "Senior Full Stack Developer",
+    date: "January 2019 - July 2023",
+    location: "Georgetown, KY",
     description:
-      "After graduating, I started to actively look for freelance projects and has been doing it part-time until 2018. This gave me opportunity to explore on different platforms such as mobile and IoT",
+      "I worked as full-stack developer, and started to work with the mobile project which introduced me to React Native and React",
+    icon: React.createElement(Code2Icon),
+  },
+  {
+    year: "2017 - 2018",
+    company: "Quad IT Solutions",
+    title: ".NET Developer",
+    date: "October 2017 - January 2018",
+    location: "Pasay, PH",
+    description:
+      "I worked as a .NET Developer for 3 months, my main responsibilities are to fix existing bugs and implement new features.",
+    icon: React.createElement(MonitorIcon),
+  },
+  {
+    year: "2015 - 2017",
+    company: "Egis Projects Philippines",
+    title: "Software Developer",
+    date: "November 2015 - August 2017",
+    location: "Pasig, PH",
+    description:
+      "I finally started working in the IT Industry. I learned the fundamentals of software developement and how to work with a team.",
     icon: React.createElement(MonitorIcon),
   },
   {
@@ -72,45 +93,24 @@ export const experiencesData = [
     icon: React.createElement(BookOpenIcon),
   },
   {
-    year: "2015 - 2017",
-    company: "Egis Projects Philippines",
-    title: "Software Developer",
-    date: "November 2015 - August 2017",
-    location: "Pasig, PH",
-    description:
-      "I finally started working in the IT Industry. I learned the fundamentals of software developement and how to work with a team.",
-    icon: React.createElement(MonitorIcon),
-  },
-  {
-    year: "2017 - 2018",
-    company: "Quad IT Solutions",
-    title: ".NET Developer",
-    date: "October 2017 - January 2018",
-    location: "Pasay, PH",
-    description:
-      "I worked as a .NET Developer for 3 months, my main responsibilities are to fix existing bugs and implement new features.",
-    icon: React.createElement(MonitorIcon),
-  },
-  {
-    year: "2019 - 2023",
-    company: "NET(net) Inc.",
-    title: "Senior Full Stack Developer",
-    date: "January 2019 - July 2023",
-    location: "Georgetown, KY",
-    description:
-      "I worked as full-stack developer, and started to work with the mobile project which introduced me to React Native and React",
-    icon: React.createElement(Code2Icon),
-  },
-  {
-    year: "2023 - Present",
+    year: "2014 - 2018",
     company: "Freelance",
-    title: "Freelance Full Stack Developer",
-    date: "July 2023 - Present",
-    location: "Georgetown, KY",
+    title: "Freelance Software Developer",
+    date: "April 2014 - December 2018",
+    location: "Cavite, PH",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, PHP and PostgreSQL. I'm open to full-time opportunities.",
-    responsibilities: [],
-    icon: React.createElement(StarIcon),
+      "After graduating, I started to actively look for freelance projects and has been doing it part-time until 2018. This gave me opportunity to explore on different platforms such as mobile and IoT",
+    icon: React.createElement(MonitorIcon),
+  },
+  {
+    year: "2010 - 2014",
+    company: "Cavite State University",
+    title: "BS Computer Science",
+    date: "June 2010 - April 2014",
+    location: "Cavite, PH",
+    description:
+      "I graduated with a degree in BS Computer Science, my main programming language was C#. I also started accepting project commissions for non-IT students to help with their thesis.",
+    icon: React.createElement(GraduationCap),
   },
 ] as const;
 
