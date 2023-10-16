@@ -2,8 +2,6 @@
 
 import { useSectionInView } from "@/hooks/use-section-in-view";
 import { experiencesData } from "@/lib/data";
-import { motion } from "framer-motion";
-import React from "react";
 import ExperienceCard from "./experience-card";
 import SectionHeading from "./section-heading";
 
@@ -18,11 +16,9 @@ export default function ExperienceSection() {
     >
       <SectionHeading>My Experience</SectionHeading>
       {experiencesData.map((experience, index) => (
-        <React.Fragment key={index}>
-          <motion.div className="group">
-            <ExperienceCard {...experience} index={index} />
-          </motion.div>
-        </React.Fragment>
+        <div className="group" key={index}>
+          <ExperienceCard {...experience} index={index} />
+        </div>
       ))}
     </section>
   );
