@@ -12,7 +12,7 @@ export default function ProjectsSection() {
     <section
       id="projects"
       ref={ref}
-      className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40"
+      className="mb-28 max-w-[53rem] xl:max-w-[80rem] scroll-mt-28 text-center sm:mb-40"
     >
       <SectionHeading>My Projects</SectionHeading>
       <div className="flex flex-wrap gap-5 justify-center">
