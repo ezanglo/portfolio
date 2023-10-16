@@ -8,13 +8,13 @@ import ExperienceCard from "./experience-card";
 import SectionHeading from "./section-heading";
 
 export const fadeInAnimationVariants = {
-  initial: {
+  initial: (index: number) => ({
     opacity: 0,
-    y: 100,
-  },
+    x: index % 2 === 0 ? 100 : -100,
+  }),
   animate: (index: number) => ({
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
       delay: 0.03 * index,
     },

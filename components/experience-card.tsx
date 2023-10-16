@@ -35,16 +35,15 @@ export default function ExperienceCard({
         <div className="absolute flex flex-col justify-center items-center -left-5 md:left-[initial] md:group-even:-left-5 md:group-odd:-right-5">
           <span
             className={cn(
-              "flex items-center justify-center w-10 h-10 bg-secondary rounded-full ring-8 ring-background"
+              "p-3 flex items-center justify-center w-10 h-10 bg-primary-foreground rounded-full shadow-xl"
             )}
           >
             {icon}
           </span>
-          <span className="bg-background text-xs py-3">{year}</span>
         </div>
         <Card
           className={cn(
-            "flex flex-col w-[20rem] gap-3 h-full bg-secondary/70 shadow-none border-none",
+            "flex flex-col w-[20rem] gap-3 h-full bg-secondary/70 border-none shadow-md",
             "ml-10 md:ml-[initial] md:group-even:ml-10 md:group-odd:mr-10"
           )}
         >
@@ -71,7 +70,15 @@ export default function ExperienceCard({
           </CardFooter>
         </Card>
       </div>
-      <div></div>
+      <div
+        className={cn(
+          "flex mt-2 text-xs items-center justify-center h-6 text-secondary-foreground/50",
+          "group-even:mr-10 group-even:justify-end",
+          "group-odd:ml-10 group-odd:justify-start"
+        )}
+      >
+        {date}
+      </div>
     </div>
   );
 }

@@ -25,10 +25,11 @@ export default function ContactSection() {
         or through this form.
       </p>
       <form className="flex flex-col gap-3 pt-10">
-        <Input placeholder="Your email" />
+        <Input placeholder="Your email" type="email" />
         <Textarea placeholder="Your message" className="h-56" />
-        <Button className="rounded-full">
-          Submit <SendHorizonal className="ml-2 w-4 h-4" />{" "}
+        <Button className="rounded-full hover:scale-110 group mr-auto">
+          Submit{" "}
+          <SendHorizonal className="ml-2 w-4 h-4 transition-all group-hover:translate-x-1" />
         </Button>
       </form>
     </section>
