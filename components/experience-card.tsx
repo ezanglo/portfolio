@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -5,19 +7,24 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useBreakpoint } from "@/hooks/use-breakpoint";
 import { experiencesData } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export const fadeInAnimationVariants = {
   initial: (index: number) => ({
     opacity: 0,
     x: index % 2 === 0 ? 100 : -100,
   }),
-  animate: (index: number) => ({
+  animate: {
     opacity: 1,
     x: 0,
-  }),
+    transition: {
+      delay: 0.3,
+    },
+  },
 };
 
 type ExperienceCardProps = (typeof experiencesData)[number] & { index: number };
@@ -28,12 +35,13 @@ export default function ExperienceCard({
   location,
   description,
   icon,
-  date,
   year,
   index,
 }: ExperienceCardProps) {
+  const { isMd } = useBreakpoint("md");
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 sm:p-[initial]">
       <div
         className={cn(
           "flex flex-row relative border-primary/50 pb-5 pl-5 border-l md:pl-[initial] md:border-l-0",
@@ -51,18 +59,19 @@ export default function ExperienceCard({
             {icon}
           </span>
         </div>
-        <motion.div
+        <motion.section
           variants={fadeInAnimationVariants}
           initial="initial"
           whileInView="animate"
-          custom={index}
+          custom={isMd ? index : 0}
           viewport={{
             once: true,
           }}
+          className="md:max-w-[20rem]"
         >
           <Card
             className={cn(
-              "flex flex-col w-[20rem] gap-3 h-full bg-secondary/70 border-none shadow-md",
+              "flex flex-col gap-3 h-full bg-secondary/70 border-none shadow-md",
               "ml-10 md:ml-[initial] md:group-even:ml-10 md:group-odd:mr-10"
             )}
           >
@@ -77,7 +86,7 @@ export default function ExperienceCard({
             </CardHeader>
             <CardContent className="text-sm">{description}</CardContent>
           </Card>
-        </motion.div>
+        </motion.section>
       </div>
       <div
         className={cn(

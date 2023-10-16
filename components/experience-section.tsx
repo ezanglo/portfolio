@@ -2,17 +2,22 @@
 
 import { useSectionInView } from "@/hooks/use-section-in-view";
 import { experiencesData } from "@/lib/data";
-import ExperienceCard from "./experience-card";
 import SectionHeading from "./section-heading";
+import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
+const ExperienceCard = dynamic(() => import("./experience-card"));
 
 export default function ExperienceSection() {
   const { ref } = useSectionInView("Experience", 0.2);
 
   return (
-    <section
+    <motion.section
       id="experience"
       ref={ref}
-      className="scroll-mt-28 mb-28 sm:mb-40 px-5 sm:px-16"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="scroll-mt-28 mb-28 sm:mb-40 pl-10 sm:px-16 overflow-x-hidden"
     >
       <SectionHeading>My Experience</SectionHeading>
       {experiencesData.map((experience, index) => (
@@ -20,6 +25,6 @@ export default function ExperienceSection() {
           <ExperienceCard {...experience} index={index} />
         </div>
       ))}
-    </section>
+    </motion.section>
   );
 }
