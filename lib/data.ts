@@ -5,6 +5,13 @@ import plokerNow from "@/public/ploker-now.png";
 import mariBot from "@/public/mari-bot.png";
 import mariWeb from "@/public/mari-web.png";
 import shopDiggy from "@/public/shop-diggy.png";
+import {
+  GraduationCap,
+  MonitorIcon,
+  Code2Icon,
+  BookOpenIcon,
+} from "lucide-react";
+import { StarIcon } from "@radix-ui/react-icons";
 
 export const links = [
   {
@@ -35,31 +42,75 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Graduated bootcamp",
-    location: "Miami, FL",
+    year: "2010",
+    company: "Cavite State University",
+    title: "BS Computer Science",
+    date: "June 2010 - April 2014",
+    location: "Cavite, PH",
     description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
-    // icon: React.createElement(LuGraduationCap),
-    icon: "",
-    date: "2019",
+      "I graduated with a degree in BS Computer Science, my main programming language was C#. I also started accepting project commissions for non-IT students to help with their thesis.",
+    icon: React.createElement(GraduationCap),
   },
   {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
+    year: "2014",
+    company: "Freelance",
+    title: "Freelance Software Developer",
+    date: "April 2014 - December 2018",
+    location: "Cavite, PH",
     description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
-    // icon: React.createElement(CgWorkAlt),
-    icon: "",
-    date: "2019 - 2021",
+      "After graduating, I started to actively look for freelance projects and has been doing it part-time until 2018. This gave me opportunity to explore on different platforms such as mobile and IoT",
+    icon: React.createElement(MonitorIcon),
   },
   {
-    title: "Full-Stack Developer",
-    location: "Houston, TX",
+    year: "2014",
+    company: "Cavite State University",
+    title: "IT Instructor",
+    date: "June 2014 - May 2015",
+    location: "Cavite, PH",
+    description:
+      "I worked as an IT instructor for two semesters at my alma mater. I primarily taught introductory computer subjects to first-year students and some intermediate courses to fourth-year students.",
+    icon: React.createElement(BookOpenIcon),
+  },
+  {
+    year: "2015",
+    company: "Egis Projects Philippines",
+    title: "Software Developer",
+    date: "November 2015 - August 2017",
+    location: "Pasig, PH",
+    description:
+      "I finally started working in the IT Industry. I learned the fundamentals of software developement and how to work with a team.",
+    icon: React.createElement(MonitorIcon),
+  },
+  {
+    year: "2018",
+    company: "Quad IT Solutions",
+    title: ".NET Developer",
+    date: "October 2017 - January 2018",
+    location: "Pasay, PH",
+    description:
+      "I worked as a .NET Developer for 3 months, my main responsibilities are to fix existing bugs and implement new features.",
+    icon: React.createElement(MonitorIcon),
+  },
+  {
+    year: "2019",
+    company: "NET(net) Inc.",
+    title: "Senior Full Stack Developer",
+    date: "January 2019 - July 2023",
+    location: "Georgetown, KY",
+    description:
+      "I worked as full-stack developer, and started to work with the mobile project which introduced me to React Native and React",
+    icon: React.createElement(Code2Icon),
+  },
+  {
+    year: "2023",
+    company: "Freelance",
+    title: "Freelance Full Stack Developer",
+    date: "July 2023 - Present",
+    location: "Georgetown, KY",
     description:
       "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
-    // icon: React.createElement(FaReact),
-    icon: "",
-    date: "2021 - present",
+    responsibilities: [],
+    icon: React.createElement(StarIcon),
   },
 ] as const;
 

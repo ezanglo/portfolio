@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { projectsData } from "@/lib/data";
 import { Badge } from "./ui/badge";
-import { useScroll } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { motion } from "framer-motion";
 
@@ -26,13 +26,15 @@ export default function ProjectCard({
     target: ref,
     offset: ["0 1", "1.33 1"],
   });
+  const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   return (
     <motion.div
       ref={ref}
       style={{
-        scale: scrollYProgress,
-        position: scrollYProgress,
+        scale: scaleProgess,
+        opacity: opacityProgess,
       }}
       className="h-full w-full sm:max-w-[20rem] text-start"
     >

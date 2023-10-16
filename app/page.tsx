@@ -1,4 +1,5 @@
 import AboutSection from "@/components/about-section";
+import ExperienceSection from "@/components/experience-section";
 import HeroSection from "@/components/hero-section";
 import ProjectsSection from "@/components/projects-section";
 import SectionDivider from "@/components/section-divider";
@@ -13,6 +14,7 @@ export default function Home() {
         <AboutSection />
         <SkillsSection />
         <ProjectsSection />
+        <ExperienceSection />
       </div>
     </main>
   );
