@@ -11,7 +11,7 @@ export function ModeToggle() {
 
   return (
     <Button
-      className="bg-background fixed bottom-0 right-0 m-5 text-foreground"
+      className="bg-background text-foreground"
       variant="outline"
       size="icon"
       onClick={() => {

@@ -8,6 +8,7 @@ import { ModeToggle } from '@/components/mode-toggle'
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
+import PortfolioCodeButton from "@/components/portfolio-code-button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,10 @@ export default function RootLayout({
             {children}
             <Footer />
             <Toaster />
-            <ModeToggle />
+            <div className="fixed bottom-0 right-0 p-5 flex items-center gap-2">
+              <PortfolioCodeButton />
+              <ModeToggle />
+            </div>
           </ActiveSectionContextProvider>
         </ThemeProvider>
       </body>

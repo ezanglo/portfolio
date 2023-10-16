@@ -1,4 +1,7 @@
 import React from "react";
+import { Button } from "./ui/button";
+import Link from "next/link";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export default function Footer() {
   return (
