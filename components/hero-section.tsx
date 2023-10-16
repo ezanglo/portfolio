@@ -13,11 +13,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
 import { Button } from "./ui/button";
+import { useActiveSectionContext } from "@/context/active-section-context";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 export default function HeroSection() {
+  const { setActiveSection, isClicked } = useActiveSectionContext();
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+  });
+
+  useEffect(() => {
+    inView && isClicked && setActiveSection("Home");
+  }, [inView, isClicked]);
+
   return (
     <section
       id="home"
+      ref={ref}
       className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
     >
       <div className="grid grid-cols-1">

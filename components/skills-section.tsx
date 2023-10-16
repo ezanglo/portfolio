@@ -3,6 +3,9 @@
 import { skillsData } from "@/lib/data";
 import { motion } from "framer-motion";
 import SectionHeading from "./section-heading";
+import { useEffect } from "react";
+import { useActiveSectionContext } from "@/context/active-section-context";
+import { useInView } from "react-intersection-observer";
 
 const fadeInAnimationVariants = {
   initial: {
@@ -19,9 +22,18 @@ const fadeInAnimationVariants = {
 };
 
 export default function SkillsSection() {
+  const { setActiveSection, isClicked } = useActiveSectionContext();
+  const { ref, inView } = useInView({
+    threshold: 0.75,
+  });
+
+  useEffect(() => {
+    inView && isClicked && setActiveSection("Skills");
+  }, [inView, isClicked]);
   return (
     <section
       id="skills"
+      ref={ref}
       className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40"
     >
       <SectionHeading>My skills</SectionHeading>

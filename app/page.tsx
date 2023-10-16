@@ -11,7 +11,6 @@ export default function Home() {
         <HeroSection />
         <SectionDivider />
         <AboutSection />
-        <SectionDivider />
         <SkillsSection />
         <ProjectsSection />
       </div>
