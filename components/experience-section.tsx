@@ -7,20 +7,6 @@ import React from "react";
 import ExperienceCard from "./experience-card";
 import SectionHeading from "./section-heading";
 
-export const fadeInAnimationVariants = {
-  initial: (index: number) => ({
-    opacity: 0,
-    x: index % 2 === 0 ? 100 : -100,
-  }),
-  animate: (index: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: 0.03 * index,
-    },
-  }),
-};
-
 export default function ExperienceSection() {
   const { ref } = useSectionInView("Experience", 0.2);
 
@@ -33,17 +19,8 @@ export default function ExperienceSection() {
       <SectionHeading>My Experience</SectionHeading>
       {experiencesData.map((experience, index) => (
         <React.Fragment key={index}>
-          <motion.div
-            className="group"
-            variants={fadeInAnimationVariants}
-            initial="initial"
-            whileInView="animate"
-            custom={index}
-            viewport={{
-              once: true,
-            }}
-          >
-            <ExperienceCard {...experience} />
+          <motion.div className="group">
+            <ExperienceCard {...experience} index={index} />
           </motion.div>
         </React.Fragment>
       ))}

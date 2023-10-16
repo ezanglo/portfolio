@@ -42,7 +42,7 @@ export const links = [
 
 export const experiencesData = [
   {
-    year: "2010",
+    year: "2010 - 2014",
     company: "Cavite State University",
     title: "BS Computer Science",
     date: "June 2010 - April 2014",
@@ -52,7 +52,7 @@ export const experiencesData = [
     icon: React.createElement(GraduationCap),
   },
   {
-    year: "2014",
+    year: "2014 - 2018",
     company: "Freelance",
     title: "Freelance Software Developer",
     date: "April 2014 - December 2018",
@@ -62,7 +62,7 @@ export const experiencesData = [
     icon: React.createElement(MonitorIcon),
   },
   {
-    year: "2014",
+    year: "2014 - 2015",
     company: "Cavite State University",
     title: "IT Instructor",
     date: "June 2014 - May 2015",
@@ -72,7 +72,7 @@ export const experiencesData = [
     icon: React.createElement(BookOpenIcon),
   },
   {
-    year: "2015",
+    year: "2015 - 2017",
     company: "Egis Projects Philippines",
     title: "Software Developer",
     date: "November 2015 - August 2017",
@@ -82,7 +82,7 @@ export const experiencesData = [
     icon: React.createElement(MonitorIcon),
   },
   {
-    year: "2018",
+    year: "2017 - 2018",
     company: "Quad IT Solutions",
     title: ".NET Developer",
     date: "October 2017 - January 2018",
@@ -92,7 +92,7 @@ export const experiencesData = [
     icon: React.createElement(MonitorIcon),
   },
   {
-    year: "2019",
+    year: "2019 - 2023",
     company: "NET(net) Inc.",
     title: "Senior Full Stack Developer",
     date: "January 2019 - July 2023",
@@ -102,7 +102,7 @@ export const experiencesData = [
     icon: React.createElement(Code2Icon),
   },
   {
-    year: "2023",
+    year: "2023 - Present",
     company: "Freelance",
     title: "Freelance Full Stack Developer",
     date: "July 2023 - Present",

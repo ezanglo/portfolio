@@ -1,17 +1,29 @@
-import { experiencesData } from "@/lib/data";
-import React from "react";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "./ui/badge";
+import { experiencesData } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
-type ExperienceCardProps = (typeof experiencesData)[number];
+export const fadeInAnimationVariants = {
+  initial: (index: number) => ({
+    opacity: 0,
+    x: index % 2 === 0 ? 100 : -100,
+  }),
+  animate: (index: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0.03 * index,
+    },
+  }),
+};
+
+type ExperienceCardProps = (typeof experiencesData)[number] & { index: number };
 
 export default function ExperienceCard({
   company,
@@ -21,6 +33,7 @@ export default function ExperienceCard({
   icon,
   date,
   year,
+  index,
 }: ExperienceCardProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2">
@@ -41,43 +54,42 @@ export default function ExperienceCard({
             {icon}
           </span>
         </div>
-        <Card
-          className={cn(
-            "flex flex-col w-[20rem] gap-3 h-full bg-secondary/70 border-none shadow-md",
-            "ml-10 md:ml-[initial] md:group-even:ml-10 md:group-odd:mr-10"
-          )}
+        <motion.div
+          variants={fadeInAnimationVariants}
+          initial="initial"
+          whileInView="animate"
+          custom={index}
+          viewport={{
+            once: true,
+          }}
         >
-          <CardHeader className="pb-0">
-            <CardDescription className="text-xs uppercase">
-              {date}
-            </CardDescription>
-            <CardTitle>{title}</CardTitle>
-          </CardHeader>
-          <CardContent className="text-sm">{description}</CardContent>
-          <CardFooter className="text-xs flex flex-wrap gap-2">
-            <Badge
-              variant={"outline"}
-              className="rounded-full border-secondary-foreground/30"
-            >
-              {company}
-            </Badge>
-            <Badge
-              variant={"outline"}
-              className="rounded-full border-secondary-foreground/30"
-            >
-              {location}
-            </Badge>
-          </CardFooter>
-        </Card>
+          <Card
+            className={cn(
+              "flex flex-col w-[20rem] gap-3 h-full bg-secondary/70 border-none shadow-md",
+              "ml-10 md:ml-[initial] md:group-even:ml-10 md:group-odd:mr-10"
+            )}
+          >
+            <CardHeader className="pb-0">
+              <CardDescription className="text-xs opacity-70 uppercase md:hidden">
+                {year}
+              </CardDescription>
+              <CardTitle>{title}</CardTitle>
+              <CardDescription className="text-xs">
+                {company} | {location}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="text-sm">{description}</CardContent>
+          </Card>
+        </motion.div>
       </div>
       <div
         className={cn(
-          "flex mt-2 text-xs items-center justify-center h-6 text-secondary-foreground/50",
+          "hidden md:flex mt-2 text-xs items-center justify-center h-6 text-secondary-foreground/50",
           "group-even:mr-10 group-even:justify-end",
           "group-odd:ml-10 group-odd:justify-start"
         )}
       >
-        {date}
+        {year}
       </div>
     </div>
   );
