@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "./ui/badge";
 import { cn } from "@/lib/utils";
-import { ScrollArea } from "./ui/scroll-area";
 
 type ExperienceCardProps = (typeof experiencesData)[number];
 
