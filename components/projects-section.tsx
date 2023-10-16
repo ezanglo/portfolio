@@ -2,8 +2,8 @@
 
 import { useSectionInView } from "@/hooks/use-section-in-view";
 import { projectsData } from "@/lib/data";
-import ProjectCard from "./project-card";
-import SectionHeading from "./section-heading";
+import ProjectCard from "@/components/project-card";
+import SectionHeading from "@/components/section-heading";
 
 export default function ProjectsSection() {
   const { ref } = useSectionInView("Projects", 0.2);

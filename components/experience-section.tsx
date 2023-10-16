@@ -2,11 +2,11 @@
 
 import { useSectionInView } from "@/hooks/use-section-in-view";
 import { experiencesData } from "@/lib/data";
-import SectionHeading from "./section-heading";
+import SectionHeading from "@/components/section-heading";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
-const ExperienceCard = dynamic(() => import("./experience-card"));
+const ExperienceCard = dynamic(() => import("@/components/experience-card"));
 
 export default function ExperienceSection() {
   const { ref } = useSectionInView("Experience", 0.2);

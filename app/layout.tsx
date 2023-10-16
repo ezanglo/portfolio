@@ -7,6 +7,7 @@ import Header from '@/components/header'
 import { ModeToggle } from '@/components/mode-toggle'
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +16,11 @@ export const metadata: Metadata = {
   description: "Ezra is a full-stack developer with 8 years of experience.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(inter.className, "pt-28 sm:pt-36")}>
@@ -24,10 +29,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Header />
             {children}
             <Footer />
-          </ActiveSectionContextProvider>
-          <div className="fixed bottom-0 right-0 p-5">
+            <Toaster />
             <ModeToggle />
-          </div>
+          </ActiveSectionContextProvider>
         </ThemeProvider>
       </body>
     </html>

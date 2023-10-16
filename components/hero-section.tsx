@@ -12,12 +12,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { useSectionInView } from "@/hooks/use-section-in-view";
+import { useActiveSectionContext } from "@/context/active-section-context";
 
 export default function HeroSection() {
   const { ref } = useSectionInView("Home", 0.5);
-
+  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
   return (
     <section
       id="home"
@@ -97,7 +98,13 @@ export default function HeroSection() {
               )}
               asChild
             >
-              <Link href="#contact">
+              <Link
+                href="#contact"
+                onClick={() => {
+                  setActiveSection("Contact");
+                  setTimeOfLastClick(Date.now());
+                }}
+              >
                 Hire me <ArrowRightIcon className="ml-2 opacity-70" />
               </Link>
             </Button>

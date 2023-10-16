@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { projectsData } from "@/lib/data";
-import { Badge } from "./ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { motion } from "framer-motion";
