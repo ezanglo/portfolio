@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils'
 import Header from '@/components/header'
 import { ModeToggle } from '@/components/mode-toggle'
 import ActiveSectionContextProvider from "@/context/active-section-context";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ActiveSectionContextProvider>
             <Header />
             {children}
+            <Footer />
           </ActiveSectionContextProvider>
           <div className="fixed bottom-0 right-0 p-5">
             <ModeToggle />

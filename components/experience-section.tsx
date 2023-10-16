@@ -16,7 +16,7 @@ export const fadeInAnimationVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.175 * index,
+      delay: 0.03 * index,
     },
   }),
 };
