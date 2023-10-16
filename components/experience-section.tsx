@@ -39,6 +39,9 @@ export default function ExperienceSection() {
             initial="initial"
             whileInView="animate"
             custom={index}
+            viewport={{
+              once: true,
+            }}
           >
             <ExperienceCard {...experience} />
           </motion.div>
