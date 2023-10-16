@@ -24,7 +24,7 @@ export default function ExperienceCard({
   year,
 }: ExperienceCardProps) {
   return (
-    <div className="group grid grid-cols-1 md:grid-cols-2">
+    <div className="grid grid-cols-1 md:grid-cols-2">
       <div
         className={cn(
           "flex flex-row relative border-primary/50 pb-5 pl-5 border-l md:pl-[initial] md:border-l-0",
