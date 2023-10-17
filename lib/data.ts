@@ -89,7 +89,7 @@ export const experiencesData = [
     date: "June 2014 - May 2015",
     location: "Cavite, PH",
     description:
-      "I worked as an IT instructor for two semesters at my alma mater. I primarily taught introductory computer subjects to first-year students and some intermediate courses to fourth-year students.",
+      "I worked as an IT instructor for two semesters at my alma mater. I primarily tought introductory computer subjects to first-year students and some intermediate courses to fourth-year students.",
     icon: React.createElement(BookOpenIcon),
   },
   {
@@ -189,7 +189,7 @@ export const projectsData = [
   {
     title: "Shop Diggy",
     description:
-      "I worked as the front-end developer on this project, this is a bobile application to help users get the best deal from different e-commerce websites",
+      "I worked as the front-end developer on this project, this is a mobile application to help users get the best deal from different e-commerce websites",
     type: "mobile",
     tags: ["C#", "Xamarin", "Cross Platform"],
     imageUrl: shopDiggy,
