@@ -116,7 +116,7 @@ export default function HeroSection() {
               variant={"outline"}
               asChild
             >
-              <Link href="/cv-ezra-anglo.pdf" download>
+              <Link href="/cv-ezra-anglo-latest.pdf" download>
                 Download CV
                 <DownloadIcon className="ml-2 opacity-70" />
               </Link>
