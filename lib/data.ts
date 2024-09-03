@@ -53,6 +53,17 @@ export const experiencesData = [
     icon: React.createElement(StarIcon),
   },
   {
+    year: "2023 - 2024",
+    company: "Stream.TV (Cayman)",
+    title: "Full Stack Developer",
+    date: "July 2023 - Present",
+    location: "Georgetown, KY",
+    description:
+      "I worked as a full-stack developer, managing and maintaining the backend using Laravel and MySQL. I also introduced NextJS on the new web application and docker deployment to AWS.",
+    responsibilities: [],
+    icon: React.createElement(StarIcon),
+  },
+  {
     year: "2019 - 2023",
     company: "NET(net) Inc.",
     title: "Senior Full Stack Developer",
@@ -115,6 +126,14 @@ export const experiencesData = [
 ] as const;
 
 export const projectsData = [
+  {
+    title: "YuVee",
+    description:
+      "I worked as a full-stack developer on this project, working as the sole backend developer and front-end web developer. I also handled maintaining devops and deployment to AWS, introducing docker in deploying the new web application.",
+    type: "web",
+    tags: ["Laravel", "NextJS", "MySQL", "Docker"],
+    imageUrl: "",
+  },
   {
     title: "Real-time RFID Registration",
     description:
@@ -228,15 +247,17 @@ export const projectsData = [
 ] as const;
 
 export const skillsData = [
-  "HTML",
-  "CSS",
-  "Javascript",
-  "PHP",
+  "Laravel",
+  "Symfony",
   "ReactJS",
   "NextJS",
   "VueJS",
+  "Zod",
+  "React-Query",
   "Tailwind",
   "Prisma",
+  "Drizzle",
+  "Clerk",
   "Typescript",
   "Framer Motion",
   "Node.js",
@@ -254,7 +275,6 @@ export const skillsData = [
   "FCM",
   "REST API",
   "CodeIgniter",
-  "Symfony",
   "Xamarin",
   "Ionic Framework",
   "Quasar Framework",
