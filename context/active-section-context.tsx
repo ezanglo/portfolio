@@ -1,8 +1,9 @@
 "use client";
 
-import type { SectionName } from "@/lib/types";
 import React, { createContext, useContext, useState } from "react";
+import { NavigationLink } from "@/payload-types";
 
+type SectionName = NavigationLink['name'];
 type ActiveSectionContextProviderProps = {
   children: React.ReactNode;
 };

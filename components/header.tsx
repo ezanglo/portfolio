@@ -1,12 +1,18 @@
 "use client";
 
 import { useActiveSectionContext } from "@/context/active-section-context";
-import { links } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { NavigationLink } from "@/payload-types";
 
-export default function Header() {
+type SectionName = NavigationLink['name'];
+
+interface HeaderProps {
+  links: NavigationLink[];
+}
+
+export default function Header({ links }: HeaderProps) {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
   return (
@@ -49,7 +55,7 @@ export default function Header() {
                   activeSection === link.name && "text-secondary-foreground"
                 )}
                 onClick={() => {
-                  setActiveSection(link.name);
+                  setActiveSection(link.name as SectionName);
                   setTimeOfLastClick(Date.now());
                 }}
               >

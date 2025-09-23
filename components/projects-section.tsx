@@ -1,11 +1,15 @@
 "use client";
 
 import { useSectionInView } from "@/hooks/use-section-in-view";
-import { projectsData } from "@/lib/data";
 import ProjectCard from "@/components/project-card";
 import SectionHeading from "@/components/section-heading";
+import { Project } from "@/payload-types";
 
-export default function ProjectsSection() {
+interface ProjectsSectionProps {
+  projects: Project[];
+}
+
+export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const { ref } = useSectionInView("Projects", 0.2);
 
   return (
@@ -16,7 +20,7 @@ export default function ProjectsSection() {
     >
       <SectionHeading>My Projects</SectionHeading>
       <div className="flex flex-wrap gap-5 justify-center">
-        {projectsData.map((project, index) => (
+        {projects.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
       </div>

@@ -7,13 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { projectsData } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
 import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { motion } from "framer-motion";
+import { Project } from "@/payload-types";
 
-type ProjectCardProps = (typeof projectsData)[number];
+type ProjectCardProps = Project;
 
 export default function ProjectCard({
   title,
@@ -45,10 +45,10 @@ export default function ProjectCard({
           </CardHeader>
           <CardFooter className="mt-auto">
             <ul className="flex flex-wrap mt-4 gap-1 sm:mt-auto">
-              {tags.map((tag, index) => (
+              {tags?.map((tag: { tag: string }, index: number) => (
                 <li key={index}>
                   <Badge className="rounded-full text-[0.6rem] tracking-wider uppercase bg-primary/70">
-                    {tag}
+                    {tag.tag}
                   </Badge>
                 </li>
               ))}

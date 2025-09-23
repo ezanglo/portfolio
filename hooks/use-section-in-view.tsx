@@ -1,7 +1,9 @@
 import { useActiveSectionContext } from "@/context/active-section-context";
-import type { SectionName } from "@/lib/types";
+import { NavigationLink } from "@/payload-types";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+
+type SectionName = NavigationLink['name'];
 
 export function useSectionInView(sectionName: SectionName, threshold: number) {
   const { setActiveSection, isClicked } = useActiveSectionContext();

@@ -7,9 +7,25 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { experiencesData } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { Experience } from "@/payload-types";
+import {
+  GraduationCap,
+  MonitorIcon,
+  Code2Icon,
+  BookOpenIcon,
+  StarIcon,
+} from "lucide-react";
+
+// Icon mapping for experiences
+const iconMap = {
+  star: StarIcon,
+  code: Code2Icon,
+  monitor: MonitorIcon,
+  book: BookOpenIcon,
+  graduation: GraduationCap,
+};
 
 export const fadeInAnimationVariants = {
   initial: (index: number) => ({
@@ -25,7 +41,7 @@ export const fadeInAnimationVariants = {
   },
 };
 
-type ExperienceCardProps = (typeof experiencesData)[number] & { index: number };
+type ExperienceCardProps = Experience & { index: number };
 
 export default function ExperienceCard({
   company,
@@ -36,6 +52,7 @@ export default function ExperienceCard({
   year,
   index,
 }: ExperienceCardProps) {
+  const IconComponent = iconMap[icon as keyof typeof iconMap] || StarIcon;
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 sm:p-[initial]">
       <div
@@ -52,7 +69,7 @@ export default function ExperienceCard({
               "p-3 flex items-center justify-center w-10 h-10 bg-primary-foreground rounded-full shadow-xl"
             )}
           >
-            {icon}
+            <IconComponent />
           </span>
         </div>
         <motion.section

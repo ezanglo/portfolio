@@ -9,7 +9,7 @@ import { TypeAnimation } from "react-type-animation";
 import { Button } from "@/components/ui/button";
 import { useSectionInView } from "@/hooks/use-section-in-view";
 import { useActiveSectionContext } from "@/context/active-section-context";
-import { ArrowRightIcon, DownloadIcon, LinkedinIcon } from "lucide-react";
+import { ArrowRightIcon, DownloadIcon } from "lucide-react";
 
 import {
   GitHubLogoIcon,

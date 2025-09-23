@@ -1,7 +1,6 @@
 "use client";
 
 import { useSectionInView } from "@/hooks/use-section-in-view";
-import { skillsData } from "@/lib/data";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/section-heading";
 
@@ -19,7 +18,11 @@ const fadeInAnimationVariants = {
   }),
 };
 
-export default function SkillsSection() {
+interface SkillsSectionProps {
+  skills: string[];
+}
+
+export default function SkillsSection({ skills }: SkillsSectionProps) {
   const { ref } = useSectionInView("Skills", 0.75);
 
   return (
@@ -30,7 +33,7 @@ export default function SkillsSection() {
     >
       <SectionHeading>My skills</SectionHeading>
       <ul className="flex flex-wrap justify-center gap-2 text-md text-primary">
-        {skillsData.map((skill, index) => (
+        {skills.map((skill, index) => (
           <motion.li
             className="bg-secondary-foreground/10 py-1 px-3 rounded-xl"
             key={index}

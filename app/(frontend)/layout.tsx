@@ -9,6 +9,8 @@ import Footer from "@/components/footer";
 import PortfolioCodeButton from "@/components/portfolio-code-button";
 import { ModeToggle } from "@/components/mode-toggle";
 import { cn } from "@/lib/utils";
+import { getNavigationLinks } from "@/lib/queries";
+import { NavigationLink } from "@/payload-types";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,17 +19,19 @@ export const metadata: Metadata = {
   description: "Ezra is a full-stack developer with 10 years of experience.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navigationLinks = await getNavigationLinks();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(inter.className, "pt-28 sm:pt-36")}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ActiveSectionContextProvider>
-            <Header />
+            <Header links={navigationLinks as NavigationLink[]} />
             {children}
             <Footer />
             <Toaster />
