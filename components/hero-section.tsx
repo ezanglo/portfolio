@@ -2,12 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import photo from "@/public/ezra.png";
-import {
-  ArrowRightIcon,
-  DownloadIcon,
-  GitHubLogoIcon,
-  LinkedInLogoIcon,
-} from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +9,12 @@ import { TypeAnimation } from "react-type-animation";
 import { Button } from "@/components/ui/button";
 import { useSectionInView } from "@/hooks/use-section-in-view";
 import { useActiveSectionContext } from "@/context/active-section-context";
+import { ArrowRightIcon, DownloadIcon, LinkedinIcon } from "lucide-react";
+
+import {
+  GitHubLogoIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
 
 export default function HeroSection() {
   const { ref } = useSectionInView("Home", 0.5);
@@ -93,7 +93,7 @@ export default function HeroSection() {
           >
             <Button
               className={cn(
-                "w-full sm:w-fit rounded-full",
+                "w-full sm:w-fit rounded-full flex items-center justify-center",
                 "focus:scale-110 hover:scale-110 active:scale-105 transition-all"
               )}
               asChild
@@ -105,7 +105,7 @@ export default function HeroSection() {
                   setTimeOfLastClick(Date.now());
                 }}
               >
-                Hire me <ArrowRightIcon className="ml-2 opacity-70" />
+                Hire me <ArrowRightIcon className="opacity-70" />
               </Link>
             </Button>
             <Button
@@ -135,7 +135,7 @@ export default function HeroSection() {
                   href={"https://www.linkedin.com/in/ezraanglo"}
                   target="_blank"
                 >
-                  <LinkedInLogoIcon className="w-5 h-5" />
+                  <LinkedInLogoIcon className="opacity-70" />
                 </Link>
               </Button>
               <Button
@@ -147,7 +147,7 @@ export default function HeroSection() {
                 )}
               >
                 <Link href={"https://www.github.com/ezanglo"} target="_blank">
-                  <GitHubLogoIcon className="w-5 h-5" />
+                  <GitHubLogoIcon className="opacity-70" />
                 </Link>
               </Button>
             </div>

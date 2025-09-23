@@ -3,7 +3,6 @@ import React from "react";
 import {
   Html,
   Body,
-  Head,
   Heading,
   Hr,
   Container,
@@ -27,7 +26,7 @@ export default function ContactFormEmail({ message, email }: ContactFormType) {
               </Heading>
               <Text>{message}</Text>
               <Hr />
-              <Text>The sender's email is: {email}</Text>
+              <Text>{"The sender's email is:"} {email}</Text>
             </Section>
           </Container>
         </Body>

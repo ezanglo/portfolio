@@ -17,9 +17,7 @@ export default function ProjectsSection() {
       <SectionHeading>My Projects</SectionHeading>
       <div className="flex flex-wrap gap-5 justify-center">
         {projectsData.map((project, index) => (
-          <div key={index}>
-            <ProjectCard {...project} />
-          </div>
+          <ProjectCard key={index} {...project} />
         ))}
       </div>
     </section>

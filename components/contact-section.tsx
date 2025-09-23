@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/form";
 import { sendEmail } from "@/actions/sendEmail";
 import SubmitButton from "./submit-button";
-import { useToast } from "./ui/use-toast";
+import { toast } from "sonner"
 
 const contactFormSchema = z.object({
   email: z
@@ -30,7 +30,9 @@ const contactFormSchema = z.object({
     .max(500, {
       message: "Maximum length tis 500",
     })
-    .email(),
+    .email({
+      message: "Invalid email",
+    }),
   message: z
     .string()
     .min(1, {
@@ -45,7 +47,6 @@ export type ContactFormType = z.infer<typeof contactFormSchema>;
 
 export default function ContactSection() {
   const { ref } = useSectionInView("Contact", 0.5);
-  const { toast } = useToast();
 
   const form = useForm<ContactFormType>({
     resolver: zodResolver(contactFormSchema),
@@ -58,21 +59,15 @@ export default function ContactSection() {
   const handleSubmitAction = async () => {
     const valid = await form.trigger();
     if (valid) {
-      const { data, error } = await sendEmail(form.getValues());
+      const { error } = await sendEmail(form.getValues());
       if (error) {
-        toast({
-          variant: "destructive",
-          title: "Something went wrong.",
-          description: error,
-        });
+        toast.error(error.message);
       } else {
-        toast({
-          title: "Email sent successfully!",
-        });
+        toast.success("Email sent successfully!");
         form.reset();
       }
     }
-  };
+  }
 
   return (
     <motion.section

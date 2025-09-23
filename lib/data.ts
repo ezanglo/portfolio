@@ -10,8 +10,8 @@ import {
   MonitorIcon,
   Code2Icon,
   BookOpenIcon,
+  StarIcon,
 } from "lucide-react";
-import { StarIcon } from "@radix-ui/react-icons";
 
 export const links = [
   {

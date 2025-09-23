@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useBreakpoint } from "@/hooks/use-breakpoint";
 import { experiencesData } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -37,8 +36,6 @@ export default function ExperienceCard({
   year,
   index,
 }: ExperienceCardProps) {
-  const { isMd } = useBreakpoint("md");
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 sm:p-[initial]">
       <div
@@ -62,7 +59,7 @@ export default function ExperienceCard({
           variants={fadeInAnimationVariants}
           initial="initial"
           whileInView="animate"
-          custom={isMd ? index : 0}
+          custom={index}
           viewport={{
             once: true,
           }}

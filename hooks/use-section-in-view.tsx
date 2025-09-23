@@ -9,7 +9,7 @@ export function useSectionInView(sectionName: SectionName, threshold: number) {
 
   useEffect(() => {
     inView && isClicked && setActiveSection(sectionName);
-  }, [inView, isClicked]);
+  }, [inView, isClicked, setActiveSection, sectionName]);
 
   return { ref };
 }

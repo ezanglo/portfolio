@@ -16,7 +16,7 @@ export default function PortfolioCodeButton() {
         target="_blank"
         className="flex flex-row items-center"
       >
-        <GitHubLogoIcon className="w-5 h-5" />
+        <GitHubLogoIcon className="opacity-70" />
       </Link>
     </Button>
   );

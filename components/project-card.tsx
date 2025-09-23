@@ -19,7 +19,6 @@ export default function ProjectCard({
   title,
   description,
   tags,
-  imageUrl,
 }: ProjectCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -39,7 +38,7 @@ export default function ProjectCard({
       className="h-full w-full sm:max-w-[20rem] text-start"
     >
       <section className="h-full w-full">
-        <Card className="flex flex-col gap-3 h-full w-full bg-secondary/70 shadow-none border-none">
+        <Card className="flex flex-col gap-3 h-full w-full bg-secondary/70 shadow-none border-none min-h-[16rem]">
           <CardHeader>
             <CardTitle>{title}</CardTitle>
             <CardDescription>{description}</CardDescription>
