@@ -63,7 +63,7 @@ export default function FileUploadField({
       
       // Clear success message after 3 seconds
       setTimeout(() => setUploadSuccess(false), 3000);
-    } catch (error) {
+    } catch {
       setUploadError(`Failed to upload ${fileTypeLabel}. Please try again.`);
     } finally {
       setIsUploading(false);

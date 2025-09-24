@@ -3,11 +3,12 @@ import { head } from '@vercel/blob';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { path: string[] } }
+  { params }: { params: Promise<{ path: string[] }> }
 ) {
   try {
     // Reconstruct the filename from the path segments
-    const filename = params.path.join('/');
+    const resolvedParams = await params;
+    const filename = resolvedParams.path.join('/');
     
     if (!filename) {
       return NextResponse.json({ error: 'Filename is required' }, { status: 400 });
