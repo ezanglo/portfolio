@@ -19,7 +19,8 @@ import {
 } from "@/components/ui/form";
 import { sendEmail } from "@/actions/sendEmail";
 import SubmitButton from "./submit-button";
-import { toast } from "sonner"
+import { toast } from "sonner";
+import { SiteConfig } from "@/payload-types";
 
 const contactFormSchema = z.object({
   email: z
@@ -45,7 +46,11 @@ const contactFormSchema = z.object({
 
 export type ContactFormType = z.infer<typeof contactFormSchema>;
 
-export default function ContactSection() {
+interface ContactSectionProps {
+  siteConfig: SiteConfig | null;
+}
+
+export default function ContactSection({ siteConfig }: ContactSectionProps) {
   const { ref } = useSectionInView("Contact", 0.5);
 
   const form = useForm<ContactFormType>({
@@ -55,6 +60,9 @@ export default function ContactSection() {
       message: "",
     },
   });
+
+  // Get email from site config with fallback
+  const contactEmail = siteConfig?.contact?.email || 'dev.ezraanglo@gmail.com';
 
   const handleSubmitAction = async () => {
     const valid = await form.trigger();
@@ -83,8 +91,8 @@ export default function ContactSection() {
       <SectionHeading>Contact me</SectionHeading>
       <p className="-mt-6 text-secondary-foreground/50 text-sm">
         Please contact me directly at{" "}
-        <a className="underline" href="mailto:dev.ezraanglo@gmail.com">
-          dev.ezraanglo@gmail.com
+        <a className="underline" href={`mailto:${contactEmail}`}>
+          {contactEmail}
         </a>{" "}
         or through this form.
       </p>

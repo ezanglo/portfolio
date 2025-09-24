@@ -1,6 +1,7 @@
 import AboutSection from "@/components/about-section";
 import ContactSection from "@/components/contact-section";
 import ExperienceSection from "@/components/experience-section";
+import Footer from "@/components/footer";
 import HeroSection from "@/components/hero-section";
 import ProjectsSection from "@/components/projects-section";
 import SectionDivider from "@/components/section-divider";
@@ -8,7 +9,8 @@ import SkillsSection from "@/components/skills-section";
 import { 
   getExperiencesData, 
   getProjectsData, 
-  getSkillsData
+  getSkillsData,
+  getSiteConfig
 } from "@/lib/queries";
 
 // Static Generation with ISR - Best of both worlds!
@@ -19,22 +21,24 @@ export const runtime = 'nodejs';
 
 export default async function Home() {
   // Fetch all data in parallel for better performance
-  const [experiences, projects, skills] = await Promise.all([
+  const [experiences, projects, skills, siteConfig] = await Promise.all([
     getExperiencesData(),
     getProjectsData(),
     getSkillsData(),
+    getSiteConfig(),
   ]);
 
   return (
     <main>
       <div className="flex flex-col items-center px-4">
-        <HeroSection />
+        <HeroSection siteConfig={siteConfig} />
         <SectionDivider />
-        <AboutSection />
+        <AboutSection siteConfig={siteConfig} />
         <SkillsSection skills={skills} />
         <ProjectsSection projects={projects} />
         <ExperienceSection experiences={experiences} />
-        <ContactSection />
+        <ContactSection siteConfig={siteConfig} />
+        <Footer siteConfig={siteConfig} />
       </div>
     </main>
   );

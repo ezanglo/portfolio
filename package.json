@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate:importmap": "payload generate:importmap",
+    "generate:importmap": "tsx node_modules/.bin/payload generate:importmap",
     "generate:types": "tsx node_modules/.bin/payload generate:types",
+    "seed:site-config": "tsx scripts/seed-site-config.ts",
     "lint": "next lint"
   },
   "dependencies": {

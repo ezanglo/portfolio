@@ -8,6 +8,7 @@ import { Projects } from './collections/Projects'
 import { Skills } from './collections/Skills'
 import { NavigationLinks } from './collections/NavigationLinks'
 import { Media } from './collections/Media'
+import { SiteConfig } from './collections/SiteConfig'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -20,7 +21,7 @@ export default buildConfig({
   editor: lexicalEditor(),
 
   // Define and configure your collections in this array
-  collections: [Users, Experiences, Projects, Skills, NavigationLinks, Media],
+  collections: [Users, Experiences, Projects, Skills, NavigationLinks, Media, SiteConfig],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || '',

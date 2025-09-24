@@ -73,6 +73,7 @@ export interface Config {
     skills: Skill;
     'navigation-links': NavigationLink;
     media: Media;
+    'site-config': SiteConfig;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -85,6 +86,7 @@ export interface Config {
     skills: SkillsSelect<false> | SkillsSelect<true>;
     'navigation-links': NavigationLinksSelect<false> | NavigationLinksSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'site-config': SiteConfigSelect<false> | SiteConfigSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -306,6 +308,64 @@ export interface NavigationLink {
   createdAt: string;
 }
 /**
+ * Global site configuration settings
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-config".
+ */
+export interface SiteConfig {
+  id: number;
+  siteName: string;
+  hero: {
+    /**
+     * Upload a new profile photo or enter a URL
+     */
+    photo: string;
+    name: string;
+    title: string;
+    description: string;
+    /**
+     * Highlighted text that appears in the description (will be styled with gradient)
+     */
+    descriptionHighlight: string;
+    /**
+     * Upload a new CV file or enter a URL
+     */
+    cvDownloadUrl: string;
+    linkedinUrl: string;
+    githubUrl: string;
+  };
+  contact: {
+    email: string;
+  };
+  about: {
+    description: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    mainStack: string;
+    additionalTech: string;
+    careerStatus: string;
+  };
+  footer: {
+    copyrightText: string;
+    techStackDescription: string;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -335,6 +395,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'site-config';
+        value: number | SiteConfig;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -520,6 +584,46 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-config_select".
+ */
+export interface SiteConfigSelect<T extends boolean = true> {
+  siteName?: T;
+  hero?:
+    | T
+    | {
+        photo?: T;
+        name?: T;
+        title?: T;
+        description?: T;
+        descriptionHighlight?: T;
+        cvDownloadUrl?: T;
+        linkedinUrl?: T;
+        githubUrl?: T;
+      };
+  contact?:
+    | T
+    | {
+        email?: T;
+      };
+  about?:
+    | T
+    | {
+        description?: T;
+        mainStack?: T;
+        additionalTech?: T;
+        careerStatus?: T;
+      };
+  footer?:
+    | T
+    | {
+        copyrightText?: T;
+        techStackDescription?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

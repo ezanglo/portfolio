@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 import PortfolioCodeButton from "@/components/portfolio-code-button";
 import { ModeToggle } from "@/components/mode-toggle";
 import { cn } from "@/lib/utils";
@@ -33,7 +32,6 @@ export default async function RootLayout({
           <ActiveSectionContextProvider>
             <Header links={navigationLinks as NavigationLink[]} />
             {children}
-            <Footer />
             <Toaster />
             <div className="fixed bottom-0 right-0 p-5 flex items-center gap-2">
               <PortfolioCodeButton />

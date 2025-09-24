@@ -81,3 +81,19 @@ export const getNavigationLinks = unstable_cache(
     tags: ['navigation-links']
   }
 )
+
+export const getSiteConfig = unstable_cache(
+  async () => {
+    const payload = await getPayload({ config })
+    const result = await payload.find({
+      collection: 'site-config',
+    })
+    
+    return result.docs[0] || null
+  },
+  ['site-config'],
+  {
+    revalidate: 3600, // 1 hour
+    tags: ['site-config']
+  }
+)
