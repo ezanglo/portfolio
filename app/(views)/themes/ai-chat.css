@@ -1,0 +1,38 @@
+[data-view="ai-chat"] {
+  color-scheme: dark;
+
+  --background: #0e1218;
+  --foreground: #e7ebf2;
+  --card: #1e242e;
+  --card-foreground: #e7ebf2;
+  --popover: #191d24;
+  --popover-foreground: #e7ebf2;
+  --primary: #4390ee;
+  --primary-foreground: #090b0f;
+  --secondary: #1a2029;
+  --secondary-foreground: #e7ebf2;
+  --muted: #191d24;
+  --muted-foreground: #9b9fa5;
+  --accent: #18386e;
+  --accent-foreground: #e7ebf2;
+  --destructive: #ff6b6b;
+  --border: #232933;
+  --input: #2d333d;
+  --ring: #4390ee;
+  --radius: 0.875rem;
+
+  --view-page: #0e1218;
+  --view-surface: #191d24;
+  --view-surface-2: #1e242e;
+  --view-border: #232933;
+  --view-fg: #e7ebf2;
+  --view-fg-muted: #a1a5ab;
+  --view-fg-subtle: #7d8086;
+  --view-accent: #4390ee;
+  --view-accent-fg: #090b0f;
+  --view-accent-soft: #18386e;
+  --view-border-width: 1px;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+}

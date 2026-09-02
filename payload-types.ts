@@ -215,6 +215,14 @@ export interface Project {
    * Show this project prominently
    */
   featured?: boolean | null;
+  /**
+   * Drives the /ops-dashboard engine filter. Leave empty to hide this project from that view.
+   */
+  aiEngine?: ('claude' | 'gemini' | 'vertex' | 'native' | 'web') | null;
+  /**
+   * Tags the project "Personal" in /filter-grid.
+   */
+  personal?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -357,6 +365,17 @@ export interface SiteConfig {
     mainStack: string;
     additionalTech: string;
     careerStatus: string;
+  };
+  /**
+   * Editorial claims shown on /ops-dashboard. Project count is derived automatically, not authored here.
+   */
+  stats: {
+    yearsExperience: string;
+    /**
+     * e.g. "92%" — token cost reduction claim
+     */
+    tokenSavings: string;
+    enginesOrchestrated: string;
   };
   footer: {
     copyrightText: string;
@@ -506,6 +525,8 @@ export interface ProjectsSelect<T extends boolean = true> {
   githubUrl?: T;
   order?: T;
   featured?: T;
+  aiEngine?: T;
+  personal?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -615,6 +636,13 @@ export interface SiteConfigSelect<T extends boolean = true> {
         mainStack?: T;
         additionalTech?: T;
         careerStatus?: T;
+      };
+  stats?:
+    | T
+    | {
+        yearsExperience?: T;
+        tokenSavings?: T;
+        enginesOrchestrated?: T;
       };
   footer?:
     | T

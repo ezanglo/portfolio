@@ -8,8 +8,9 @@
     "start": "next start",
     "generate:importmap": "tsx node_modules/.bin/payload generate:importmap",
     "generate:types": "tsx node_modules/.bin/payload generate:types",
-    "seed:site-config": "tsx scripts/seed-site-config.ts",
-    "lint": "next lint"
+    "seed:taxonomy": "tsx scripts/backfill-project-taxonomy.ts",
+    "lint": "next lint",
+    "test": "vitest run"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -18,10 +19,12 @@
     "@payloadcms/richtext-lexical": "^3.56.0",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
     "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-dialog": "^1.1.23",
     "@radix-ui/react-icons": "^1.3.2",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-scroll-area": "^1.2.10",
     "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-visually-hidden": "^1.2.11",
     "@react-email/components": "0.5.3",
     "@react-email/render": "^1.2.3",
     "@vercel/blob": "^2.0.0",
@@ -58,6 +61,7 @@
     "tailwindcss": "^4",
     "tsx": "^4.20.5",
     "tw-animate-css": "^1.3.8",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.11"
   }
 }

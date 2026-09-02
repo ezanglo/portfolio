@@ -1,4 +1,5 @@
 import { CollectionConfig } from "payload";
+import { revalidateCollection } from "@/lib/revalidate";
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
@@ -6,6 +7,7 @@ export const Projects: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'type', 'tags', 'order'],
   },
+  hooks: revalidateCollection('projects'),
   fields: [
     {
       name: 'title',
@@ -74,6 +76,28 @@ export const Projects: CollectionConfig = {
       defaultValue: false,
       admin: {
         description: 'Show this project prominently',
+      },
+    },
+    {
+      name: 'aiEngine',
+      type: 'select',
+      options: [
+        { label: 'Claude / Orchestration', value: 'claude' },
+        { label: 'Gemini', value: 'gemini' },
+        { label: 'Vertex AI', value: 'vertex' },
+        { label: 'React Native', value: 'native' },
+        { label: 'Web', value: 'web' },
+      ],
+      admin: {
+        description: 'Drives the /ops-dashboard engine filter. Leave empty to hide this project from that view.',
+      },
+    },
+    {
+      name: 'personal',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: {
+        description: 'Tags the project "Personal" in /filter-grid.',
       },
     },
   ],

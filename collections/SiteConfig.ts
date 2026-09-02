@@ -1,4 +1,5 @@
 import { CollectionConfig } from "payload";
+import { revalidateCollection } from "@/lib/revalidate";
 
 export const SiteConfig: CollectionConfig = {
   slug: 'site-config',
@@ -6,6 +7,7 @@ export const SiteConfig: CollectionConfig = {
     useAsTitle: 'siteName',
     description: 'Global site configuration settings',
   },
+  hooks: revalidateCollection('site-config'),
   access: {
     read: () => true, // Public read access
     create: ({ req: { user } }) => {
@@ -136,6 +138,37 @@ export const SiteConfig: CollectionConfig = {
           type: 'text',
           required: true,
           defaultValue: 'full-time position as a full-stack developer',
+        },
+      ],
+    },
+    {
+      name: 'stats',
+      type: 'group',
+      label: 'Stats (Ops Dashboard)',
+      admin: {
+        description: 'Editorial claims shown on /ops-dashboard. Project count is derived automatically, not authored here.',
+      },
+      fields: [
+        {
+          name: 'yearsExperience',
+          type: 'text',
+          required: true,
+          defaultValue: '10+',
+        },
+        {
+          name: 'tokenSavings',
+          type: 'text',
+          required: true,
+          defaultValue: '92%',
+          admin: {
+            description: 'e.g. "92%" — token cost reduction claim',
+          },
+        },
+        {
+          name: 'enginesOrchestrated',
+          type: 'text',
+          required: true,
+          defaultValue: '4',
         },
       ],
     },

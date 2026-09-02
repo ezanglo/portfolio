@@ -1,0 +1,40 @@
+[data-view="app-store"] {
+  color-scheme: light;
+
+  --background: #f6f4f9;
+  --foreground: #17151a;
+  --card: #ffffff;
+  --card-foreground: #17151a;
+  --popover: #ffffff;
+  --popover-foreground: #17151a;
+  --primary: #8451c9;
+  --primary-foreground: #ffffff;
+  --secondary: #eee7fd;
+  --secondary-foreground: #6731a8;
+  --muted: #ecebef;
+  --muted-foreground: #4e4c52;
+  --accent: #eee7fd;
+  --accent-foreground: #6731a8;
+  --destructive: #b3261e;
+  --border: #d8d6dd;
+  --input: #d8d6dd;
+  --ring: #8451c9;
+  --radius: 1rem;
+
+  --view-page: #f6f4f9;
+  --view-surface: #ffffff;
+  --view-surface-2: #ecebef;
+  --view-border: #d8d6dd;
+  --view-fg: #17151a;
+  --view-fg-muted: #4e4c52;
+  --view-fg-subtle: #75737a;
+  --view-accent: #8451c9;
+  --view-accent-fg: #ffffff;
+  --view-accent-soft: #eee7fd;
+  --view-tag-fg: #6731a8;
+  --view-border-width: 1px;
+  --view-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), ui-monospace, monospace;
+}

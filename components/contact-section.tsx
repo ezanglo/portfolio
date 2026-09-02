@@ -6,7 +6,6 @@ import SectionHeading from "@/components/section-heading";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
-import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -21,30 +20,9 @@ import { sendEmail } from "@/actions/sendEmail";
 import SubmitButton from "./submit-button";
 import { toast } from "sonner";
 import { SiteConfig } from "@/payload-types";
+import { contactFormSchema, type ContactFormType } from "@/lib/schemas/contact";
 
-const contactFormSchema = z.object({
-  email: z
-    .string()
-    .min(1, {
-      message: "Email is required",
-    })
-    .max(500, {
-      message: "Maximum length tis 500",
-    })
-    .email({
-      message: "Invalid email",
-    }),
-  message: z
-    .string()
-    .min(1, {
-      message: "Message is required",
-    })
-    .max(500, {
-      message: "Maximum length tis 500",
-    }),
-});
-
-export type ContactFormType = z.infer<typeof contactFormSchema>;
+export type { ContactFormType };
 
 interface ContactSectionProps {
   siteConfig: SiteConfig | null;

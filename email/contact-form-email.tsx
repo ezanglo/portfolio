@@ -11,7 +11,7 @@ import {
   Text,
 } from "@react-email/components";
 import { Tailwind } from "@react-email/components";
-import { ContactFormType } from "@/components/contact-section";
+import { ContactFormType } from "@/lib/schemas/contact";
 
 export default function ContactFormEmail({ message, email }: ContactFormType) {
   return (

@@ -1,0 +1,39 @@
+[data-view="runtime"] {
+  color-scheme: dark;
+
+  --background: #080b12;
+  --foreground: #e7ebf2;
+  --card: #0e1218;
+  --card-foreground: #e7ebf2;
+  --popover: #0e1218;
+  --popover-foreground: #e7ebf2;
+  --primary: #42cb80;
+  --primary-foreground: #080b12;
+  --secondary: #09311b;
+  --secondary-foreground: #42cb80;
+  --muted: #151a22;
+  --muted-foreground: #9b9fa5;
+  --accent: #09311b;
+  --accent-foreground: #42cb80;
+  --destructive: #ff6b6b;
+  --border: #1c222b;
+  --input: #232933;
+  --ring: #42cb80;
+  --radius: 0.25rem;
+
+  --view-page: #080b12;
+  --view-surface: #0e1218;
+  --view-surface-2: #151a22;
+  --view-border: #1c222b;
+  --view-fg: #e7ebf2;
+  --view-fg-muted: #b4b8be;
+  --view-fg-subtle: #8c8f95;
+  --view-accent: #42cb80;
+  --view-accent-hover: #52ef98;
+  --view-accent-fg: #080b12;
+  --view-accent-soft: #09311b;
+  --view-border-width: 1px;
+
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+}

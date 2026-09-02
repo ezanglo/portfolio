@@ -10,6 +10,7 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { cn } from "@/lib/utils";
 import { getNavigationLinks } from "@/lib/queries";
 import { NavigationLink } from "@/payload-types";
+import ViewSwitcher from "@/components/views/shared/view-switcher";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,6 +38,7 @@ export default async function RootLayout({
               <PortfolioCodeButton />
               <ModeToggle />
             </div>
+            <ViewSwitcher current="classic" />
           </ActiveSectionContextProvider>
         </ThemeProvider>
       </body>

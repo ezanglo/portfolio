@@ -1,0 +1,39 @@
+[data-view="corporate"] {
+  color-scheme: light;
+
+  --background: #fcfaf6;
+  --foreground: #181611;
+  --card: #fdfcf9;
+  --card-foreground: #181611;
+  --popover: #fdfcf9;
+  --popover-foreground: #181611;
+  --primary: #0465af;
+  --primary-foreground: #fdfcf9;
+  --secondary: #ddedff;
+  --secondary-foreground: #0465af;
+  --muted: #f1efe9;
+  --muted-foreground: #58554f;
+  --accent: #ddedff;
+  --accent-foreground: #0465af;
+  --destructive: #b3261e;
+  --border: #e5e1da;
+  --input: #dbd7d0;
+  --ring: #0465af;
+  --radius: 0.5rem;
+
+  --view-page: #fcfaf6;
+  --view-surface: #fdfcf9;
+  --view-surface-2: #f1efe9;
+  --view-border: #e5e1da;
+  --view-fg: #181611;
+  --view-fg-muted: #45423c;
+  --view-fg-subtle: #75716b;
+  --view-accent: #0465af;
+  --view-accent-hover: #004699;
+  --view-accent-fg: #fdfcf9;
+  --view-accent-soft: #ddedff;
+  --view-border-width: 1px;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), ui-monospace, monospace;
+}

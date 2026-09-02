@@ -1,6 +1,6 @@
 "use server";
 
-import { ContactFormType } from "@/components/contact-section";
+import { ContactFormType } from "@/lib/schemas/contact";
 import ContactFormEmail from "@/email/contact-form-email";
 import React from "react";
 

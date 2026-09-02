@@ -82,6 +82,24 @@ export const getNavigationLinks = unstable_cache(
   }
 )
 
+export const getSkillsDocs = unstable_cache(
+  async () => {
+    const payload = await getPayload({ config })
+    const result = await payload.find({
+      collection: 'skills',
+      sort: 'order',
+      limit: 1000, // Get all skills
+    })
+
+    return result.docs
+  },
+  ['skills-docs'],
+  {
+    revalidate: 3600, // 1 hour
+    tags: ['skills']
+  }
+)
+
 export const getSiteConfig = unstable_cache(
   async () => {
     const payload = await getPayload({ config })

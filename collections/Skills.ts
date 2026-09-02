@@ -1,4 +1,5 @@
 import { CollectionConfig } from "payload";
+import { revalidateCollection } from "@/lib/revalidate";
 
 export const Skills: CollectionConfig = {
   slug: 'skills',
@@ -6,6 +7,7 @@ export const Skills: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'category', 'order'],
   },
+  hooks: revalidateCollection('skills'),
   fields: [
     {
       name: 'name',

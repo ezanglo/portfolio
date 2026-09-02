@@ -1,4 +1,5 @@
 import { CollectionConfig } from "payload";
+import { revalidateCollection } from "@/lib/revalidate";
 
 export const NavigationLinks: CollectionConfig = {
   slug: 'navigation-links',
@@ -6,6 +7,7 @@ export const NavigationLinks: CollectionConfig = {
     useAsTitle: 'name',
     defaultColumns: ['name', 'hash', 'order'],
   },
+  hooks: revalidateCollection('navigation-links'),
   fields: [
     {
       name: 'name',
