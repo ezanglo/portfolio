@@ -6,6 +6,14 @@ import ViewShell from "@/components/views/shared/view-shell";
 export const metadata: Metadata = {
   title: "Ezra Anglo | Runtime",
   description: "Building for React Native & AI, at runtime.",
+  alternates: {
+    canonical: "/classic",
+  },
+  openGraph: {
+    title: "Ezra Anglo | Runtime",
+    description: "Building for React Native & AI, at runtime.",
+    url: "/runtime",
+  },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };

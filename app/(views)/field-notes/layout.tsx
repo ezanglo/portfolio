@@ -6,6 +6,14 @@ import ViewShell from "@/components/views/shared/view-shell";
 export const metadata: Metadata = {
   title: "Ezra Anglo | Field Notes",
   description: "A decade of building for web, mobile, and desktop, now leaning into React Native and AI.",
+  alternates: {
+    canonical: "/classic",
+  },
+  openGraph: {
+    title: "Ezra Anglo | Field Notes",
+    description: "A decade of building for web, mobile, and desktop, now leaning into React Native and AI.",
+    url: "/field-notes",
+  },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };

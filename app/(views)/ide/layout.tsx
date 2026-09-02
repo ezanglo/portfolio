@@ -5,6 +5,14 @@ import ViewShell from "@/components/views/shared/view-shell";
 export const metadata: Metadata = {
   title: "Ezra Anglo | IDE",
   description: "A VS Code-style file explorer for the portfolio.",
+  alternates: {
+    canonical: "/ide",
+  },
+  openGraph: {
+    title: "Ezra Anglo | IDE",
+    description: "A VS Code-style file explorer for the portfolio.",
+    url: "/ide",
+  },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };

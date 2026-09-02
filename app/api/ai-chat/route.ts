@@ -1,12 +1,12 @@
 import { createOpenRouter } from "@openrouter/ai-sdk-provider";
-import { streamText, convertToModelMessages, type UIMessage } from "ai";
+import { streamText, convertToModelMessages, smoothStream, type UIMessage } from "ai";
 import { getPortfolioData } from "@/lib/portfolio/data";
 import { buildSystemPrompt } from "@/lib/views/ai-chat/system-prompt";
 import { rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
-const DEFAULT_MODEL = "deepseek/deepseek-chat-v3.1:free";
+const DEFAULT_MODEL = "nvidia/nemotron-3.5-lightning:free";
 
 // Per-visitor and shared caps to keep a bot loop from burning through OpenRouter's
 // account-wide free-tier rate limit (which is shared across every visitor, not per IP).
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     apiKey,
     headers: {
       "HTTP-Referer": process.env.NEXT_PUBLIC_SERVER_URL ?? "https://ezraanglo.com",
-      "X-Title": "Ezra Anglo Portfolio — AI Chat",
+      "X-Title": "Ezra Anglo Portfolio - AI Chat",
     },
   });
 
@@ -54,6 +54,7 @@ export async function POST(request: Request) {
     model: openrouter(process.env.OPENROUTER_MODEL || DEFAULT_MODEL),
     system: buildSystemPrompt(data),
     messages: await convertToModelMessages(messages),
+    experimental_transform: smoothStream({ delayInMs: 20, chunking: "word" }),
   });
 
   return result.toUIMessageStreamResponse();

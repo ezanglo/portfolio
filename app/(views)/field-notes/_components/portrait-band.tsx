@@ -4,7 +4,7 @@ export default function PortraitBand({ portraitUrl }: { portraitUrl: string | nu
       className="mt-10 aspect-[3/2] w-full bg-view-surface-2 sm:aspect-[3/1]"
       style={
         portraitUrl
-          ? { backgroundImage: `url(${portraitUrl})`, backgroundSize: "cover", backgroundPosition: "center" }
+          ? { backgroundImage: `url(${portraitUrl})`, backgroundSize: "cover", backgroundPosition: "center top" }
           : undefined
       }
     >

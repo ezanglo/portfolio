@@ -11,6 +11,14 @@ export const runtime = "nodejs";
 export const metadata: Metadata = {
   title: "Ezra Anglo | Portfolio",
   description: "A different way to browse the portfolio, every time you load it.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Ezra Anglo | Portfolio",
+    description: "A different way to browse the portfolio, every time you load it.",
+    url: "/",
+  },
 };
 
 const REDIRECT_SCRIPT = `(function(){try{

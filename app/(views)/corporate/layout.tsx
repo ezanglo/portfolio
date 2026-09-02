@@ -5,6 +5,14 @@ import ViewShell from "@/components/views/shared/view-shell";
 export const metadata: Metadata = {
   title: "Ezra Anglo | Portfolio",
   description: "Full-stack developer with over 10 years of experience across Web, Mobile, and Desktop.",
+  alternates: {
+    canonical: "/classic",
+  },
+  openGraph: {
+    title: "Ezra Anglo | Portfolio",
+    description: "Full-stack developer with over 10 years of experience across Web, Mobile, and Desktop.",
+    url: "/corporate",
+  },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };

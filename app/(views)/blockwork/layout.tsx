@@ -5,6 +5,14 @@ import ViewShell from "@/components/views/shared/view-shell";
 export const metadata: Metadata = {
   title: "Ezra Anglo | Blockwork",
   description: "Ezra Anglo builds React Native + AI products.",
+  alternates: {
+    canonical: "/classic",
+  },
+  openGraph: {
+    title: "Ezra Anglo | Blockwork",
+    description: "Ezra Anglo builds React Native + AI products.",
+    url: "/blockwork",
+  },
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1 };

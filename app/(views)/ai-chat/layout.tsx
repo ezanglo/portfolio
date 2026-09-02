@@ -6,6 +6,14 @@ import ViewShell from "@/components/views/shared/view-shell";
 export const metadata: Metadata = {
   title: "Ezra Anglo | AI Chat",
   description: "The portfolio as a chat interface. Ask a question, get a grounded answer.",
+  alternates: {
+    canonical: "/ai-chat",
+  },
+  openGraph: {
+    title: "Ezra Anglo | AI Chat",
+    description: "The portfolio as a chat interface. Ask a question, get a grounded answer.",
+    url: "/ai-chat",
+  },
 };
 
 export const viewport: Viewport = {

@@ -10,6 +10,14 @@ export const runtime = "nodejs";
 export const metadata: Metadata = {
   title: "Ezra Anglo | All versions",
   description: "Every version of the portfolio, in one place.",
+  alternates: {
+    canonical: "/welcome",
+  },
+  openGraph: {
+    title: "Ezra Anglo | All versions",
+    description: "Every version of the portfolio, in one place.",
+    url: "/welcome",
+  },
 };
 
 export default async function WelcomePage() {

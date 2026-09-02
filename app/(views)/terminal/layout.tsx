@@ -5,6 +5,14 @@ import ViewShell from "@/components/views/shared/view-shell";
 export const metadata: Metadata = {
   title: "Ezra Anglo | Terminal",
   description: "An interactive CLI portfolio. Type help to get started.",
+  alternates: {
+    canonical: "/terminal",
+  },
+  openGraph: {
+    title: "Ezra Anglo | Terminal",
+    description: "An interactive CLI portfolio. Type help to get started.",
+    url: "/terminal",
+  },
 };
 
 export const viewport: Viewport = {
