@@ -24,6 +24,7 @@ export const Skills: CollectionConfig = {
         { label: 'Mobile', value: 'mobile' },
         { label: 'Database', value: 'database' },
         { label: 'Cloud & DevOps', value: 'cloud' },
+        { label: 'AI & Integrations', value: 'integrations' },
         { label: 'Tools & Others', value: 'tools' },
       ],
       required: true,

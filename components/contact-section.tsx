@@ -66,7 +66,7 @@ export default function ContactSection({ siteConfig }: ContactSectionProps) {
         duration: 1,
       }}
     >
-      <SectionHeading>Contact me</SectionHeading>
+      <SectionHeading>Let&apos;s talk</SectionHeading>
       <p className="-mt-6 text-secondary-foreground/50 text-sm">
         Please contact me directly at{" "}
         <a className="underline" href={`mailto:${contactEmail}`}>

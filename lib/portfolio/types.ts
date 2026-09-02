@@ -7,7 +7,6 @@ export type ViewSlug =
   | 'terminal'
   | 'ide'
   | 'ops-dashboard'
-  | 'filter-grid'
   | 'classic'
 
 export type EngineKey = 'claude' | 'gemini' | 'vertex' | 'native' | 'web'

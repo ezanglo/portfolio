@@ -12,6 +12,8 @@ import { useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Project } from "@/payload-types";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { ArrowUpRightIcon } from "lucide-react";
 
 type ProjectCardProps = Project;
 
@@ -19,6 +21,8 @@ export default function ProjectCard({
   title,
   description,
   tags,
+  liveUrl,
+  githubUrl,
 }: ProjectCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -40,7 +44,33 @@ export default function ProjectCard({
       <section className="h-full w-full">
         <Card className="flex flex-col gap-3 h-full w-full bg-secondary/70 shadow-none border-none min-h-[16rem]">
           <CardHeader>
-            <CardTitle>{title}</CardTitle>
+            <div className="flex items-start justify-between gap-2">
+              <CardTitle>{title}</CardTitle>
+              <div className="flex items-center gap-2 shrink-0 text-secondary-foreground/50">
+                {liveUrl && (
+                  <a
+                    href={liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${title} live demo`}
+                    className="hover:text-secondary-foreground transition-colors"
+                  >
+                    <ArrowUpRightIcon className="w-4 h-4" />
+                  </a>
+                )}
+                {githubUrl && (
+                  <a
+                    href={githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${title} repository`}
+                    className="hover:text-secondary-foreground transition-colors"
+                  >
+                    <GitHubLogoIcon className="w-4 h-4" />
+                  </a>
+                )}
+              </div>
+            </div>
             <CardDescription>{description}</CardDescription>
           </CardHeader>
           <CardFooter className="mt-auto">

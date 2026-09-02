@@ -97,7 +97,7 @@ export const Projects: CollectionConfig = {
       type: 'checkbox',
       defaultValue: false,
       admin: {
-        description: 'Tags the project "Personal" in /filter-grid.',
+        description: 'Tags the project "Personal" for grid/tag filtering across views.',
       },
     },
   ],

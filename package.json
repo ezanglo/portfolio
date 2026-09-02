@@ -9,6 +9,8 @@
     "generate:importmap": "tsx node_modules/.bin/payload generate:importmap",
     "generate:types": "tsx node_modules/.bin/payload generate:types",
     "seed:taxonomy": "tsx scripts/backfill-project-taxonomy.ts",
+    "seed:featured-projects": "tsx scripts/set-featured-projects.ts",
+    "seed:navigation-links": "tsx scripts/update-navigation-links.ts",
     "lint": "next lint",
     "test": "vitest run"
   },
@@ -40,6 +42,7 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-hook-form": "^7.63.0",
+    "react-icons": "^5.7.0",
     "react-intersection-observer": "^9.16.0",
     "react-responsive": "^10.0.1",
     "react-type-animation": "^3.2.0",

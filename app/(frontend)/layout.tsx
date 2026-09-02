@@ -34,11 +34,15 @@ export default async function RootLayout({
             <Header links={navigationLinks as NavigationLink[]} />
             {children}
             <Toaster />
-            <div className="fixed bottom-0 right-0 p-5 flex items-center gap-2">
-              <PortfolioCodeButton />
-              <ModeToggle />
-            </div>
-            <ViewSwitcher current="classic" />
+            <ViewSwitcher
+              current="classic"
+              extraActions={
+                <>
+                  <PortfolioCodeButton />
+                  <ModeToggle />
+                </>
+              }
+            />
           </ActiveSectionContextProvider>
         </ThemeProvider>
       </body>

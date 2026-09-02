@@ -6,10 +6,11 @@ import HeroSection from "@/components/hero-section";
 import ProjectsSection from "@/components/projects-section";
 import SectionDivider from "@/components/section-divider";
 import SkillsSection from "@/components/skills-section";
-import { 
-  getExperiencesData, 
-  getProjectsData, 
-  getSkillsData,
+import WhyHireMeSection from "@/components/why-hire-me-section";
+import {
+  getExperiencesData,
+  getProjectsData,
+  getSkillsDocs,
   getSiteConfig
 } from "@/lib/queries";
 
@@ -24,7 +25,7 @@ export default async function Home() {
   const [experiences, projects, skills, siteConfig] = await Promise.all([
     getExperiencesData(),
     getProjectsData(),
-    getSkillsData(),
+    getSkillsDocs(),
     getSiteConfig(),
   ]);
 
@@ -34,9 +35,10 @@ export default async function Home() {
         <HeroSection siteConfig={siteConfig} />
         <SectionDivider />
         <AboutSection siteConfig={siteConfig} />
-        <SkillsSection skills={skills} />
-        <ProjectsSection projects={projects} />
+        <WhyHireMeSection siteConfig={siteConfig} />
+        <SkillsSection skills={skills} projects={projects} siteConfig={siteConfig} />
         <ExperienceSection experiences={experiences} />
+        <ProjectsSection projects={projects} />
         <ContactSection siteConfig={siteConfig} />
         <Footer siteConfig={siteConfig} />
       </div>

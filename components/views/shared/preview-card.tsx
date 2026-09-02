@@ -3,11 +3,20 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { ViewMeta } from "@/lib/views";
+import { cn } from "@/lib/utils";
 
 const PREVIEW_WIDTH = 1280;
 const PREVIEW_HEIGHT = 800;
 
-export default function PreviewCard({ view }: { view: ViewMeta }) {
+export default function PreviewCard({
+  view,
+  active = false,
+  onNavigate,
+}: {
+  view: ViewMeta;
+  active?: boolean;
+  onNavigate?: () => void;
+}) {
   const [loaded, setLoaded] = useState(false);
   const [scale, setScale] = useState(0.25);
   const frameRef = useRef<HTMLDivElement>(null);
@@ -26,7 +35,11 @@ export default function PreviewCard({ view }: { view: ViewMeta }) {
   return (
     <Link
       href={view.href}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white transition hover:-translate-y-0.5 hover:shadow-lg"
+      onClick={onNavigate}
+      className={cn(
+        "group flex flex-col overflow-hidden rounded-2xl border bg-white transition hover:-translate-y-0.5 hover:shadow-lg",
+        active ? "border-neutral-900 ring-2 ring-neutral-900" : "border-neutral-200"
+      )}
     >
       <div
         ref={frameRef}

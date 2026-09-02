@@ -9,7 +9,6 @@
 @import "./themes/terminal.css";
 @import "./themes/ide.css";
 @import "./themes/ops-dashboard.css";
-@import "./themes/filter-grid.css";
 
 /* CRITICAL 1 — bind the dark variant to the view's COMMITTED theme, never the OS and never .dark.
    Without this, Tailwind v4's dark: falls back to prefers-color-scheme, and

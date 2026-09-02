@@ -9,25 +9,19 @@ import {
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Experience } from "@/payload-types";
-import {
-  GraduationCap,
-  MonitorIcon,
-  Code2Icon,
-  BookOpenIcon,
-  StarIcon,
-} from "lucide-react";
+import { LucideIcon, StarIcon } from "lucide-react";
 
-// Icon mapping for experiences
-const iconMap = {
-  star: StarIcon,
-  code: Code2Icon,
-  monitor: MonitorIcon,
-  book: BookOpenIcon,
-  graduation: GraduationCap,
-};
+export interface TimelineItem {
+  title: string;
+  subtitle: string;
+  location?: string;
+  year: string;
+  description: string;
+  details?: string[];
+  icon?: LucideIcon;
+}
 
-export const fadeInAnimationVariants = {
+const fadeInAnimationVariants = {
   initial: (index: number) => ({
     opacity: 0,
     x: index % 2 === 0 ? 100 : -100,
@@ -41,18 +35,9 @@ export const fadeInAnimationVariants = {
   },
 };
 
-type ExperienceCardProps = Experience & { index: number };
+function TimelineEntry({ item, index }: { item: TimelineItem; index: number }) {
+  const Icon = item.icon ?? StarIcon;
 
-export default function ExperienceCard({
-  company,
-  title,
-  location,
-  description,
-  icon,
-  year,
-  index,
-}: ExperienceCardProps) {
-  const IconComponent = iconMap[icon as keyof typeof iconMap] || StarIcon;
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 sm:p-[initial]">
       <div
@@ -69,7 +54,7 @@ export default function ExperienceCard({
               "p-3 flex items-center justify-center w-10 h-10 bg-primary-foreground rounded-full shadow-xl"
             )}
           >
-            <IconComponent />
+            <Icon />
           </span>
         </div>
         <motion.section
@@ -90,14 +75,24 @@ export default function ExperienceCard({
           >
             <CardHeader className="pb-0">
               <CardDescription className="text-xs opacity-70 uppercase md:hidden">
-                {year}
+                {item.year}
               </CardDescription>
-              <CardTitle>{title}</CardTitle>
+              <CardTitle>{item.title}</CardTitle>
               <CardDescription className="text-xs">
-                {company} | {location}
+                {item.subtitle}
+                {item.location ? ` | ${item.location}` : ""}
               </CardDescription>
             </CardHeader>
-            <CardContent className="text-sm">{description}</CardContent>
+            <CardContent className="flex flex-col gap-2 text-sm">
+              <p>{item.description}</p>
+              {item.details && item.details.length > 0 && (
+                <ul className="flex flex-col gap-1 list-disc pl-4 marker:text-primary/50">
+                  {item.details.map((detail, detailIndex) => (
+                    <li key={detailIndex}>{detail}</li>
+                  ))}
+                </ul>
+              )}
+            </CardContent>
           </Card>
         </motion.section>
       </div>
@@ -108,8 +103,24 @@ export default function ExperienceCard({
           "group-odd:ml-10 group-odd:justify-start"
         )}
       >
-        {year}
+        {item.year}
       </div>
     </div>
+  );
+}
+
+interface TimelineProps {
+  items: TimelineItem[];
+}
+
+export default function Timeline({ items }: TimelineProps) {
+  return (
+    <>
+      {items.map((item, index) => (
+        <div className="group" key={index}>
+          <TimelineEntry item={item} index={index} />
+        </div>
+      ))}
+    </>
   );
 }

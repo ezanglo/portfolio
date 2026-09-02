@@ -220,7 +220,7 @@ export interface Project {
    */
   aiEngine?: ('claude' | 'gemini' | 'vertex' | 'native' | 'web') | null;
   /**
-   * Tags the project "Personal" in /filter-grid.
+   * Tags the project "Personal" for grid/tag filtering across views.
    */
   personal?: boolean | null;
   updatedAt: string;
@@ -281,7 +281,7 @@ export interface Media {
 export interface Skill {
   id: number;
   name: string;
-  category: 'frontend' | 'backend' | 'mobile' | 'database' | 'cloud' | 'tools';
+  category: 'frontend' | 'backend' | 'mobile' | 'database' | 'cloud' | 'integrations' | 'tools';
   /**
    * Order for display (lower numbers appear first)
    */
@@ -365,6 +365,42 @@ export interface SiteConfig {
     mainStack: string;
     additionalTech: string;
     careerStatus: string;
+  };
+  howIWork: {
+    intro: string;
+    /**
+     * The process flow shown as a connected sequence. Keep labels to one or two words, verbs not "Step N".
+     */
+    steps?:
+      | {
+          label: string;
+          description: string;
+          /**
+           * Tool logos attached to this step (Simple Icons slug, e.g. "react", "expo", "anthropic").
+           */
+          tools?:
+            | {
+                name: string;
+                iconSlug: string;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  whyHireMe: {
+    intro: string;
+    points?:
+      | {
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  aiEngineering: {
+    intro: string;
   };
   /**
    * Editorial claims shown on /ops-dashboard. Project count is derived automatically, not authored here.
@@ -636,6 +672,42 @@ export interface SiteConfigSelect<T extends boolean = true> {
         mainStack?: T;
         additionalTech?: T;
         careerStatus?: T;
+      };
+  howIWork?:
+    | T
+    | {
+        intro?: T;
+        steps?:
+          | T
+          | {
+              label?: T;
+              description?: T;
+              tools?:
+                | T
+                | {
+                    name?: T;
+                    iconSlug?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+      };
+  whyHireMe?:
+    | T
+    | {
+        intro?: T;
+        points?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  aiEngineering?:
+    | T
+    | {
+        intro?: T;
       };
   stats?:
     | T

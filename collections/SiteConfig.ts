@@ -142,6 +142,103 @@ export const SiteConfig: CollectionConfig = {
       ],
     },
     {
+      name: 'howIWork',
+      type: 'group',
+      label: 'How I Work Section',
+      fields: [
+        {
+          name: 'intro',
+          type: 'textarea',
+          required: true,
+          defaultValue: 'I work in short, verifiable loops rather than long stretches of unreviewed code: scope a slice small enough to ship in a day, wire it end to end, and let real usage (not speculation) decide what comes next.',
+        },
+        {
+          name: 'steps',
+          type: 'array',
+          minRows: 4,
+          maxRows: 6,
+          admin: {
+            description: 'The process flow shown as a connected sequence. Keep labels to one or two words, verbs not "Step N".',
+          },
+          fields: [
+            {
+              name: 'label',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'description',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'tools',
+              type: 'array',
+              admin: {
+                description: 'Tool logos attached to this step (Simple Icons slug, e.g. "react", "expo", "anthropic").',
+              },
+              fields: [
+                {
+                  name: 'name',
+                  type: 'text',
+                  required: true,
+                },
+                {
+                  name: 'iconSlug',
+                  type: 'text',
+                  required: true,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'whyHireMe',
+      type: 'group',
+      label: 'Why Hire Me Section',
+      fields: [
+        {
+          name: 'intro',
+          type: 'textarea',
+          required: true,
+          defaultValue: 'A single person who can take a mobile app from idea to app store, and wire real AI capability into it along the way, not a hand-off between three specialists.',
+        },
+        {
+          name: 'points',
+          type: 'array',
+          minRows: 3,
+          maxRows: 4,
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'description',
+              type: 'text',
+              required: true,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'aiEngineering',
+      type: 'group',
+      label: 'AI Engineering Section',
+      fields: [
+        {
+          name: 'intro',
+          type: 'textarea',
+          required: true,
+          defaultValue: 'I treat AI models as another backend service to integrate, not as a novelty. Every model I bring into a product is there to cut a specific cost or unlock a specific feature, chosen and swapped on evidence.',
+        },
+      ],
+    },
+    {
       name: 'stats',
       type: 'group',
       label: 'Stats (Ops Dashboard)',

@@ -114,6 +114,7 @@ export const SKILL_CATEGORY_GROUP: Record<Skill['category'], SkillGroupKey> = {
   mobile: 'mobile',
   cloud: 'cloud',
   database: 'backend',
+  integrations: 'ai',
   tools: 'other',
 }
 
