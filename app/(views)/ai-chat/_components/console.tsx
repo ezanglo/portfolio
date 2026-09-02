@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport, type UIMessage } from "ai";
 import type { KnowledgeEntry } from "@/lib/views/ai-chat/matcher";
 import { matchAnswer } from "@/lib/views/ai-chat/matcher";
 import { useScrollToBottom } from "@/hooks/use-scroll-to-bottom";
@@ -9,10 +11,23 @@ import TypingIndicator from "./typing-indicator";
 import QuickReplies from "./quick-replies";
 import Composer from "./composer";
 
-interface Message {
-  role: "user" | "assistant";
-  text: string;
+function textOf(message: UIMessage): string {
+  return message.parts
+    .filter((part) => part.type === "text")
+    .map((part) => part.text)
+    .join("");
 }
+
+const GREETING: UIMessage = {
+  id: "greeting",
+  role: "assistant",
+  parts: [
+    {
+      type: "text",
+      text: "Hi! Ask me anything about Ezra's work, like React Native, AI projects, experience, or how to get in touch.",
+    },
+  ],
+};
 
 export default function AiChatConsole({
   knowledge,
@@ -23,30 +38,32 @@ export default function AiChatConsole({
   fallback: string;
   quickReplies: string[];
 }) {
-  const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", text: "Hi! Ask me anything about Ezra's work, like React Native, AI projects, experience, or how to get in touch." },
-  ]);
   const [input, setInput] = useState("");
-  const [typing, setTyping] = useState(false);
   const { ref: scrollRef, scrollToBottom } = useScrollToBottom<HTMLDivElement>();
+
+  const { messages, sendMessage, status, setMessages } = useChat({
+    messages: [GREETING],
+    transport: new DefaultChatTransport({ api: "/api/ai-chat" }),
+    onError: () => {
+      setMessages((msgs) => {
+        const lastUser = [...msgs].reverse().find((m) => m.role === "user");
+        const { text: answer } = matchAnswer(knowledge, lastUser ? textOf(lastUser) : "", fallback);
+        return [...msgs, { id: crypto.randomUUID(), role: "assistant", parts: [{ type: "text", text: answer }] }];
+      });
+    },
+  });
+
+  const busy = status === "submitted" || status === "streaming";
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages, typing, scrollToBottom]);
+  }, [messages, busy, scrollToBottom]);
 
-  function pushUserAndReply(text: string) {
+  function submit(text: string) {
     const trimmed = text.trim();
-    if (!trimmed) return;
-    setMessages((m) => [...m, { role: "user", text: trimmed }]);
+    if (!trimmed || busy) return;
+    sendMessage({ text: trimmed });
     setInput("");
-    setTyping(true);
-
-    const delay = 500 + Math.random() * 500;
-    setTimeout(() => {
-      const { text: answer } = matchAnswer(knowledge, trimmed, fallback);
-      setMessages((m) => [...m, { role: "assistant", text: answer }]);
-      setTyping(false);
-    }, delay);
   }
 
   return (
@@ -57,13 +74,13 @@ export default function AiChatConsole({
         aria-live="polite"
         className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto px-5 py-5 sm:px-7"
       >
-        {messages.map((m, i) => (
-          <Bubble key={i} role={m.role} text={m.text} />
+        {messages.map((m) => (
+          <Bubble key={m.id} role={m.role === "user" ? "user" : "assistant"} text={textOf(m)} />
         ))}
-        {typing && <TypingIndicator />}
+        {status === "submitted" && <TypingIndicator />}
       </div>
-      <QuickReplies replies={quickReplies} onSelect={pushUserAndReply} />
-      <Composer value={input} onChange={setInput} onSubmit={() => pushUserAndReply(input)} />
+      <QuickReplies replies={quickReplies} onSelect={submit} disabled={busy} />
+      <Composer value={input} onChange={setInput} onSubmit={() => submit(input)} disabled={busy} />
     </>
   );
 }

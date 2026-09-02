@@ -2,7 +2,7 @@ import type { PortfolioData } from "@/lib/portfolio/types";
 import type { KnowledgeEntry } from "./matcher";
 
 export const CHAT_FALLBACK =
-  "I don't have a scripted answer for that yet. Try asking about his React Native work, AI projects, skills, experience, or how to contact him.";
+  "The AI backend is unreachable right now, so here's a scripted answer instead. Try asking about his React Native work, AI projects, skills, experience, or how to contact him.";
 
 export function buildKnowledge(data: PortfolioData): KnowledgeEntry[] {
   const { identity, bio, skills, projects, experience } = data;

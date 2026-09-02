@@ -11,7 +11,7 @@ export default function AiChatHeader({ initials }: { initials: string }) {
           online, ask me anything
         </p>
       </div>
-      <p className="hidden font-mono text-[11px] text-view-fg-subtle sm:block">scripted demo · no data leaves this page</p>
+      <p className="hidden font-mono text-[11px] text-view-fg-subtle sm:block">live model · via OpenRouter</p>
     </header>
   );
 }

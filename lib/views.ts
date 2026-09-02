@@ -9,6 +9,8 @@ export interface ViewMeta {
   fullHeight: boolean
   interactive: boolean
   gimmick: boolean
+  /** Whether this view can be embedded in a live `<iframe>` preview thumbnail (gallery/switcher cards). */
+  previewIframe: boolean
   previewLabel: string
   swatch: string
   href: string
@@ -24,6 +26,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     fullHeight: false,
     interactive: false,
     gimmick: false,
+    previewIframe: true,
     previewLabel: 'LIGHT / SANS',
     swatch: '#FCFAF6',
     href: '/corporate',
@@ -37,6 +40,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     fullHeight: false,
     interactive: false,
     gimmick: false,
+    previewIframe: true,
     previewLabel: 'DARK / MONO',
     swatch: '#080B12',
     href: '/runtime',
@@ -50,6 +54,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     fullHeight: false,
     interactive: false,
     gimmick: false,
+    previewIframe: true,
     previewLabel: 'WARM / SERIF',
     swatch: '#FAF2E9',
     href: '/field-notes',
@@ -63,6 +68,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     fullHeight: false,
     interactive: false,
     gimmick: false,
+    previewIframe: true,
     previewLabel: 'BOLD / GRID',
     swatch: '#FCFCFC',
     href: '/blockwork',
@@ -76,6 +82,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     fullHeight: true,
     interactive: true,
     gimmick: true,
+    previewIframe: false,
     previewLabel: 'CHAT / GIMMICK',
     swatch: '#0E1218',
     href: '/ai-chat',
@@ -89,6 +96,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     fullHeight: true,
     interactive: true,
     gimmick: false,
+    previewIframe: true,
     previewLabel: '$ portfolio --help',
     swatch: '#060606',
     href: '/terminal',
@@ -102,6 +110,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     fullHeight: true,
     interactive: true,
     gimmick: false,
+    previewIframe: true,
     previewLabel: 'EXPLORER',
     swatch: '#12161D',
     href: '/ide',
@@ -115,6 +124,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     fullHeight: false,
     interactive: false,
     gimmick: false,
+    previewIframe: true,
     previewLabel: 'ORIGINAL',
     swatch: '#FFFFFF',
     href: '/classic',

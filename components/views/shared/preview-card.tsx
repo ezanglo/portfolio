@@ -50,21 +50,27 @@ export default function PreviewCard({
           {view.previewLabel}
         </span>
 
-        <iframe
-          src={`${view.href}?preview=1`}
-          title={`Preview of ${view.label}`}
-          tabIndex={-1}
-          aria-hidden="true"
-          loading="lazy"
-          onLoad={() => setLoaded(true)}
-          className={`origin-top-left border-0 transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
-          style={{
-            width: PREVIEW_WIDTH,
-            height: PREVIEW_HEIGHT,
-            transform: `scale(${scale})`,
-            pointerEvents: "none",
-          }}
-        />
+        {view.previewIframe ? (
+          <iframe
+            src={`${view.href}?preview=1`}
+            title={`Preview of ${view.label}`}
+            tabIndex={-1}
+            aria-hidden="true"
+            loading="lazy"
+            onLoad={() => setLoaded(true)}
+            className={`origin-top-left border-0 transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+            style={{
+              width: PREVIEW_WIDTH,
+              height: PREVIEW_HEIGHT,
+              transform: `scale(${scale})`,
+              pointerEvents: "none",
+            }}
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-6xl" aria-hidden>
+            {view.emoji}
+          </div>
+        )}
       </div>
 
       <div className="flex items-start justify-between gap-3 p-4">
