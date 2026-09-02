@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { ViewMeta } from "@/lib/views";
-import { writeStoredView } from "@/lib/view-storage";
 
 const PREVIEW_WIDTH = 1280;
 const PREVIEW_HEIGHT = 800;
@@ -27,7 +26,6 @@ export default function PreviewCard({ view }: { view: ViewMeta }) {
   return (
     <Link
       href={view.href}
-      onClick={() => writeStoredView({ view: view.slug })}
       className="group flex flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white transition hover:-translate-y-0.5 hover:shadow-lg"
     >
       <div

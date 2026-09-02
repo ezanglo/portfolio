@@ -3,7 +3,6 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { NEW_VIEW_SLUGS, VIEWS } from "@/lib/views";
-import { clearStoredView, writeStoredView } from "@/lib/view-storage";
 import { useDismissable } from "@/hooks/use-dismissable";
 import type { ViewSlug } from "@/lib/portfolio/types";
 
@@ -18,13 +17,11 @@ export default function ViewSwitcher({ current }: { current: ViewSlug }) {
     triggerRef.current?.focus();
   });
 
-  function handleNavigate(view: ViewSlug) {
-    writeStoredView({ view });
+  function handleNavigate() {
     setOpen(false);
   }
 
   function handleBackToAll() {
-    clearStoredView();
     setOpen(false);
     router.push("/welcome");
   }

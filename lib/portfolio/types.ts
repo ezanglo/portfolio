@@ -5,7 +5,6 @@ export type ViewSlug =
   | 'blockwork'
   | 'ai-chat'
   | 'terminal'
-  | 'app-store'
   | 'ide'
   | 'ops-dashboard'
   | 'filter-grid'
