@@ -216,7 +216,7 @@ export interface Project {
    */
   featured?: boolean | null;
   /**
-   * Drives the /ops-dashboard engine filter. Leave empty to hide this project from that view.
+   * Tags the project's AI engine (or platform) for filtering across views. Leave empty for non-AI projects.
    */
   aiEngine?: ('claude' | 'gemini' | 'vertex' | 'native' | 'web') | null;
   /**
@@ -403,7 +403,7 @@ export interface SiteConfig {
     intro: string;
   };
   /**
-   * Editorial claims shown on /ops-dashboard. Project count is derived automatically, not authored here.
+   * Editorial claims shown in the "Why Hire Me" section. Project count is derived automatically, not authored here.
    */
   stats: {
     yearsExperience: string;

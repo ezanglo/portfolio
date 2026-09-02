@@ -89,7 +89,7 @@ export const Projects: CollectionConfig = {
         { label: 'Web', value: 'web' },
       ],
       admin: {
-        description: 'Drives the /ops-dashboard engine filter. Leave empty to hide this project from that view.',
+        description: 'Tags the project\'s AI engine (or platform) for filtering across views. Leave empty for non-AI projects.',
       },
     },
     {

@@ -241,9 +241,9 @@ export const SiteConfig: CollectionConfig = {
     {
       name: 'stats',
       type: 'group',
-      label: 'Stats (Ops Dashboard)',
+      label: 'Stats',
       admin: {
-        description: 'Editorial claims shown on /ops-dashboard. Project count is derived automatically, not authored here.',
+        description: 'Editorial claims shown in the "Why Hire Me" section. Project count is derived automatically, not authored here.',
       },
       fields: [
         {

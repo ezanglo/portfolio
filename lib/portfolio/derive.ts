@@ -49,7 +49,7 @@ function normalizeProjects(projects: Project[]): NormalizedProject[] {
     const grid = gridTagsFor({ type: p.type, tags, engine, personal })
 
     if (process.env.NODE_ENV !== 'production' && !engine) {
-      console.warn(`[portfolio] project "${p.title}" has no aiEngine set — it will not appear on /ops-dashboard`)
+      console.warn(`[portfolio] project "${p.title}" has no aiEngine set`)
     }
 
     return {

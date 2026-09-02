@@ -6,7 +6,6 @@ export type ViewSlug =
   | 'ai-chat'
   | 'terminal'
   | 'ide'
-  | 'ops-dashboard'
   | 'classic'
 
 export type EngineKey = 'claude' | 'gemini' | 'vertex' | 'native' | 'web'
