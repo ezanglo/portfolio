@@ -4,25 +4,8 @@ import { useSectionInView } from "@/hooks/use-section-in-view";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/section-heading";
 import { Card, CardContent } from "@/components/ui/card";
+import { FALLBACK_PITCH_INTRO, FALLBACK_PITCH_POINTS } from "@/lib/portfolio/narrative";
 import { SiteConfig } from "@/payload-types";
-
-const FALLBACK_POINTS = [
-  {
-    title: "One person, the full mobile stack",
-    description:
-      "I take a React Native app from a blank repo to the App Store and Play Store myself, so there is no hand-off gap between design, native code, and release.",
-  },
-  {
-    title: "AI features that ship, not demo",
-    description:
-      "I've wired Claude, Gemini, and Vertex AI into production apps as real backend services with cost and latency budgets, not one-off prototypes.",
-  },
-  {
-    title: "Fast without being reckless",
-    description:
-      "Small, reviewable slices shipped daily, backed by real device testing before anything reaches production.",
-  },
-];
 
 interface WhyHireMeSectionProps {
   siteConfig: SiteConfig | null;
@@ -32,10 +15,8 @@ export default function WhyHireMeSection({ siteConfig }: WhyHireMeSectionProps) 
   const { ref } = useSectionInView("Why", 0.4);
 
   const whyHireMe = siteConfig?.whyHireMe;
-  const intro =
-    whyHireMe?.intro ||
-    "A single person who can take a mobile app from idea to app store, and wire real AI capability into it along the way, not a hand-off between three specialists.";
-  const points = whyHireMe?.points && whyHireMe.points.length > 0 ? whyHireMe.points : FALLBACK_POINTS;
+  const intro = whyHireMe?.intro || FALLBACK_PITCH_INTRO;
+  const points = whyHireMe?.points && whyHireMe.points.length > 0 ? whyHireMe.points : FALLBACK_PITCH_POINTS;
 
   const stats = siteConfig?.stats;
   const statItems = [

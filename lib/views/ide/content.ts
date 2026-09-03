@@ -22,6 +22,38 @@ export function renderAboutMd(data: PortfolioData): string {
   ].join("\n");
 }
 
+export function renderProcessMd(data: PortfolioData): string {
+  const { process } = data;
+  return [
+    "// how-i-work.md",
+    "",
+    process.intro,
+    "",
+    ...process.steps.flatMap((step, i) => {
+      const lines = [`${String(i + 1).padStart(2, "0")}. ${step.label}`, `    ${step.description}`];
+      if (step.tools.length > 0) lines.push(`    tools: ${step.tools.map((t) => t.name).join(", ")}`);
+      return [...lines, ""];
+    }),
+  ]
+    .join("\n")
+    .trimEnd();
+}
+
+export function renderWhyMd(data: PortfolioData): string {
+  const { pitch, stats } = data;
+  return [
+    "// why-hire-me.md",
+    "",
+    pitch.intro,
+    "",
+    ...pitch.points.flatMap((p) => [`- ${p.title}`, `  ${p.description}`, ""]),
+    "Stats:",
+    ...stats.map((s) => `  ${s.value.padEnd(6)} ${s.label.toLowerCase()}`),
+  ]
+    .join("\n")
+    .trimEnd();
+}
+
 export function renderSkillsJson(data: PortfolioData): string {
   const groups = data.skills.grouped;
   const nonEmpty = Object.fromEntries(Object.entries(groups).filter(([, v]) => v.length > 0));
@@ -57,6 +89,8 @@ export function renderProjectMd(p: NormalizedProject): string {
 export function buildIdeContent(data: PortfolioData): Record<string, IdeFileContent> {
   const content: Record<string, IdeFileContent> = {
     about: { kind: "md", text: renderAboutMd(data), wrap: "pre-wrap" },
+    process: { kind: "md", text: renderProcessMd(data), wrap: "pre-wrap" },
+    why: { kind: "md", text: renderWhyMd(data), wrap: "pre-wrap" },
     skills: { kind: "json", text: renderSkillsJson(data), wrap: "pre" },
     experience: { kind: "log", text: renderExperienceLog(data), wrap: "pre-wrap" },
     contact: { kind: "txt", text: renderContactTxt(data), wrap: "pre-wrap" },

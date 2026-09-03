@@ -4,6 +4,8 @@ import FieldNotesNav from "./_components/nav";
 import FieldNotesHero from "./_components/hero";
 import PortraitBand from "./_components/portrait-band";
 import FieldNotesAbout from "./_components/about";
+import FieldNotesProcess from "./_components/process";
+import FieldNotesPitch from "./_components/pitch";
 import FieldNotesSkills from "./_components/skills";
 import FieldNotesProjects from "./_components/projects";
 import FieldNotesExperience from "./_components/experience";
@@ -25,9 +27,11 @@ export default async function FieldNotesPage() {
         <FieldNotesHero identity={data.identity} copy={copy} />
         <PortraitBand portraitUrl="/images/landscape.png" name={data.identity.name} />
         <FieldNotesAbout bio={data.bio} copy={copy} />
+        <FieldNotesProcess process={data.process} copy={copy} />
+        <FieldNotesPitch pitch={data.pitch} stats={data.stats} copy={copy} />
         <FieldNotesSkills skills={data.skills.flat} copy={copy} />
-        <FieldNotesProjects projects={data.projects} copy={copy} />
         <FieldNotesExperience experience={data.experience} copy={copy} />
+        <FieldNotesProjects projects={data.projects} copy={copy} />
         <FieldNotesContact email={data.identity.email} copy={copy} />
       </main>
       <FieldNotesFooter copyrightText={data.identity.copyrightText} />

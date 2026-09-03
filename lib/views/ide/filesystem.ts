@@ -17,6 +17,8 @@ export function buildIdeTree(data: PortfolioData): IdeNode[] {
 
   return [
     { type: "file", key: "about", name: "about.md", kind: "md" },
+    { type: "file", key: "process", name: "how-i-work.md", kind: "md" },
+    { type: "file", key: "why", name: "why-hire-me.md", kind: "md" },
     { type: "file", key: "skills", name: "skills.json", kind: "json" },
     {
       type: "dir",

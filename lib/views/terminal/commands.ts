@@ -36,10 +36,12 @@ function projectMatchesFilter(p: TerminalProjectEntry, filter: ProjectFilterKey)
 }
 
 export function buildTerminalProgram(data: PortfolioData): TerminalProgram {
-  const { identity, bio, skills, projects, experience } = data;
+  const { identity, bio, skills, projects, experience, process, pitch, stats } = data;
 
   const commands: TerminalCommandSpec[] = [
     { name: "about", summary: "who is " + identity.name.split(" ")[0] },
+    { name: "how", summary: "how he works, step by step" },
+    { name: "why", summary: "why hire him" },
     { name: "skills", summary: "tech stack" },
     { name: "projects", summary: "list of work (try: projects ai / projects mobile)" },
     { name: "experience", summary: "career history" },
@@ -63,9 +65,28 @@ export function buildTerminalProgram(data: PortfolioData): TerminalProgram {
 
   const contactText = `email:    ${identity.email}\nlinkedin: ${identity.linkedinUrl}\ngithub:   ${identity.githubUrl}`;
 
+  const processText = [
+    process.intro,
+    "",
+    ...process.steps.map((step, i) => {
+      const tools = step.tools.length > 0 ? `\n      tools: ${step.tools.map((t) => t.name).join(", ")}` : "";
+      return `  ${String(i + 1).padStart(2, "0")}. ${step.label} — ${step.description}${tools}`;
+    }),
+  ].join("\n");
+
+  const whyText = [
+    pitch.intro,
+    "",
+    ...pitch.points.map((p) => `  * ${p.title}\n      ${p.description}`),
+    "",
+    ...stats.map((s) => `  ${s.value.padEnd(5)} ${s.label.toLowerCase()}`),
+  ].join("\n");
+
   const outputs: Record<string, string> = {
     help: `Available commands:\n${helpBody}`,
     about: aboutText,
+    how: processText,
+    why: whyText,
     skills: skillsText,
     experience: experienceText,
     contact: contactText,

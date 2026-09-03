@@ -1,0 +1,88 @@
+import type { SiteConfig } from '@/payload-types'
+import type { PitchPoint, PortfolioPitch, PortfolioProcess, ProcessStep } from './types'
+
+/**
+ * The "How I work" process flow and the "Why hire me" pitch, shared by every view.
+ * Classic reads these straight off the CMS; the fallbacks below are the same story
+ * classic's about-section.tsx / why-hire-me-section.tsx used to hardcode, kept here
+ * so every view tells it identically when the CMS fields are empty.
+ */
+
+export const FALLBACK_PROCESS_INTRO =
+  'I work in short, verifiable loops rather than long stretches of unreviewed code: scope a slice small enough to ship in a day, wire it end to end, and let real usage decide what comes next.'
+
+export const FALLBACK_PROCESS_STEPS: ProcessStep[] = [
+  { label: 'Discover', description: 'Understand the real problem before opening an editor.', tools: [] },
+  {
+    label: 'Plan',
+    description: 'Break the feature into a slice small enough to ship in a day.',
+    tools: [{ name: 'Figma', iconSlug: 'figma' }],
+  },
+  {
+    label: 'Build',
+    description: 'Wire the feature end to end, native app to backend to model.',
+    tools: [
+      { name: 'React Native', iconSlug: 'react-native' },
+      { name: 'TypeScript', iconSlug: 'typescript' },
+      { name: 'Claude', iconSlug: 'claude' },
+    ],
+  },
+  {
+    label: 'Test',
+    description: 'Run it on a real device before trusting it in review.',
+    tools: [{ name: 'Expo', iconSlug: 'expo' }],
+  },
+  {
+    label: 'Ship',
+    description: 'Release behind a flag, watch real usage, not a demo.',
+    tools: [{ name: 'Vercel', iconSlug: 'vercel' }],
+  },
+  {
+    label: 'Iterate',
+    description: "Let production data, not speculation, decide what's next.",
+    tools: [{ name: 'Git', iconSlug: 'git' }],
+  },
+]
+
+export const FALLBACK_PITCH_INTRO =
+  'A single person who can take a mobile app from idea to app store, and wire real AI capability into it along the way, not a hand-off between three specialists.'
+
+export const FALLBACK_PITCH_POINTS: PitchPoint[] = [
+  {
+    title: 'One person, the full mobile stack',
+    description:
+      'I take a React Native app from a blank repo to the App Store and Play Store myself, so there is no hand-off gap between design, native code, and release.',
+  },
+  {
+    title: 'AI features that ship, not demo',
+    description:
+      "I've wired Claude, Gemini, and Vertex AI into production apps as real backend services with cost and latency budgets, not one-off prototypes.",
+  },
+  {
+    title: 'Fast without being reckless',
+    description:
+      'Small, reviewable slices shipped daily, backed by real device testing before anything reaches production.',
+  },
+]
+
+export function buildProcess(siteConfig: SiteConfig | null): PortfolioProcess {
+  const howIWork = siteConfig?.howIWork
+  const steps =
+    howIWork?.steps && howIWork.steps.length > 0
+      ? howIWork.steps.map((s) => ({
+          label: s.label,
+          description: s.description,
+          tools: (s.tools ?? []).map((t) => ({ name: t.name, iconSlug: t.iconSlug })),
+        }))
+      : FALLBACK_PROCESS_STEPS
+  return { intro: howIWork?.intro || FALLBACK_PROCESS_INTRO, steps }
+}
+
+export function buildPitch(siteConfig: SiteConfig | null): PortfolioPitch {
+  const whyHireMe = siteConfig?.whyHireMe
+  const points =
+    whyHireMe?.points && whyHireMe.points.length > 0
+      ? whyHireMe.points.map((p) => ({ title: p.title, description: p.description }))
+      : FALLBACK_PITCH_POINTS
+  return { intro: whyHireMe?.intro || FALLBACK_PITCH_INTRO, points }
+}

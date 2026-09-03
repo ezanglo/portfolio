@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import SectionHeading from "@/components/section-heading";
 import TechIcon from "@/components/tech-icon";
 import { cn } from "@/lib/utils";
+import { FALLBACK_PROCESS_INTRO, FALLBACK_PROCESS_STEPS } from "@/lib/portfolio/narrative";
 import { SiteConfig } from "@/payload-types";
 import {
   CompassIcon,
@@ -25,39 +26,6 @@ const STEP_ICONS: LucideIcon[] = [
   RefreshCwIcon,
 ];
 
-const FALLBACK_STEPS = [
-  { label: "Discover", description: "Understand the real problem before opening an editor.", tools: [] as { name: string; iconSlug: string }[] },
-  {
-    label: "Plan",
-    description: "Break the feature into a slice small enough to ship in a day.",
-    tools: [{ name: "Figma", iconSlug: "figma" }],
-  },
-  {
-    label: "Build",
-    description: "Wire the feature end to end, native app to backend to model.",
-    tools: [
-      { name: "React Native", iconSlug: "react-native" },
-      { name: "TypeScript", iconSlug: "typescript" },
-      { name: "Claude", iconSlug: "claude" },
-    ],
-  },
-  {
-    label: "Test",
-    description: "Run it on a real device before trusting it in review.",
-    tools: [{ name: "Expo", iconSlug: "expo" }],
-  },
-  {
-    label: "Ship",
-    description: "Release behind a flag, watch real usage, not a demo.",
-    tools: [{ name: "Vercel", iconSlug: "vercel" }],
-  },
-  {
-    label: "Iterate",
-    description: "Let production data, not speculation, decide what's next.",
-    tools: [{ name: "Git", iconSlug: "git" }],
-  },
-];
-
 interface AboutSectionProps {
   siteConfig: SiteConfig | null;
 }
@@ -66,10 +34,8 @@ export default function AboutSection({ siteConfig }: AboutSectionProps) {
   const { ref } = useSectionInView("How I Work", 0.75);
 
   const howIWork = siteConfig?.howIWork;
-  const intro =
-    howIWork?.intro ||
-    "I work in short, verifiable loops rather than long stretches of unreviewed code: scope a slice small enough to ship in a day, wire it end to end, and let real usage decide what comes next.";
-  const steps = howIWork?.steps && howIWork.steps.length > 0 ? howIWork.steps : FALLBACK_STEPS;
+  const intro = howIWork?.intro || FALLBACK_PROCESS_INTRO;
+  const steps = howIWork?.steps && howIWork.steps.length > 0 ? howIWork.steps : FALLBACK_PROCESS_STEPS;
 
   return (
     <motion.section

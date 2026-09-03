@@ -6,7 +6,7 @@ import type { PortfolioData } from "@/lib/portfolio/types";
  * crawlers won't do — so this renders the same underlying data as static text.
  */
 export default function SeoFallbackContent({ data }: { data: PortfolioData }) {
-  const { identity, bio, skills, experience, projects } = data;
+  const { identity, bio, skills, experience, projects, process, pitch } = data;
 
   return (
     <div className="sr-only">
@@ -16,6 +16,26 @@ export default function SeoFallbackContent({ data }: { data: PortfolioData }) {
       {bio.long.map((paragraph, i) => (
         <p key={i}>{paragraph}</p>
       ))}
+
+      <h2>How I work</h2>
+      <p>{process.intro}</p>
+      <ul>
+        {process.steps.map((step) => (
+          <li key={step.label}>
+            {step.label}: {step.description}
+          </li>
+        ))}
+      </ul>
+
+      <h2>Why hire me</h2>
+      <p>{pitch.intro}</p>
+      <ul>
+        {pitch.points.map((point) => (
+          <li key={point.title}>
+            {point.title}: {point.description}
+          </li>
+        ))}
+      </ul>
 
       <h2>Skills</h2>
       <p>{skills.flat.join(", ")}</p>

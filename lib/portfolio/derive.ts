@@ -1,6 +1,7 @@
 import type { Experience, Project, SiteConfig, Skill } from '@/payload-types'
 import { gridTagsFor, iconBgFor, skillGroupFor, storeCategoryFor } from './taxonomy'
 import { buildBioVariants, lexicalToParagraphs } from './bio'
+import { buildPitch, buildProcess } from './narrative'
 import type {
   EngineKey,
   NormalizedExperience,
@@ -178,5 +179,7 @@ export function buildPortfolioData(input: {
     projects: normalizedProjects,
     experience: normalizedExperience,
     stats,
+    process: buildProcess(siteConfig),
+    pitch: buildPitch(siteConfig),
   }
 }

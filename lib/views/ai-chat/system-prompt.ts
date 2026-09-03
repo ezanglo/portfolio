@@ -1,7 +1,14 @@
 import type { PortfolioData } from "@/lib/portfolio/types";
 
 export function buildSystemPrompt(data: PortfolioData): string {
-  const { identity, bio, skills, projects, experience } = data;
+  const { identity, bio, skills, projects, experience, process, pitch, stats } = data;
+
+  const processList = process.steps
+    .map((s) => `- ${s.label}: ${s.description}${s.tools.length ? ` (${s.tools.map((t) => t.name).join(", ")})` : ""}`)
+    .join("\n");
+
+  const pitchList = pitch.points.map((p) => `- ${p.title}: ${p.description}`).join("\n");
+  const statsList = stats.map((s) => `- ${s.value} ${s.label.toLowerCase()}`).join("\n");
 
   const featuredProjects = [...projects]
     .sort((a, b) => Number(b.featured) - Number(a.featured))
@@ -39,6 +46,15 @@ ${identity.cvUrl ? `CV: ${identity.cvUrl}` : ""}
 
 BIO
 ${bio.thirdPerson.join(" ")}
+
+HOW HE WORKS
+${process.intro}
+${processList}
+
+WHY HIRE HIM
+${pitch.intro}
+${pitchList}
+${statsList}
 
 SKILLS
 ${skills.flat.join(", ")}

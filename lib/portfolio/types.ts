@@ -82,6 +82,34 @@ export interface PortfolioStat {
   derived: boolean
 }
 
+export interface ProcessTool {
+  name: string
+  iconSlug: string
+}
+
+/** One step of the "How I work" process flow (Discover → Plan → Build → …). */
+export interface ProcessStep {
+  label: string
+  description: string
+  tools: ProcessTool[]
+}
+
+export interface PortfolioProcess {
+  intro: string
+  steps: ProcessStep[]
+}
+
+/** One "Why hire me" selling point. */
+export interface PitchPoint {
+  title: string
+  description: string
+}
+
+export interface PortfolioPitch {
+  intro: string
+  points: PitchPoint[]
+}
+
 export interface PortfolioData {
   identity: PortfolioIdentity
   bio: PortfolioBio
@@ -89,4 +117,6 @@ export interface PortfolioData {
   projects: NormalizedProject[]
   experience: NormalizedExperience[]
   stats: PortfolioStat[]
+  process: PortfolioProcess
+  pitch: PortfolioPitch
 }

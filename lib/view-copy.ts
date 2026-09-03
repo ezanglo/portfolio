@@ -8,6 +8,8 @@ export interface ViewCopy {
   ctaButton: string
   sectionLabels: {
     about: string
+    process: string
+    pitch: string
     skills: string
     projects: string
     experience: string
@@ -20,6 +22,8 @@ type Template = (id: PortfolioIdentity) => ViewCopy
 
 const TRADITIONAL_LABELS = {
   about: 'About',
+  process: 'How I work',
+  pitch: 'Why hire me',
   skills: 'Skills',
   projects: 'Projects',
   experience: 'Experience',
@@ -28,6 +32,8 @@ const TRADITIONAL_LABELS = {
 
 const RUNTIME_LABELS = {
   about: '// about',
+  process: '// process',
+  pitch: '// why-me',
   skills: '// stack',
   projects: '// projects',
   experience: '// experience',

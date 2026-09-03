@@ -3,6 +3,8 @@ import { getViewCopy } from "@/lib/view-copy";
 import CorporateNav from "./_components/nav";
 import CorporateHero from "./_components/hero";
 import CorporateAbout from "./_components/about";
+import CorporateProcess from "./_components/process";
+import CorporatePitch from "./_components/pitch";
 import CorporateSkills from "./_components/skills";
 import CorporateProjects from "./_components/projects";
 import CorporateExperience from "./_components/experience";
@@ -23,9 +25,11 @@ export default async function CorporatePage() {
       <main id="main">
         <CorporateHero identity={data.identity} copy={copy} />
         <CorporateAbout bio={data.bio} copy={copy} />
+        <CorporateProcess process={data.process} copy={copy} />
+        <CorporatePitch pitch={data.pitch} stats={data.stats} copy={copy} />
         <CorporateSkills skills={data.skills.flat} copy={copy} />
-        <CorporateProjects projects={data.projects} copy={copy} />
         <CorporateExperience experience={data.experience} copy={copy} />
+        <CorporateProjects projects={data.projects} copy={copy} />
         <CorporateContact email={data.identity.email} copy={copy} />
       </main>
       <CorporateFooter copyrightText={data.identity.copyrightText} />

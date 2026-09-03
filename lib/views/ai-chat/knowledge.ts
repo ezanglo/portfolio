@@ -5,7 +5,8 @@ export const CHAT_FALLBACK =
   "The AI backend is unreachable right now, so here's a scripted answer instead. Try asking about his React Native work, AI projects, skills, experience, or how to contact him.";
 
 export function buildKnowledge(data: PortfolioData): KnowledgeEntry[] {
-  const { identity, bio, skills, projects, experience } = data;
+  const { identity, bio, skills, projects, experience, process, pitch, stats } = data;
+  const first = identity.name.split(" ")[0];
 
   const nativeProjects = projects.filter((p) => p.grid.includes("React Native"));
   const aiProjects = projects.filter((p) => p.engine && ["claude", "gemini", "vertex"].includes(p.engine));
@@ -63,6 +64,24 @@ export function buildKnowledge(data: PortfolioData): KnowledgeEntry[] {
       phrases: ["built", "work on"],
       words: ["project", "projects", "portfolio"],
       text: `${projects.length} projects total, spanning Web, Mobile, Desktop, and AI-integrated builds.`,
+    },
+    {
+      id: "process",
+      priority: 3,
+      phrases: ["how do you work", "how does he work", "his process", "your process", "how do you build", "how does he build"],
+      words: ["process", "workflow", "approach", "methodology", "ship", "shipping"],
+      text: `${first} works in short, verifiable loops: ${process.steps
+        .map((s) => s.label)
+        .join(" → ")}. ${process.intro}`,
+    },
+    {
+      id: "why-hire",
+      priority: 4,
+      phrases: ["why hire", "why should i hire", "why should we hire", "why you", "what makes you", "what makes him"],
+      words: ["why", "hire"],
+      text: `${pitch.intro} In short: ${pitch.points.map((p) => p.title).join("; ")}. ${stats
+        .map((s) => `${s.value} ${s.label.toLowerCase()}`)
+        .join(", ")}.`,
     },
     {
       id: "contact",
