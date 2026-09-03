@@ -21,7 +21,15 @@ export default function GalleryHero({
           {identity.role}. {identity.yearsExperience}+ years across web, mobile, and desktop, now focused on React
           Native and AI.
         </p>
-        <div className="mt-6 flex items-center gap-2">
+        <div className="mt-6 flex flex-wrap items-center gap-2">
+          {identity.cvUrl && (
+            <a
+              href={identity.cvUrl}
+              className="rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-900 transition hover:border-neutral-300 hover:bg-neutral-50"
+            >
+              Download CV
+            </a>
+          )}
           <a
             href={identity.linkedinUrl}
             target="_blank"

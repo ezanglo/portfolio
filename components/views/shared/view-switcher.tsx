@@ -28,7 +28,7 @@ export default function ViewSwitcher({
 
   function handleBackToAll() {
     setOpen(false);
-    router.push("/welcome");
+    router.push("/");
   }
 
   return (

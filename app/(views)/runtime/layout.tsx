@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Ezra Anglo | Runtime",
   description: "Building for React Native & AI, at runtime.",
   alternates: {
-    canonical: "/classic",
+    canonical: "/runtime",
   },
   openGraph: {
     title: "Ezra Anglo | Runtime",

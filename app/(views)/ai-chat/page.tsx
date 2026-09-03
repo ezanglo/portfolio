@@ -1,5 +1,6 @@
 import { getPortfolioData } from "@/lib/portfolio/data";
 import { buildKnowledge, buildQuickReplies, CHAT_FALLBACK } from "@/lib/views/ai-chat/knowledge";
+import SeoFallbackContent from "@/components/views/shared/seo-fallback-content";
 import AiChatHeader from "./_components/header";
 import AiChatConsole from "./_components/console";
 import SitePreview from "./_components/site-preview";
@@ -15,6 +16,7 @@ export default async function AiChatPage() {
 
   return (
     <div className="flex h-full min-h-0 flex-col lg:flex-row">
+      <SeoFallbackContent data={data} />
       <div className="flex min-h-0 flex-1 flex-col lg:max-w-md lg:border-r lg:border-view-border xl:max-w-lg">
         <AiChatHeader initials={data.identity.initials} />
         <main id="main" className="flex min-h-0 flex-1 flex-col">

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Ezra Anglo | Portfolio",
   description: "Full-stack developer with over 10 years of experience across Web, Mobile, and Desktop.",
   alternates: {
-    canonical: "/classic",
+    canonical: "/corporate",
   },
   openGraph: {
     title: "Ezra Anglo | Portfolio",

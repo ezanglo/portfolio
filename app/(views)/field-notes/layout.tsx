@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Ezra Anglo | Field Notes",
   description: "A decade of building for web, mobile, and desktop, now leaning into React Native and AI.",
   alternates: {
-    canonical: "/classic",
+    canonical: "/field-notes",
   },
   openGraph: {
     title: "Ezra Anglo | Field Notes",

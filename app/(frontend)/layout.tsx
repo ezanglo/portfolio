@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from 'next/font/google'
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
@@ -12,8 +12,15 @@ import { getNavigationLinks } from "@/lib/queries";
 import { NavigationLink } from "@/payload-types";
 import ViewSwitcher from "@/components/views/shared/view-switcher";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { getPortfolioData } from "@/lib/portfolio/data";
+import PersonJsonLd from "@/components/seo/person-json-ld";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -42,11 +49,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const navigationLinks = await getNavigationLinks();
+  const [navigationLinks, portfolioData] = await Promise.all([getNavigationLinks(), getPortfolioData()]);
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(inter.className, "pt-28 sm:pt-36")}>
+        <PersonJsonLd identity={portfolioData.identity} />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ActiveSectionContextProvider>
             <Header links={navigationLinks as NavigationLink[]} />

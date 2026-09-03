@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Ezra Anglo | Blockwork",
   description: "Ezra Anglo builds React Native + AI products.",
   alternates: {
-    canonical: "/classic",
+    canonical: "/blockwork",
   },
   openGraph: {
     title: "Ezra Anglo | Blockwork",

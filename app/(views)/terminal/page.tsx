@@ -1,5 +1,6 @@
 import { getPortfolioData } from "@/lib/portfolio/data";
 import { buildTerminalProgram } from "@/lib/views/terminal/commands";
+import SeoFallbackContent from "@/components/views/shared/seo-fallback-content";
 import TerminalFrame from "./_components/frame";
 import TerminalTitleBar from "./_components/title-bar";
 import TerminalConsole from "./_components/console";
@@ -14,6 +15,7 @@ export default async function TerminalPage() {
 
   return (
     <TerminalFrame>
+      <SeoFallbackContent data={data} />
       <TerminalTitleBar />
       <main id="main" className="flex min-h-0 flex-1 flex-col">
         <TerminalConsole program={program} />
