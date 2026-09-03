@@ -6,6 +6,8 @@ import { DefaultChatTransport, type UIMessage } from "ai";
 import type { KnowledgeEntry } from "@/lib/views/ai-chat/matcher";
 import { matchAnswer } from "@/lib/views/ai-chat/matcher";
 import { useScrollToBottom } from "@/hooks/use-scroll-to-bottom";
+import SurpriseMeButton from "@/components/views/shared/surprise-me-button";
+import ViewSwitcher from "@/components/views/shared/view-switcher";
 import Bubble from "./bubble";
 import TypingIndicator from "./typing-indicator";
 import QuickReplies from "./quick-replies";
@@ -81,6 +83,18 @@ export default function AiChatConsole({
       </div>
       <QuickReplies replies={quickReplies} onSelect={submit} disabled={busy} />
       <Composer value={input} onChange={setInput} onSubmit={() => submit(input)} disabled={busy} />
+      <div className="flex shrink-0 justify-center border-t border-view-border px-5 py-3 pb-[max(12px,env(safe-area-inset-bottom))] sm:px-7">
+        <ViewSwitcher
+          current="ai-chat"
+          inline
+          extraActions={
+            <SurpriseMeButton
+              current="ai-chat"
+              className="bg-white/95 py-2.5 text-neutral-800 shadow-[0_6px_20px_rgba(0,0,0,.25)] backdrop-blur hover:bg-white"
+            />
+          }
+        />
+      </div>
     </>
   );
 }

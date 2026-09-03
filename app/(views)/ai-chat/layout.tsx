@@ -24,7 +24,7 @@ export const viewport: Viewport = {
 
 export default function AiChatLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ViewShell view="ai-chat" fontVars={[inter.variable, ibmPlexMono.variable]}>
+    <ViewShell view="ai-chat" fontVars={[inter.variable, ibmPlexMono.variable]} hideSwitcher>
       {children}
     </ViewShell>
   );

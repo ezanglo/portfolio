@@ -1,16 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { ExternalLink, RotateCw } from "lucide-react";
+import { VIEWS, VIEW_SLUGS } from "@/lib/views";
 import { cn } from "@/lib/utils";
 
-// Relative so it resolves to whatever origin this page is served from (localhost in dev,
-// the live domain in production) instead of always hitting the deployed site.
-const PREVIEW_URL = "/?exclude=ai-chat";
+// Views that can render inside the simulated browser — the embeddable ones, minus
+// ai-chat itself. The catalog landing page (`/`) is deliberately not in the pool.
+const PREVIEW_POOL = VIEW_SLUGS.filter((slug) => VIEWS[slug].previewIframe);
+
+function randomPreviewPath() {
+  return `/${PREVIEW_POOL[Math.floor(Math.random() * PREVIEW_POOL.length)]}`;
+}
+
+// The iframe only mounts client-side: server and hydration render `null` (spinner
+// only), so the random pick never causes a hydration mismatch.
+const subscribeMounted = () => () => {};
+function useMounted() {
+  return useSyncExternalStore(
+    subscribeMounted,
+    () => true,
+    () => false
+  );
+}
 
 export default function SitePreview({ className }: { className?: string }) {
   const [loaded, setLoaded] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
+  // Relative path so it resolves to whatever origin serves this page (localhost in
+  // dev, the live domain in production). Lazily picked once, re-rolled on reload.
+  const [path, setPath] = useState(randomPreviewPath);
+  const previewPath = useMounted() ? path : null;
 
   return (
     <div className={cn("flex min-h-0 flex-col bg-view-surface", className)}>
@@ -21,25 +41,26 @@ export default function SitePreview({ className }: { className?: string }) {
           <span className="h-2.5 w-2.5 rounded-full bg-view-fg-subtle/30" />
         </div>
         <div className="flex-1 truncate rounded-md bg-view-surface-2 px-3 py-1 text-center font-mono text-[12px] text-view-fg-muted">
-          ezraanglo.com
+          ezraanglo.com{previewPath ?? ""}
         </div>
         <button
           type="button"
           onClick={() => {
             setLoaded(false);
+            setPath(randomPreviewPath());
             setReloadKey((k) => k + 1);
           }}
           className="shrink-0 rounded-md p-1.5 text-view-fg-subtle transition hover:bg-view-surface-2 hover:text-view-fg"
-          aria-label="Reload preview"
+          aria-label="Load another view"
         >
           <RotateCw className="h-3.5 w-3.5" />
         </button>
         <a
-          href={PREVIEW_URL}
+          href={previewPath ?? "/"}
           target="_blank"
           rel="noreferrer"
           className="shrink-0 rounded-md p-1.5 text-view-fg-subtle transition hover:bg-view-surface-2 hover:text-view-fg"
-          aria-label="Open ezraanglo.com in a new tab"
+          aria-label="Open this view in a new tab"
         >
           <ExternalLink className="h-3.5 w-3.5" />
         </a>
@@ -50,13 +71,15 @@ export default function SitePreview({ className }: { className?: string }) {
             <span className="h-5 w-5 animate-spin rounded-full border-2 border-view-fg-subtle border-t-transparent" aria-hidden />
           </div>
         )}
-        <iframe
-          key={reloadKey}
-          src={PREVIEW_URL}
-          title="Live preview of ezraanglo.com"
-          onLoad={() => setLoaded(true)}
-          className={cn("h-full w-full border-0 transition-opacity duration-300", loaded ? "opacity-100" : "opacity-0")}
-        />
+        {previewPath && (
+          <iframe
+            key={`${previewPath}-${reloadKey}`}
+            src={previewPath}
+            title="Live preview of ezraanglo.com"
+            onLoad={() => setLoaded(true)}
+            className={cn("h-full w-full border-0 transition-opacity duration-300", loaded ? "opacity-100" : "opacity-0")}
+          />
+        )}
       </div>
     </div>
   );

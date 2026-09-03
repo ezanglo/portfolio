@@ -14,9 +14,12 @@ const SWITCHER_ORDER = ["classic", ...NEW_VIEW_SLUGS] as const;
 export default function ViewSwitcher({
   current,
   extraActions,
+  inline = false,
 }: {
   current: ViewSlug;
   extraActions?: React.ReactNode;
+  /** Render as a normal in-flow control (e.g. under the ai-chat composer) instead of a floating pill. */
+  inline?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   // Once true, the preview list stays mounted (just hidden) so iframes that already
@@ -55,7 +58,13 @@ export default function ViewSwitcher({
         />
       )}
 
-      <div ref={containerRef} className="fixed bottom-5 right-5 z-[9999] flex items-end gap-2">
+      <div
+        ref={containerRef}
+        className={cn(
+          "flex items-end gap-2",
+          inline ? "flex-wrap justify-center" : "fixed bottom-5 right-5 z-[9999]"
+        )}
+      >
         {extraActions}
 
         <button

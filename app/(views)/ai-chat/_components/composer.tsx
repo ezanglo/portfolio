@@ -15,7 +15,7 @@ export default function Composer({
         e.preventDefault();
         onSubmit();
       }}
-      className="flex shrink-0 gap-2 border-t border-view-border px-5 py-4 [padding-bottom:max(16px,env(safe-area-inset-bottom))] sm:px-7"
+      className="flex shrink-0 gap-2 border-t border-view-border px-5 py-4 sm:px-7"
     >
       <label htmlFor="chat-input" className="sr-only">
         Ask a question
