@@ -11,7 +11,7 @@ export function ModeToggle() {
 
   return (
     <Button
-      className="bg-background text-foreground"
+      className="rounded-full border-border bg-background text-foreground shadow-[0_6px_20px_rgba(0,0,0,.15)] hover:bg-accent"
       variant="outline"
       size="icon"
       onClick={() => {

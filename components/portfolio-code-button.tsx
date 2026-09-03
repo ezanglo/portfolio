@@ -9,14 +9,14 @@ export default function PortfolioCodeButton() {
       title="View code"
       size={"icon"}
       variant={"outline"}
-      className="bg-background text-foreground"
+      className="rounded-full border-border bg-background text-foreground shadow-[0_6px_20px_rgba(0,0,0,.15)] hover:bg-accent"
     >
       <Link
         href={"https://github.com/ezanglo/portfolio"}
         target="_blank"
         className="flex flex-row items-center"
       >
-        <GitHubLogoIcon className="opacity-70" />
+        <GitHubLogoIcon />
       </Link>
     </Button>
   );

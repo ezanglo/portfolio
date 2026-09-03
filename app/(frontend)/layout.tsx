@@ -65,12 +65,12 @@ export default async function RootLayout({
               current="classic"
               extraActions={
                 <>
+                  <PortfolioCodeButton />
+                  <ModeToggle />
                   <SurpriseMeButton
                     current="classic"
                     className="border border-border bg-background py-2.5 text-foreground shadow-[0_6px_20px_rgba(0,0,0,.15)] hover:bg-accent"
                   />
-                  <PortfolioCodeButton />
-                  <ModeToggle />
                 </>
               }
             />
