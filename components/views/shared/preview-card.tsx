@@ -12,10 +12,13 @@ export default function PreviewCard({
   view,
   active = false,
   onNavigate,
+  eager = false,
 }: {
   view: ViewMeta;
   active?: boolean;
   onNavigate?: () => void;
+  /** Load the preview iframe immediately instead of waiting for viewport proximity. Use when the card may be revealed while hidden (e.g. display:none), where lazy-loading would never fire. */
+  eager?: boolean;
 }) {
   const [loaded, setLoaded] = useState(false);
   const [scale, setScale] = useState(0.25);
@@ -51,21 +54,28 @@ export default function PreviewCard({
         </span>
 
         {view.previewIframe ? (
-          <iframe
-            src={`${view.href}?preview=1`}
-            title={`Preview of ${view.label}`}
-            tabIndex={-1}
-            aria-hidden="true"
-            loading="lazy"
-            onLoad={() => setLoaded(true)}
-            className={`origin-top-left border-0 transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
-            style={{
-              width: PREVIEW_WIDTH,
-              height: PREVIEW_HEIGHT,
-              transform: `scale(${scale})`,
-              pointerEvents: "none",
-            }}
-          />
+          <>
+            {!loaded && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="h-6 w-6 animate-spin rounded-full border-2 border-neutral-900/15 border-t-neutral-900/50" />
+              </div>
+            )}
+            <iframe
+              src={`${view.href}?preview=1`}
+              title={`Preview of ${view.label}`}
+              tabIndex={-1}
+              aria-hidden="true"
+              loading={eager ? "eager" : "lazy"}
+              onLoad={() => setLoaded(true)}
+              className={`origin-top-left border-0 transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+              style={{
+                width: PREVIEW_WIDTH,
+                height: PREVIEW_HEIGHT,
+                transform: `scale(${scale})`,
+                pointerEvents: "none",
+              }}
+            />
+          </>
         ) : (
           <div className="flex h-full w-full items-center justify-center text-6xl" aria-hidden>
             {view.emoji}
