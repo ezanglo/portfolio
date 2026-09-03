@@ -23,6 +23,7 @@ export default function TerminalConsole({ program }: { program: TerminalProgram 
     const isPreview = new URLSearchParams(window.location.search).get("preview") === "1";
     const isDesktop = window.matchMedia("(min-width: 768px)").matches;
     const shouldAutoFocus = isDesktop && !isPreview;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- window/matchMedia are only available post-mount; this syncs state from that external read, not derived render state
     setAutoFocusEnabled(shouldAutoFocus);
     if (shouldAutoFocus) {
       inputRef.current?.focus();

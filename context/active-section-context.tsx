@@ -10,7 +10,7 @@ type ActiveSectionContextProviderProps = {
 type ActiveSectionContextType = {
   activeSection: SectionName;
   setActiveSection: React.Dispatch<React.SetStateAction<SectionName>>;
-  isClicked: boolean;
+  isClicked: () => boolean;
   setTimeOfLastClick: React.Dispatch<React.SetStateAction<number>>;
 };
 
@@ -27,7 +27,9 @@ export default function ActiveSectionContextProvider({
       value={{
         activeSection,
         setActiveSection,
-        isClicked: Date.now() - timeOfLastClick > 1000,
+        // A getter (rather than a value computed at render time) keeps Date.now()
+        // out of the render path, which would otherwise be an impure render.
+        isClicked: () => Date.now() - timeOfLastClick > 1000,
         setTimeOfLastClick,
       }}
     >

@@ -3,7 +3,9 @@ import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'paylo
 
 function safeRevalidate(tag: string) {
   try {
-    revalidateTag(tag)
+    // Next 16 requires a cacheLife profile as the second argument; 'max' forces
+    // full expiration of the tagged entries on the next request.
+    revalidateTag(tag, 'max')
   } catch {
     // no Next.js request context (e.g. a standalone script run via the local API) — nothing to revalidate
   }

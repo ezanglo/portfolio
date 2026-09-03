@@ -31,8 +31,12 @@ export function useBreakpoint<K extends keyof typeof screens>(breakpointKey: K) 
   const [breakpoints, setBreakpoints] = useState(screens);
   
   useEffect(() => {
-    // Update breakpoints on client side to ensure we get the actual CSS values
+    // Update breakpoints on client side to ensure we get the actual CSS values.
+    // This intentionally runs post-mount (rather than as a lazy initial state)
+    // so the first client render matches the server-rendered fallback and
+    // avoids a hydration mismatch.
     const tailwindBreakpoints = getTailwindBreakpoints();
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reconciling SSR fallback with real CSS values read from the DOM, not a derived-state footgun
     setBreakpoints(tailwindBreakpoints);
   }, []);
 

@@ -10,7 +10,9 @@ export function useSectionInView(sectionName: SectionName, threshold: number) {
   const { ref, inView } = useInView({ threshold });
 
   useEffect(() => {
-    inView && isClicked && setActiveSection(sectionName);
+    if (inView && isClicked()) {
+      setActiveSection(sectionName);
+    }
   }, [inView, isClicked, setActiveSection, sectionName]);
 
   return { ref };
