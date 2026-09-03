@@ -23,7 +23,7 @@ export default async function FieldNotesPage() {
       <FieldNotesNav name={data.identity.name} />
       <main id="main">
         <FieldNotesHero identity={data.identity} copy={copy} />
-        <PortraitBand portraitUrl={data.identity.portraitUrl} />
+        <PortraitBand portraitUrl="/images/landscape.png" />
         <FieldNotesAbout bio={data.bio} copy={copy} />
         <FieldNotesSkills skills={data.skills.flat} copy={copy} />
         <FieldNotesProjects projects={data.projects} copy={copy} />
