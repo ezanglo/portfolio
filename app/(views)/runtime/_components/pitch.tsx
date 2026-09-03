@@ -15,7 +15,7 @@ export default function RuntimePitch({
     <section id="why" className="mx-auto max-w-[1100px] scroll-mt-16 px-6 py-16 sm:px-14">
       <SectionLabel>{copy.sectionLabels.pitch}</SectionLabel>
       <p className="mb-10 max-w-2xl text-base leading-relaxed text-view-fg-muted">{pitch.intro}</p>
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2">
         {pitch.points.map((point, i) => (
           <div key={point.title} className="rounded-lg border border-view-border bg-view-surface p-5">
             <p className="font-mono text-[11.5px] text-view-accent">{String(i + 1).padStart(2, "0")}</p>

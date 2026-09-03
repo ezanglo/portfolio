@@ -40,6 +40,13 @@ export default function CorporateProcess({
           </li>
         ))}
       </ol>
+
+      <div className="mt-6 rounded-xl border border-view-border bg-view-accent-soft p-5">
+        <h3 className="text-[13px] font-bold uppercase tracking-wide text-view-accent">
+          {process.note.title}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-view-fg-muted">{process.note.body}</p>
+      </div>
     </section>
   );
 }

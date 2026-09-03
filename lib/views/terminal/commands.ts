@@ -72,6 +72,9 @@ export function buildTerminalProgram(data: PortfolioData): TerminalProgram {
       const tools = step.tools.length > 0 ? `\n      tools: ${step.tools.map((t) => t.name).join(", ")}` : "";
       return `  ${String(i + 1).padStart(2, "0")}. ${step.label} — ${step.description}${tools}`;
     }),
+    "",
+    `${process.note.title}:`,
+    `  ${process.note.body}`,
   ].join("\n");
 
   const whyText = [

@@ -68,11 +68,23 @@ export function buildKnowledge(data: PortfolioData): KnowledgeEntry[] {
     {
       id: "process",
       priority: 3,
-      phrases: ["how do you work", "how does he work", "his process", "your process", "how do you build", "how does he build"],
-      words: ["process", "workflow", "approach", "methodology", "ship", "shipping"],
+      phrases: [
+        "how do you work",
+        "how does he work",
+        "his process",
+        "your process",
+        "how do you build",
+        "how does he build",
+        "ai agents",
+        "coding agents",
+        "use claude",
+        "with claude",
+        "claude code",
+      ],
+      words: ["process", "workflow", "approach", "methodology", "ship", "shipping", "agent", "agents", "agentic", "claude", "cursor", "copilot"],
       text: `${first} works in short, verifiable loops: ${process.steps
         .map((s) => s.label)
-        .join(" → ")}. ${process.intro}`,
+        .join(" → ")}. ${process.note.title}: ${process.note.body}`,
     },
     {
       id: "why-hire",

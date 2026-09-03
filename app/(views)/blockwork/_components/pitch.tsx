@@ -17,7 +17,7 @@ export default function BlockworkPitch({
       <p className="mb-6 max-w-2xl text-sm font-medium leading-relaxed text-view-fg-muted">
         {pitch.intro}
       </p>
-      <div className="grid grid-cols-1 border-t-[3px] border-view-fg sm:grid-cols-3 sm:border-l-[3px]">
+      <div className="grid grid-cols-1 border-t-[3px] border-view-fg sm:grid-cols-2 sm:border-l-[3px]">
         {pitch.points.map((point) => (
           <div key={point.title} className="border-b-[3px] border-r-[3px] border-view-fg p-5">
             <h3 className="text-base font-black uppercase text-view-fg">{point.title}</h3>

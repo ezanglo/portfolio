@@ -42,6 +42,11 @@ export default function BlockworkProcess({
           </li>
         ))}
       </ol>
+
+      <div className="mt-6 border-[3px] border-view-fg bg-view-accent p-5 text-view-accent-fg">
+        <h3 className="text-sm font-black uppercase">{process.note.title}</h3>
+        <p className="mt-2 text-sm font-medium leading-relaxed">{process.note.body}</p>
+      </div>
     </section>
   );
 }

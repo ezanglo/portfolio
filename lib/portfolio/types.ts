@@ -94,9 +94,16 @@ export interface ProcessStep {
   tools: ProcessTool[]
 }
 
+/** A callout attached to the process — currently how AI coding agents run inside the loop. */
+export interface ProcessNote {
+  title: string
+  body: string
+}
+
 export interface PortfolioProcess {
   intro: string
   steps: ProcessStep[]
+  note: ProcessNote
 }
 
 /** One "Why hire me" selling point. */

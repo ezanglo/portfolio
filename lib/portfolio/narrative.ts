@@ -1,5 +1,5 @@
 import type { SiteConfig } from '@/payload-types'
-import type { PitchPoint, PortfolioPitch, PortfolioProcess, ProcessStep } from './types'
+import type { PitchPoint, PortfolioPitch, PortfolioProcess, ProcessNote, ProcessStep } from './types'
 
 /**
  * The "How I work" process flow and the "Why hire me" pitch, shared by every view.
@@ -44,6 +44,13 @@ export const FALLBACK_PROCESS_STEPS: ProcessStep[] = [
   },
 ]
 
+/** How AI coding agents run inside the process above — the "ship faster, solve better" story. */
+export const FALLBACK_PROCESS_NOTE: ProcessNote = {
+  title: 'Working with AI agents',
+  body:
+    'The loop above runs with coding agents inside it. I drive Claude and Claude Code through the mechanical work — scaffolding, refactors, test coverage, hunting regressions, mapping an unfamiliar codebase — so the hours go to scoping, architecture, and the decisions that need judgment. The agent works in small, reviewable diffs; I stay accountable for what ships. This site was built this way.',
+}
+
 export const FALLBACK_PITCH_INTRO =
   'A single person who can take a mobile app from idea to app store, and wire real AI capability into it along the way, not a hand-off between three specialists.'
 
@@ -63,6 +70,11 @@ export const FALLBACK_PITCH_POINTS: PitchPoint[] = [
     description:
       'Small, reviewable slices shipped daily, backed by real device testing before anything reaches production.',
   },
+  {
+    title: 'AI agents in how I ship',
+    description:
+      'Claude and coding agents are part of my real workflow, not a demo. I use them to clear the mechanical work fast and to pressure-test the hard calls — more shipped per week, fewer regressions, held to the same review bar as anything I write by hand.',
+  },
 ]
 
 export function buildProcess(siteConfig: SiteConfig | null): PortfolioProcess {
@@ -75,7 +87,7 @@ export function buildProcess(siteConfig: SiteConfig | null): PortfolioProcess {
           tools: (s.tools ?? []).map((t) => ({ name: t.name, iconSlug: t.iconSlug })),
         }))
       : FALLBACK_PROCESS_STEPS
-  return { intro: howIWork?.intro || FALLBACK_PROCESS_INTRO, steps }
+  return { intro: howIWork?.intro || FALLBACK_PROCESS_INTRO, steps, note: FALLBACK_PROCESS_NOTE }
 }
 
 export function buildPitch(siteConfig: SiteConfig | null): PortfolioPitch {

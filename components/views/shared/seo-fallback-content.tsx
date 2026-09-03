@@ -26,6 +26,8 @@ export default function SeoFallbackContent({ data }: { data: PortfolioData }) {
           </li>
         ))}
       </ul>
+      <h3>{process.note.title}</h3>
+      <p>{process.note.body}</p>
 
       <h2>Why hire me</h2>
       <p>{pitch.intro}</p>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import SectionHeading from "@/components/section-heading";
 import TechIcon from "@/components/tech-icon";
 import { cn } from "@/lib/utils";
-import { FALLBACK_PROCESS_INTRO, FALLBACK_PROCESS_STEPS } from "@/lib/portfolio/narrative";
+import { FALLBACK_PROCESS_INTRO, FALLBACK_PROCESS_NOTE, FALLBACK_PROCESS_STEPS } from "@/lib/portfolio/narrative";
 import { SiteConfig } from "@/payload-types";
 import {
   CompassIcon,
@@ -36,6 +36,7 @@ export default function AboutSection({ siteConfig }: AboutSectionProps) {
   const howIWork = siteConfig?.howIWork;
   const intro = howIWork?.intro || FALLBACK_PROCESS_INTRO;
   const steps = howIWork?.steps && howIWork.steps.length > 0 ? howIWork.steps : FALLBACK_PROCESS_STEPS;
+  const note = FALLBACK_PROCESS_NOTE;
 
   return (
     <motion.section
@@ -128,6 +129,13 @@ export default function AboutSection({ siteConfig }: AboutSectionProps) {
             </div>
           );
         })}
+      </div>
+
+      <div className="mx-auto mt-12 max-w-[42rem] rounded-xl bg-secondary/70 p-6 text-left shadow-md">
+        <h3 className="mb-2 text-sm font-semibold uppercase tracking-wide text-primary">
+          {note.title}
+        </h3>
+        <p className="leading-relaxed text-secondary-foreground/80">{note.body}</p>
       </div>
     </motion.section>
   );

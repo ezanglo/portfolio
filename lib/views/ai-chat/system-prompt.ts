@@ -50,6 +50,7 @@ ${bio.thirdPerson.join(" ")}
 HOW HE WORKS
 ${process.intro}
 ${processList}
+${process.note.title}: ${process.note.body}
 
 WHY HIRE HIM
 ${pitch.intro}

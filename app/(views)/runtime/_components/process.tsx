@@ -31,6 +31,13 @@ export default function RuntimeProcess({
           </li>
         ))}
       </ol>
+
+      <div className="mt-8 border-l-2 border-view-accent bg-view-surface px-5 py-4">
+        <p className="font-mono text-[11.5px] text-view-accent">
+          {`// ${process.note.title.toLowerCase()}`}
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-view-fg-muted">{process.note.body}</p>
+      </div>
     </section>
   );
 }

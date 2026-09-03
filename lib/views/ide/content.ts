@@ -34,6 +34,9 @@ export function renderProcessMd(data: PortfolioData): string {
       if (step.tools.length > 0) lines.push(`    tools: ${step.tools.map((t) => t.name).join(", ")}`);
       return [...lines, ""];
     }),
+    `## ${process.note.title}`,
+    "",
+    process.note.body,
   ]
     .join("\n")
     .trimEnd();

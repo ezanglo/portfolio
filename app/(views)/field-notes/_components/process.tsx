@@ -30,6 +30,11 @@ export default function FieldNotesProcess({
           </li>
         ))}
       </ol>
+
+      <div className="mt-10 border-t border-view-border pt-6">
+        <h3 className="font-serif text-lg text-view-fg">{process.note.title}</h3>
+        <p className="mt-2 text-[15px] leading-relaxed text-view-fg-muted">{process.note.body}</p>
+      </div>
     </section>
   );
 }
