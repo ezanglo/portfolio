@@ -1,8 +1,9 @@
-export default function Caret() {
+export default function Caret({ style }: { style?: React.CSSProperties }) {
   return (
     <span
       aria-hidden
-      className="animate-blink inline-block h-[1.1em] w-[0.55em] translate-y-[2px] bg-[var(--view-caret)]"
+      style={style}
+      className="animate-blink inline-block h-[1.2em] w-[0.55em] translate-y-[3px] bg-[var(--view-caret)]"
     />
   );
 }
