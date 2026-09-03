@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { getNavigationLinks } from "@/lib/queries";
 import { NavigationLink } from "@/payload-types";
 import ViewSwitcher from "@/components/views/shared/view-switcher";
+import SurpriseMeButton from "@/components/views/shared/surprise-me-button";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getPortfolioData } from "@/lib/portfolio/data";
 import PersonJsonLd from "@/components/seo/person-json-ld";
@@ -64,6 +65,10 @@ export default async function RootLayout({
               current="classic"
               extraActions={
                 <>
+                  <SurpriseMeButton
+                    current="classic"
+                    className="border border-border bg-background py-2.5 text-foreground shadow-[0_6px_20px_rgba(0,0,0,.15)] hover:bg-accent"
+                  />
                   <PortfolioCodeButton />
                   <ModeToggle />
                 </>

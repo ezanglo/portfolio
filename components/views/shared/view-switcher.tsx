@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { NEW_VIEW_SLUGS, VIEWS } from "@/lib/views";
 import { useDismissable } from "@/hooks/use-dismissable";
+import { useEmbedded } from "@/hooks/use-embedded";
 import type { ViewSlug } from "@/lib/portfolio/types";
 import { cn } from "@/lib/utils";
 import PreviewCard from "./preview-card";
@@ -24,6 +25,7 @@ export default function ViewSwitcher({
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
+  const embedded = useEmbedded();
 
   function prime() {
     setPrimed(true);
@@ -38,6 +40,10 @@ export default function ViewSwitcher({
     setOpen(false);
     router.push("/");
   }
+
+  // Hidden inside the simulated browser (ai-chat's SitePreview iframe) — the floating
+  // switcher and Surprise me pill are top-level chrome, not part of the previewed page.
+  if (embedded) return null;
 
   return (
     <>
