@@ -24,6 +24,11 @@ export const metadata: Metadata = {
 const REDIRECT_SCRIPT = `(function(){try{
   if (location.search.indexOf('pick=1') !== -1) return;
   var views = ${JSON.stringify(VIEW_SLUGS)};
+  var exclude = new URLSearchParams(location.search).get('exclude');
+  if (exclude) {
+    var excluded = exclude.split(',');
+    views = views.filter(function(v){ return excluded.indexOf(v) === -1; });
+  }
   var pick = views[Math.floor(Math.random() * views.length)];
   location.replace('/' + pick);
 }catch(e){}})();`;

@@ -4,7 +4,9 @@ import { useState } from "react";
 import { ExternalLink, RotateCw } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const PREVIEW_URL = "https://ezraanglo.com";
+// Relative so it resolves to whatever origin this page is served from (localhost in dev,
+// the live domain in production) instead of always hitting the deployed site.
+const PREVIEW_URL = "/?exclude=ai-chat";
 
 export default function SitePreview({ className }: { className?: string }) {
   const [loaded, setLoaded] = useState(false);
