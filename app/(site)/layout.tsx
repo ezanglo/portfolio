@@ -7,7 +7,7 @@ import PersonJsonLd from "@/components/seo/person-json-ld";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site/site-header";
 import { SiteFooter } from "@/components/site/site-footer";
-import SkipLink from "@/components/views/shared/skip-link";
+import SkipLink from "@/components/site/skip-link";
 import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });

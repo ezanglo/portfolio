@@ -3,9 +3,6 @@ import { SITE_URL } from "@/lib/site";
 import { ARTICLES, CASE_STUDIES } from "@/content";
 
 /**
- * Live site only. Every /legacy/* surface is deliberately absent — those pages carry
- * `robots: noindex` and must not compete with the new site for ranking.
- *
  * The site is a one-page portfolio: Services, About, and Contact are homepage sections
  * (`/#services` etc.), not separate canonical URLs, so they aren't listed here.
  *

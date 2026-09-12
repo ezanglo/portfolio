@@ -185,11 +185,6 @@
   /* Two-tier type system (brief §1) — set by next/font in app/(site)/layout.tsx. */
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
-
-  /* Aliases so components/views/shared/skip-link.tsx (shared with /legacy) resolves
-     against this site's single brand accent instead of a per-view theme. */
-  --color-view-accent: var(--brand);
-  --color-view-accent-fg: var(--brand-foreground);
 }
 
 .sr-only-focusable:not(:focus) {
