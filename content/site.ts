@@ -13,7 +13,7 @@ import type { SiteContent } from './types'
 export const SITE: SiteContent = {
   siteName: "Ezra Anglo Portfolio",
   name: "Ezra",
-  // REVIEW: drives Person JSON-LD jobTitle.
+  // REVIEW: drives Person JSON-LD jobTitle. Target: "Senior React Native & Full-Stack Developer".
   role: "Full Stack Developer",
   // REVIEW: "Web, Mobile, Desktop" positioning.
   tagline: "with over 10 years of development experience. I enjoy building applications for Web, Mobile, Desktop. I currently focus on",

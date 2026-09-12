@@ -14,14 +14,14 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Ezra Anglo — Senior React Native Developer",
+  title: "Ezra Anglo — Senior React Native & Full-Stack Developer",
   description:
-    "Senior React Native developer building production-ready iOS and Android applications with React Native, Expo, TypeScript, and full-stack expertise.",
+    "Senior React Native and full-stack developer building production-ready iOS and Android applications with React Native, Expo, TypeScript, and full-stack engineering expertise.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Ezra Anglo — Senior React Native Developer",
+    title: "Ezra Anglo — Senior React Native & Full-Stack Developer",
     description:
-      "Senior React Native developer building production-ready iOS and Android applications with React Native, Expo, TypeScript, and full-stack expertise.",
+      "Senior React Native and full-stack developer building production-ready iOS and Android applications with React Native, Expo, TypeScript, and full-stack engineering expertise.",
     siteName: SITE_NAME,
     type: "website",
     locale: "en_US",
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ezra Anglo — Senior React Native Developer",
+    title: "Ezra Anglo — Senior React Native & Full-Stack Developer",
     description:
-      "Senior React Native developer building production-ready iOS and Android applications with React Native, Expo, TypeScript, and full-stack expertise.",
+      "Senior React Native and full-stack developer building production-ready iOS and Android applications with React Native, Expo, TypeScript, and full-stack engineering expertise.",
   },
 };
 

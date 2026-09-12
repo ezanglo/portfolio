@@ -29,7 +29,7 @@ export default function HomePage() {
             marginBottom: "1rem",
           }}
         >
-          Senior React Native Developer
+          Senior React Native & Full-Stack Developer
         </p>
         <h1 style={{ fontSize: "clamp(1.75rem, 5vw, 2.75rem)", lineHeight: 1.15, margin: "0 0 1rem" }}>
           {SITE.name} Anglo
