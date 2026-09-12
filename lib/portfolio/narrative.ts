@@ -1,11 +1,13 @@
-import type { SiteConfig } from '@/payload-types'
+import type { SiteContent } from '@/content/types'
 import type { PitchPoint, PortfolioPitch, PortfolioProcess, ProcessNote, ProcessStep } from './types'
 
 /**
  * The "How I work" process flow and the "Why hire me" pitch, shared by every view.
- * Classic reads these straight off the CMS; the fallbacks below are the same story
- * classic's about-section.tsx / why-hire-me-section.tsx used to hardcode, kept here
- * so every view tells it identically when the CMS fields are empty.
+ *
+ * The steps and points below are the only source there has ever been: the CMS's
+ * `how_i_work_steps` and `why_hire_me_points` tables were empty in every environment,
+ * so every view has always rendered these constants. Only the intro strings came
+ * from the CMS, and they now live in `content/site.ts`.
  */
 
 export const FALLBACK_PROCESS_INTRO =
@@ -77,24 +79,17 @@ export const FALLBACK_PITCH_POINTS: PitchPoint[] = [
   },
 ]
 
-export function buildProcess(siteConfig: SiteConfig | null): PortfolioProcess {
-  const howIWork = siteConfig?.howIWork
-  const steps =
-    howIWork?.steps && howIWork.steps.length > 0
-      ? howIWork.steps.map((s) => ({
-          label: s.label,
-          description: s.description,
-          tools: (s.tools ?? []).map((t) => ({ name: t.name, iconSlug: t.iconSlug })),
-        }))
-      : FALLBACK_PROCESS_STEPS
-  return { intro: howIWork?.intro || FALLBACK_PROCESS_INTRO, steps, note: FALLBACK_PROCESS_NOTE }
+export function buildProcess(site: SiteContent): PortfolioProcess {
+  return {
+    intro: site.processIntro || FALLBACK_PROCESS_INTRO,
+    steps: FALLBACK_PROCESS_STEPS,
+    note: FALLBACK_PROCESS_NOTE,
+  }
 }
 
-export function buildPitch(siteConfig: SiteConfig | null): PortfolioPitch {
-  const whyHireMe = siteConfig?.whyHireMe
-  const points =
-    whyHireMe?.points && whyHireMe.points.length > 0
-      ? whyHireMe.points.map((p) => ({ title: p.title, description: p.description }))
-      : FALLBACK_PITCH_POINTS
-  return { intro: whyHireMe?.intro || FALLBACK_PITCH_INTRO, points }
+export function buildPitch(site: SiteContent): PortfolioPitch {
+  return {
+    intro: site.pitchIntro || FALLBACK_PITCH_INTRO,
+    points: FALLBACK_PITCH_POINTS,
+  }
 }

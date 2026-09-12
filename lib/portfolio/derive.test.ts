@@ -1,54 +1,68 @@
 import { describe, expect, it } from "vitest";
 import { buildPortfolioData, slugify, initials } from "./derive";
-import type { Experience, Project, Skill } from "@/payload-types";
+import type { Experience, Project, SiteContent, Skill } from "@/content/types";
 
 function makeProject(overrides: Partial<Project> = {}): Project {
   return {
-    id: 1,
+    slug: "finn-ai-ops",
     title: "Finn AI Ops",
     description: "An AI ops tool.",
     type: "web",
-    tags: [{ tag: "ai" }],
-    imageUrl: null,
+    tags: ["ai"],
+    featured: false,
+    personal: false,
+    engine: null,
     liveUrl: null,
     githubUrl: null,
     order: 1,
-    featured: false,
-    aiEngine: null,
-    personal: false,
-    updatedAt: "",
-    createdAt: "",
     ...overrides,
   };
 }
 
 function makeExperience(overrides: Partial<Experience> = {}): Experience {
   return {
-    id: 1,
+    slug: "senior-full-stack-developer-net-net-inc",
     title: "Senior Full Stack Developer",
     company: "NET(net) Inc.",
-    year: "2019 - 2023",
-    date: "January 2019 - December 2023",
+    yearRange: "2019 - 2023",
+    dateRange: "January 2019 - December 2023",
     location: "Remote",
     description: "Built things.",
-    responsibilities: [],
     icon: "code",
+    responsibilities: [],
     order: 1,
-    updatedAt: "",
-    createdAt: "",
     ...overrides,
   };
 }
 
 function makeSkill(overrides: Partial<Skill> = {}): Skill {
+  return { name: "React", category: "frontend", featured: false, order: 1, ...overrides };
+}
+
+function makeSite(overrides: Partial<SiteContent> = {}): SiteContent {
   return {
-    id: 1,
-    name: "React",
-    category: "frontend",
-    order: 1,
-    featured: false,
-    updatedAt: "",
-    createdAt: "",
+    siteName: "Ezra Anglo Portfolio",
+    name: "Ezra",
+    role: "Senior React Native Developer",
+    tagline: "tagline",
+    taglineHighlight: "React Native",
+    email: "test@example.com",
+    linkedinUrl: "https://linkedin.test",
+    githubUrl: "https://github.test",
+    portraitUrl: "/images/ezra-anglo.png",
+    cvUrl: "/cv-ezra-anglo.pdf",
+    mainStack: "React, TypeScript",
+    additionalTech: "Expo",
+    careerStatus: "contract work",
+    bio: [],
+    yearsExperience: "10+",
+    tokenSavings: "92%",
+    enginesOrchestrated: "4",
+    processIntro: "process",
+    pitchIntro: "pitch",
+    aiEngineeringIntro: "ai",
+    copyright: "© 2026",
+    techStack: "Next.js",
     ...overrides,
   };
 }
@@ -58,12 +72,12 @@ describe("buildPortfolioData", () => {
     const data = buildPortfolioData({
       experiences: [makeExperience()],
       projects: [
-        makeProject({ id: 1, type: "web" }),
-        makeProject({ id: 2, type: "mobile", tags: [{ tag: "react native" }] }),
-        makeProject({ id: 3, type: "desktop", personal: true }),
+        makeProject({ slug: "a", type: "web" }),
+        makeProject({ slug: "b", type: "mobile", tags: ["react native"] }),
+        makeProject({ slug: "c", type: "desktop", personal: true }),
       ],
       skills: [makeSkill()],
-      siteConfig: null,
+      site: makeSite(),
     });
 
     for (const project of data.projects) {
@@ -74,9 +88,9 @@ describe("buildPortfolioData", () => {
   it("produces a stable iconBg across repeated calls", () => {
     const input = {
       experiences: [makeExperience()],
-      projects: [makeProject({ id: 1 }), makeProject({ id: 2, title: "WIN(win) AI" })],
+      projects: [makeProject({ slug: "a" }), makeProject({ slug: "b", title: "WIN(win) AI" })],
       skills: [makeSkill()],
-      siteConfig: null,
+      site: makeSite(),
     };
     const first = buildPortfolioData(input);
     const second = buildPortfolioData(input);
@@ -86,9 +100,9 @@ describe("buildPortfolioData", () => {
   it("adds Mobile alongside React Native", () => {
     const data = buildPortfolioData({
       experiences: [],
-      projects: [makeProject({ type: "mobile", tags: [{ tag: "react native" }] })],
+      projects: [makeProject({ type: "mobile", tags: ["react native"] })],
       skills: [],
-      siteConfig: null,
+      site: makeSite(),
     });
     expect(data.projects[0].grid).toContain("React Native");
     expect(data.projects[0].grid).toContain("Mobile");
@@ -97,12 +111,32 @@ describe("buildPortfolioData", () => {
   it("derives PROJECTS SHIPPED from the actual project count, never hardcoded", () => {
     const data = buildPortfolioData({
       experiences: [],
-      projects: [makeProject({ id: 1 }), makeProject({ id: 2 })],
+      projects: [makeProject({ slug: "a" }), makeProject({ slug: "b" })],
       skills: [],
-      siteConfig: null,
+      site: makeSite(),
     });
     const stat = data.stats.find((s) => s.key === "projects");
     expect(stat?.value).toBe("2");
+  });
+
+  it("falls back to the generated bio when content ships an empty one", () => {
+    const data = buildPortfolioData({
+      experiences: [],
+      projects: [],
+      skills: [],
+      site: makeSite({ bio: [] }),
+    });
+    expect(data.bio.long.length).toBeGreaterThan(0);
+  });
+
+  it("uses authored bio paragraphs when present", () => {
+    const data = buildPortfolioData({
+      experiences: [],
+      projects: [],
+      skills: [],
+      site: makeSite({ bio: ["First.", "Second."] }),
+    });
+    expect(data.bio.long).toEqual(["First.", "Second."]);
   });
 });
 

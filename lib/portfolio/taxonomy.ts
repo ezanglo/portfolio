@@ -1,5 +1,5 @@
 import type { EngineKey, GridTag, SkillGroupKey, StoreCategory } from './types'
-import type { Skill } from '@/payload-types'
+import type { SkillCategory } from '@/content/types'
 
 export const ENGINE_LABELS: Record<EngineKey, string> = {
   claude: 'Claude / Orchestration',
@@ -108,7 +108,7 @@ export const SKILL_NAME_GROUP: Record<string, SkillGroupKey> = {
   'prisma': 'backend',
 }
 
-export const SKILL_CATEGORY_GROUP: Record<Skill['category'], SkillGroupKey> = {
+export const SKILL_CATEGORY_GROUP: Record<SkillCategory, SkillGroupKey> = {
   frontend: 'frontend',
   backend: 'backend',
   mobile: 'mobile',
@@ -118,7 +118,7 @@ export const SKILL_CATEGORY_GROUP: Record<Skill['category'], SkillGroupKey> = {
   tools: 'other',
 }
 
-export function skillGroupFor(skill: { name: string; category: Skill['category'] }): SkillGroupKey {
+export function skillGroupFor(skill: { name: string; category: SkillCategory }): SkillGroupKey {
   const override = SKILL_NAME_GROUP[skill.name.toLowerCase()]
   if (override) return override
   return SKILL_CATEGORY_GROUP[skill.category]

@@ -29,7 +29,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     previewIframe: true,
     previewLabel: 'LIGHT / SANS',
     swatch: '#FCFAF6',
-    href: '/corporate',
+    href: '/legacy/corporate',
   },
   runtime: {
     slug: 'runtime',
@@ -43,7 +43,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     previewIframe: true,
     previewLabel: 'DARK / MONO',
     swatch: '#080B12',
-    href: '/runtime',
+    href: '/legacy/runtime',
   },
   'field-notes': {
     slug: 'field-notes',
@@ -57,7 +57,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     previewIframe: true,
     previewLabel: 'WARM / SERIF',
     swatch: '#FAF2E9',
-    href: '/field-notes',
+    href: '/legacy/field-notes',
   },
   blockwork: {
     slug: 'blockwork',
@@ -71,7 +71,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     previewIframe: true,
     previewLabel: 'BOLD / GRID',
     swatch: '#FCFCFC',
-    href: '/blockwork',
+    href: '/legacy/blockwork',
   },
   'ai-chat': {
     slug: 'ai-chat',
@@ -85,7 +85,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     previewIframe: false,
     previewLabel: 'CHAT / GIMMICK',
     swatch: '#0E1218',
-    href: '/ai-chat',
+    href: '/legacy/ai-chat',
   },
   terminal: {
     slug: 'terminal',
@@ -99,7 +99,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     previewIframe: true,
     previewLabel: '$ portfolio --help',
     swatch: '#060606',
-    href: '/terminal',
+    href: '/legacy/terminal',
   },
   ide: {
     slug: 'ide',
@@ -113,7 +113,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     previewIframe: true,
     previewLabel: 'EXPLORER',
     swatch: '#12161D',
-    href: '/ide',
+    href: '/legacy/ide',
   },
   classic: {
     slug: 'classic',
@@ -127,7 +127,7 @@ export const VIEWS: Record<ViewSlug, ViewMeta> = {
     previewIframe: true,
     previewLabel: 'ORIGINAL',
     swatch: '#FFFFFF',
-    href: '/classic',
+    href: '/legacy/classic',
   },
 }
 

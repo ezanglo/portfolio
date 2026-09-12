@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import { NavigationLink } from "@/payload-types";
+import { NavigationLink } from "@/lib/legacy/types";
 
 type SectionName = NavigationLink['name'];
 type ActiveSectionContextProviderProps = {

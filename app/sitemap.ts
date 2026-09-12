@@ -1,34 +1,20 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
-import { getSiteConfig, getProjectsData, getExperiencesData } from "@/lib/queries";
 
-const CANONICAL_PATHS = [
-  "/",
-  "/classic",
-  "/corporate",
-  "/runtime",
-  "/field-notes",
-  "/blockwork",
-  "/terminal",
-  "/ide",
-  "/ai-chat",
-];
+/**
+ * Live site only. Every /legacy/* surface is deliberately absent — those pages carry
+ * `robots: noindex` and must not compete with the new site for ranking.
+ *
+ * `lastModified` used to come from CMS row timestamps. Content is now static TypeScript,
+ * so the build time is the honest answer: the content changed when the code did.
+ */
+const CANONICAL_PATHS = ["/"];
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [siteConfig, projects, experiences] = await Promise.all([
-    getSiteConfig(),
-    getProjectsData(),
-    getExperiencesData(),
-  ]);
-
-  const timestamps = [siteConfig?.updatedAt, ...projects.map((p) => p.updatedAt), ...experiences.map((e) => e.updatedAt)]
-    .filter((value): value is string => Boolean(value))
-    .map((value) => new Date(value).getTime());
-
-  const lastModified = timestamps.length > 0 ? new Date(Math.max(...timestamps)) : undefined;
+export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
 
   return CANONICAL_PATHS.map((path) => ({
     url: new URL(path, SITE_URL).toString(),
-    ...(lastModified ? { lastModified } : {}),
+    lastModified,
   }));
 }

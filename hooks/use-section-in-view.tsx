@@ -1,5 +1,5 @@
 import { useActiveSectionContext } from "@/context/active-section-context";
-import { NavigationLink } from "@/payload-types";
+import { NavigationLink } from "@/lib/legacy/types";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 

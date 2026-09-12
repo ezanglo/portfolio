@@ -1,9 +1,8 @@
-import type { Experience, Project, SiteConfig, Skill } from '@/payload-types'
+import type { Experience, Project, SiteContent, Skill } from '@/content/types'
 import { gridTagsFor, iconBgFor, skillGroupFor, storeCategoryFor } from './taxonomy'
-import { buildBioVariants, lexicalToParagraphs } from './bio'
+import { buildBioVariants } from './bio'
 import { buildPitch, buildProcess } from './narrative'
 import type {
-  EngineKey,
   NormalizedExperience,
   NormalizedProject,
   PortfolioData,
@@ -26,20 +25,12 @@ export function initials(title: string): string {
   return (words[0] ?? '??').slice(0, 2).toUpperCase()
 }
 
-function narrowImageUrl(imageUrl: Project['imageUrl']): string | null {
-  if (imageUrl && typeof imageUrl === 'object') return imageUrl.url ?? null
-  return null
-}
-
 function normalizeProjects(projects: Project[]): NormalizedProject[] {
   const categoryCounters: Record<string, number> = {}
 
-  return projects.map((p) => {
-    const tags = (p.tags ?? []).map((t) => t.tag)
-    const engine = (p.aiEngine ?? null) as EngineKey | null
-    const personal = Boolean(p.personal)
+  return projects.map((p, index) => {
     const store = {
-      category: storeCategoryFor(p.type, engine),
+      category: storeCategoryFor(p.type, p.engine),
       initials: initials(p.title),
       iconBg: '',
     }
@@ -47,27 +38,22 @@ function normalizeProjects(projects: Project[]): NormalizedProject[] {
     categoryCounters[store.category] = idx + 1
     store.iconBg = iconBgFor(store.category, idx)
 
-    const grid = gridTagsFor({ type: p.type, tags, engine, personal })
-
-    if (process.env.NODE_ENV !== 'production' && !engine) {
-      console.warn(`[portfolio] project "${p.title}" has no aiEngine set`)
-    }
-
     return {
-      id: p.id,
-      slug: slugify(p.title),
+      // Stable synthetic id: content is a static ordered array, so position is the identity.
+      id: index + 1,
+      slug: p.slug,
       title: p.title,
       description: p.description,
       type: p.type,
-      tags,
-      featured: Boolean(p.featured),
-      liveUrl: p.liveUrl ?? null,
-      githubUrl: p.githubUrl ?? null,
-      imageUrl: narrowImageUrl(p.imageUrl),
-      personal,
-      engine,
+      tags: p.tags,
+      featured: p.featured,
+      liveUrl: p.liveUrl,
+      githubUrl: p.githubUrl,
+      imageUrl: null,
+      personal: p.personal,
+      engine: p.engine,
       store,
-      grid,
+      grid: gridTagsFor({ type: p.type, tags: p.tags, engine: p.engine, personal: p.personal }),
     }
   })
 }
@@ -81,19 +67,19 @@ function parseYearRange(yearRange: string): { dateStart: string; dateEnd: string
 }
 
 function normalizeExperience(experiences: Experience[]): NormalizedExperience[] {
-  return experiences.map((e) => {
-    const { dateStart, dateEnd } = parseYearRange(e.year)
+  return experiences.map((e, index) => {
+    const { dateStart, dateEnd } = parseYearRange(e.yearRange)
     return {
-      id: e.id,
-      slug: slugify(`${e.title}-${e.company}`),
+      id: index + 1,
+      slug: e.slug,
       title: e.title,
       company: e.company,
       location: e.location,
       dateStart,
       dateEnd,
-      yearRange: e.year,
+      yearRange: e.yearRange,
       description: e.description,
-      responsibilities: (e.responsibilities ?? []).map((r) => r.responsibility),
+      responsibilities: e.responsibilities,
     }
   })
 }
@@ -118,58 +104,45 @@ export function buildPortfolioData(input: {
   experiences: Experience[]
   projects: Project[]
   skills: Skill[]
-  siteConfig: SiteConfig | null
+  site: SiteContent
 }): PortfolioData {
-  const { experiences, projects, skills, siteConfig } = input
-
-  const name = siteConfig?.hero?.name || 'Ezra Anglo'
-  const yearsExperience = siteConfig?.stats?.yearsExperience || '10+'
+  const { experiences, projects, skills, site } = input
 
   const identity = {
-    name,
-    role: siteConfig?.hero?.title || 'Full-stack developer',
-    yearsExperience,
-    email: siteConfig?.contact?.email || 'dev.ezraanglo@gmail.com',
-    linkedinUrl: siteConfig?.hero?.linkedinUrl || 'https://www.linkedin.com/in/ezraanglo',
-    githubUrl: siteConfig?.hero?.githubUrl || 'https://www.github.com/ezanglo',
-    cvUrl: siteConfig?.hero?.cvDownloadUrl || '',
-    initials: initials(name),
-    portraitUrl: siteConfig?.hero?.photo || null,
-    siteName: siteConfig?.siteName || 'Ezra Anglo Portfolio',
-    copyrightText: siteConfig?.footer?.copyrightText || `© ${new Date().getFullYear()} ${name}. All rights reserved.`,
-    techStackDescription: siteConfig?.footer?.techStackDescription || '',
-    mainStack: siteConfig?.about?.mainStack || 'React, Typescript, PostgreSQL and PHP',
-    additionalTech: siteConfig?.about?.additionalTech || 'TailwindCSS, .NET, Prisma, and React Native',
-    careerStatus: siteConfig?.about?.careerStatus || 'full-time position as a full-stack developer',
+    name: site.name,
+    role: site.role,
+    yearsExperience: site.yearsExperience,
+    email: site.email,
+    linkedinUrl: site.linkedinUrl,
+    githubUrl: site.githubUrl,
+    cvUrl: site.cvUrl,
+    initials: initials(site.name),
+    portraitUrl: site.portraitUrl,
+    siteName: site.siteName,
+    copyrightText: site.copyright,
+    techStackDescription: site.techStack,
+    mainStack: site.mainStack,
+    additionalTech: site.additionalTech,
+    careerStatus: site.careerStatus,
   }
 
   const bio = buildBioVariants({
-    name,
-    yearsExperience,
-    mainStack: identity.mainStack,
-    additionalTech: identity.additionalTech,
-    careerStatus: identity.careerStatus,
-    longParagraphs: lexicalToParagraphs(siteConfig?.about?.description),
+    name: site.name,
+    yearsExperience: site.yearsExperience,
+    mainStack: site.mainStack,
+    additionalTech: site.additionalTech,
+    careerStatus: site.careerStatus,
+    longParagraphs: site.bio,
   })
 
   const normalizedProjects = normalizeProjects(projects)
   const normalizedExperience = normalizeExperience(experiences)
 
   const stats = [
-    { key: 'years', value: `${yearsExperience}`, label: 'YEARS EXPERIENCE', derived: false },
+    { key: 'years', value: site.yearsExperience, label: 'YEARS EXPERIENCE', derived: false },
     { key: 'projects', value: String(normalizedProjects.length), label: 'PROJECTS SHIPPED', derived: true },
-    {
-      key: 'token-savings',
-      value: siteConfig?.stats?.tokenSavings || '92%',
-      label: 'TOKEN COST REDUCTION',
-      derived: false,
-    },
-    {
-      key: 'engines',
-      value: siteConfig?.stats?.enginesOrchestrated || '4',
-      label: 'AI ENGINES ORCHESTRATED',
-      derived: false,
-    },
+    { key: 'token-savings', value: site.tokenSavings, label: 'TOKEN COST REDUCTION', derived: false },
+    { key: 'engines', value: site.enginesOrchestrated, label: 'AI ENGINES ORCHESTRATED', derived: false },
   ]
 
   return {
@@ -179,7 +152,7 @@ export function buildPortfolioData(input: {
     projects: normalizedProjects,
     experience: normalizedExperience,
     stats,
-    process: buildProcess(siteConfig),
-    pitch: buildPitch(siteConfig),
+    process: buildProcess(site),
+    pitch: buildPitch(site),
   }
 }
