@@ -18,13 +18,17 @@ export const PROJECTS: Project[] = [
     slug: "win-win-ai",
     title: "WIN(win) AI",
     description: "AI-enabled chat application for mobile and web, built for internal use at NET(net) using their own data as the knowledge base.",
-    platform: "mobile",
-    categories: ["Mobile", "AI"],
-    // No stack tags were ever recorded for this project — can't confirm React Native.
+    // Merged 2026-09-13 with a since-removed duplicate CMS entry ("AI Persona Chat Bot") that
+    // was the same project recorded a second time — this entry's own stack was never recorded,
+    // so the stack/platform/AI-platform fields below are the duplicate's, kept as the real facts.
+    platform: "web",
+    categories: ["Web", "AI", "Full-Stack"],
     mobileFramework: null,
-    aiPlatform: "claude",
-    tags: [],
-    featured: true,
+    aiPlatform: "vertex",
+    tags: ["NextJS","ReactJS","Prisma","Clerk","Vercel","Generative AI","Vertex AI"],
+    // Not actually a featured, portfolio-highlight project (2026-09-13 correction) — internal
+    // client tooling, not one of the stronger/more current pieces to lead with.
+    featured: false,
     personal: false,
     repoStatus: "unspecified",
     liveUrl: "https://ai.winwinit.com/",
@@ -49,7 +53,11 @@ export const PROJECTS: Project[] = [
     githubUrl: null,
     images: [],
     logoUrl: "/images/opic-icon.png",
-    order: 2,
+    // `order` values below 4 in this file are the /work display order; this one was bumped to
+    // 3 (2026-09-13) only to set the resume's featured-project sequence (Resiboo, Stratos
+    // Command, OPIC, Finn AI) — `order` isn't otherwise read for sorting anywhere in the app,
+    // so this doesn't move OPIC's position on /work, which follows this array's literal order.
+    order: 3,
   },
   {
     slug: "saas-platform-mobile-application",
@@ -60,14 +68,15 @@ export const PROJECTS: Project[] = [
     mobileFramework: "react-native",
     aiPlatform: null,
     tags: ["React Native","PHP","Symfony","api-platform","PostgreSQL","MongoDB"],
-    featured: true,
+    // Not one of the resume's featured projects (2026-09-13 correction).
+    featured: false,
     personal: false,
     repoStatus: "unspecified",
     liveUrl: null,
     githubUrl: null,
     images: [],
     logoUrl: null,
-    order: 3,
+    order: 2,
   },
   {
     slug: "reseebo",
@@ -86,7 +95,9 @@ export const PROJECTS: Project[] = [
     githubUrl: null,
     images: [],
     logoUrl: "/images/resiboo-icon.png",
-    order: 4,
+    // Bumped to 1 (2026-09-13) — first in the resume's featured-project order. See the note on
+    // `opic-nightlife-app` above.
+    order: 1,
   },
   {
     slug: "finn-ai-ops",
@@ -104,27 +115,9 @@ export const PROJECTS: Project[] = [
     githubUrl: null,
     images: [],
     logoUrl: "/images/finn-icon.png",
-    order: 5,
-  },
-  {
-    slug: "ai-persona-chat-bot",
-    title: "AI Persona Chat Bot",
-    description: "An AI persona chat bot for topic-specific conversations, built solo with Next.js and generative AI.",
-    // Was "mobile" + featured in the CMS; the stack (NextJS, ReactJS, Prisma, Clerk,
-    // Vercel, Generative AI, Vertex AI) is a web app, not React Native.
-    platform: "web",
-    categories: ["Web", "AI", "Full-Stack"],
-    mobileFramework: null,
-    aiPlatform: "vertex",
-    tags: ["NextJS","ReactJS","Prisma","Clerk","Vercel","Generative AI","Vertex AI"],
-    featured: false,
-    personal: false,
-    repoStatus: "unspecified",
-    liveUrl: null,
-    githubUrl: null,
-    images: [],
-    logoUrl: null,
-    order: 6,
+    // Bumped to 4 (2026-09-13) — last in the resume's featured-project order. See the note on
+    // `opic-nightlife-app` above.
+    order: 4,
   },
   {
     slug: "yuvee",
@@ -329,7 +322,9 @@ export const PROJECTS: Project[] = [
     githubUrl: null,
     images: [],
     logoUrl: "/images/stratos-icon.png",
-    order: 17,
+    // Bumped to 2 (2026-09-13) — second in the resume's featured-project order. See the note
+    // on `opic-nightlife-app` above.
+    order: 2,
   },
 ]
 
