@@ -2,7 +2,8 @@ import Link from "next/link";
 import { NAV_LINKS } from "@/content/navigation";
 import { Container } from "./container";
 
-/** §19/§30 footer — nav, contact, GitHub, CV, and the one discreet `/legacy` link. */
+/** Footer — primary nav mirror, plus the utility links that don't have a home in the brief's
+ * fixed 7-item nav (long-form writing, the archived design). */
 export function SiteFooter({
   githubUrl,
   email,
@@ -27,17 +28,20 @@ export function SiteFooter({
               GitHub
             </a>
             <a href={cvUrl} target="_blank" rel="noreferrer" className="hover:text-foreground">
-              CV
+              Resume
             </a>
           </div>
         </div>
 
         <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-2">
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className="text-muted-foreground hover:text-foreground">
+            <a key={link.href} href={link.href} className="text-muted-foreground hover:text-foreground">
               {link.label}
-            </Link>
+            </a>
           ))}
+          <Link href="/insights" className="text-muted-foreground hover:text-foreground">
+            Insights
+          </Link>
           <Link href="/legacy" className="text-muted-foreground/60 hover:text-foreground">
             Previous portfolio
           </Link>

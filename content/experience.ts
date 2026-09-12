@@ -104,3 +104,11 @@ export const EXPERIENCE: Experience[] = [
     order: 8,
   },
 ]
+
+/** Design-brief split (§ Experience / § Education): the CMS export modeled the one formal
+ * education record as an 8th "experience" row (`icon: "graduation"`). `EXPERIENCE` above is
+ * kept intact — the frozen `/legacy` pipeline (`lib/portfolio/data.ts`) reads it as one list —
+ * these two are additive views over the same array for the redesigned homepage's separate
+ * Experience and Education timelines. */
+export const WORK_EXPERIENCE: Experience[] = EXPERIENCE.filter((e) => e.icon !== "graduation")
+export const EDUCATION: Experience[] = EXPERIENCE.filter((e) => e.icon === "graduation")

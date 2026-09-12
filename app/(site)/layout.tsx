@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { SITE } from "@/content";
@@ -10,7 +10,12 @@ import { SiteFooter } from "@/components/site/site-footer";
 import SkipLink from "@/components/views/shared/skip-link";
 import { Toaster } from "@/components/ui/sonner";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -47,11 +52,11 @@ export default function SiteLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <PersonJsonLd identity={SITE} />
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} disableTransitionOnChange>
           <SkipLink />
-          <SiteHeader name={SITE.name} />
+          <SiteHeader name={SITE.name} cvUrl={SITE.cvUrl} />
           <main id="main">{children}</main>
           <SiteFooter
             githubUrl={SITE.githubUrl}

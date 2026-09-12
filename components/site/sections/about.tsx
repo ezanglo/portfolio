@@ -1,103 +1,110 @@
 import Image from "next/image";
-import { Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/site/container";
 import { Section } from "@/components/site/section";
 import { SectionHeading } from "@/components/site/section-heading";
-import { TechBadgeList } from "@/components/site/tech-badge";
-import { Timeline } from "@/components/ui/timeline";
-import { Button } from "@/components/ui/button";
-import type { Experience, SiteContent, Skill } from "@/content/types";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import WorldMap from "@/components/ui/world-map";
+import type { SiteContent } from "@/content/types";
 
-const SKILL_CATEGORIES: { label: string; category: Skill["category"] }[] = [
-  { label: "Mobile", category: "mobile" },
-  { label: "Frontend", category: "frontend" },
-  { label: "Backend", category: "backend" },
-  { label: "Database", category: "database" },
-  { label: "Cloud", category: "cloud" },
-  { label: "AI Integrations", category: "integrations" },
-  { label: "Tools", category: "tools" },
+/** Real remote engagements from `content/experience.ts` — Stream.TV (Cayman) and NET(net)
+ * Inc. (Kentucky) — not invented client locations. */
+const REMOTE_WORK_DOTS = [
+  {
+    start: { lat: 14.5995, lng: 120.9842, label: "Philippines" },
+    end: { lat: 19.3133, lng: -81.2546, label: "Cayman Islands" },
+  },
+  {
+    start: { lat: 14.5995, lng: 120.9842, label: "Philippines" },
+    end: { lat: 38.2098, lng: -84.5586, label: "Kentucky, USA" },
+  },
 ];
 
-/** brief §20 — folded into the one-page portfolio. Skips "why full-stack matters" and "how I
- * work" here since `FullStackDifferentiator` and `Process`/`AiSection` already cover that
- * ground earlier on the same page — no need to say it twice. */
-export function About({ site, experience, skills }: { site: SiteContent; experience: Experience[]; skills: Skill[] }) {
-  const timelineData = experience.map((e) => ({
-    title: e.yearRange,
-    content: (
-      <div className="pb-4">
-        <p className="font-semibold">{e.title}</p>
-        <p className="text-(length:--text-small) text-muted-foreground">
-          {e.company} — {e.location}
-        </p>
-        <p className="mt-2 text-(length:--text-small) text-muted-foreground">{e.description}</p>
-      </div>
-    ),
-  }));
+export function About({
+  site,
+  projectCount,
+  companyCount,
+}: {
+  site: SiteContent;
+  projectCount: number;
+  companyCount: number;
+}) {
+  const stats = [
+    { value: site.yearsExperience, label: "years of experience" },
+    { value: "iOS + Android", label: "core platforms" },
+    { value: String(projectCount), label: "real projects worked on" },
+    { value: String(companyCount), label: "companies & clients worked with" },
+  ];
 
   return (
-    <Section id="about" className="border-t border-border">
-      <Container size="narrow">
-        <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center">
-          <Image
-            src={site.portraitUrl}
-            alt={site.name}
-            width={112}
-            height={112}
-            className="rounded-full object-cover"
-          />
-          <SectionHeading eyebrow="About" heading="Who I am" description={site.role} />
-        </div>
+    <Section id="about" size="lg" className="border-t border-border">
+      <Container>
+        <SectionHeading
+          eyebrow="About"
+          heading="A little about me."
+          description="I'm a mobile developer who moved into React Native through a full-stack background, not the other way around."
+        />
 
-        <div className="mt-10 space-y-6 text-(length:--text-body) leading-(--text-body-lh) text-muted-foreground">
+        <div className="mt-12 grid gap-12 lg:grid-cols-[17rem_1fr] lg:items-start">
           <div>
-            <h3 className="text-(length:--text-h3) font-semibold text-foreground">My background</h3>
-            <p className="mt-2">
-              {site.yearsExperience} years of software engineering experience across web, mobile, backend, cloud,
-              and AI. {site.bio[0]}
-            </p>
+            <div className="overflow-hidden rounded-2xl border border-border bg-card">
+              <Image
+                src={site.portraitUrl}
+                alt={`${site.name} Anglo`}
+                width={400}
+                height={500}
+                className="aspect-4/5 w-full object-cover"
+              />
+            </div>
+            <div className="mt-3.5 text-center">
+              <p className="font-display text-(length:--text-small) font-semibold">{site.name} Anglo</p>
+              <p className="text-(length:--text-caption) text-muted-foreground">{site.role}</p>
+              <p className="text-(length:--text-caption) text-muted-foreground">Philippines</p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-(length:--text-h3) font-semibold text-foreground">What I focus on today</h3>
-            <p className="mt-2">{site.bio[1]}</p>
-          </div>
-        </div>
 
-        <div className="mt-10">
-          <h3 className="text-(length:--text-h3) font-semibold">Skills</h3>
-          <div className="mt-4 space-y-5">
-            {SKILL_CATEGORIES.map(({ label, category }) => {
-              const names = skills.filter((s) => s.category === category).map((s) => s.name);
-              if (names.length === 0) return null;
-              return (
-                <div key={category}>
-                  <p className="text-(length:--text-small) font-semibold">{label}</p>
-                  <div className="mt-2">
-                    <TechBadgeList items={names} />
-                  </div>
+          <div>
+            <h3 className="font-display text-(length:--text-h3) font-semibold">
+              I care about how an app works and how it feels to use.
+            </h3>
+            <div className="mt-4 space-y-4 text-(length:--text-body) leading-(--text-body-lh) text-muted-foreground text-pretty">
+              {site.bio.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+
+            <div className="mt-7 flex flex-wrap gap-9 border-t border-b border-border py-5">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="font-display text-lg font-semibold">{stat.value}</p>
+                  <p className="text-(length:--text-caption) text-muted-foreground">{stat.label}</p>
                 </div>
-              );
-            })}
-          </div>
-          <p className="mt-6 text-(length:--text-small) text-muted-foreground">
-            Most of the work below was built for companies and clients, so not every repository is public — see
-            individual project pages for links where they exist.
-          </p>
-          <Button variant="outline" className="mt-4" asChild>
-            <a href={site.cvUrl} target="_blank" rel="noreferrer">
-              <Download className="size-4" />
-              Download CV
+              ))}
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-card px-5 py-4">
+              <div className="flex items-center gap-2.5 text-(length:--text-small)">
+                <span className="size-2 rounded-full bg-brand" />
+                Currently: Freelance Software Engineer, Remote.
+              </div>
+            </div>
+
+            <a
+              href="#experience"
+              className="mt-5 inline-flex items-center gap-1.5 text-(length:--text-small) font-semibold text-brand"
+            >
+              See my experience
+              <ArrowRight className="size-3.5" />
             </a>
-          </Button>
+          </div>
+        </div>
+
+        <div className="relative mt-12 overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-8">
+          <GlowingEffect proximity={90} spread={35} borderWidth={2} />
+          <p className="mb-4 text-(length:--text-small) font-semibold">Based in the Philippines, working globally.</p>
+          <WorldMap dots={REMOTE_WORK_DOTS} lineColor="#f0924f" />
         </div>
       </Container>
-
-      <div className="mt-6">
-        <Container>
-          <SectionHeading eyebrow="Experience" heading="A concise timeline." align="center" className="mx-auto" />
-        </Container>
-        <Timeline data={timelineData} />
-      </div>
     </Section>
   );
 }

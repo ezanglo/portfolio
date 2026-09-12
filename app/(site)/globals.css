@@ -4,37 +4,38 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system — docs/build-plan.md §4 / brief §36.
- * shadcn's semantic tokens (neutral, new-york) plus one layer on top: a type scale,
- * container widths, section rhythm, a single brand accent, and a reduced-motion block that
- * every Aceternity component is expected to respect.
+ * Design system — redesigned against docs/Portfolio design brief (2026-09-12): dark-tech
+ * editorial language, one amber/burnt-orange brand accent, Space Grotesk display + Inter body.
+ * shadcn's semantic tokens (neutral, new-york) plus a layer on top: a type scale, container
+ * widths, section rhythm, and a reduced-motion block every Aceternity component respects.
  */
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --radius: 1rem;
+  --background: #fafaf8;
+  --foreground: #17130f;
+  --card: #fdfcfa;
+  --card-foreground: #17130f;
+  --popover: #fdfcfa;
+  --popover-foreground: #17130f;
+  --primary: #17130f;
+  --primary-foreground: #fafaf8;
+  --secondary: #f1efea;
+  --secondary-foreground: #17130f;
+  --muted: #f1efea;
+  --muted-foreground: #6b6b6f;
+  --accent: #f1efea;
+  --accent-foreground: #17130f;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.556 0.02 260);
+  --border: #e5e2db;
+  --input: #e5e2db;
+  --ring: #f0924f80;
 
-  /* Single brand accent — CTAs, eyebrows, active nav. No gradient headline (brief §23). */
-  --brand: oklch(0.546 0.211 262.9);
-  --brand-foreground: oklch(0.985 0 0);
+  /* Single brand accent — CTAs, eyebrows, active nav, timeline nodes. One warm burnt-orange,
+     identical in both themes so the brand mark never shifts (design brief §1). */
+  --brand: #f0924f;
+  --brand-foreground: #17130f;
 
   /* Type scale — paired line-height/tracking. Typography + spacing discipline over motion. */
   --text-display: 3.25rem;
@@ -72,76 +73,76 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
+    --background: #0a0a0b;
+    --foreground: #f2f1ef;
+    --card: #141416;
+    --card-foreground: #f2f1ef;
+    --popover: #141416;
+    --popover-foreground: #f2f1ef;
+    --primary: #f2f1ef;
+    --primary-foreground: #17130f;
+    --secondary: #1e1e20;
+    --secondary-foreground: #f2f1ef;
+    --muted: #18181a;
+    --muted-foreground: #9a9a9e;
+    --accent: #1e1e20;
+    --accent-foreground: #f2f1ef;
     --destructive: oklch(0.704 0.191 22.216);
     --destructive-foreground: oklch(0.985 0 0);
-    --border: oklch(1 0 0 / 12%);
-    --input: oklch(1 0 0 / 18%);
-    --ring: oklch(0.556 0.02 260);
-    --brand: oklch(0.707 0.165 254.6);
-    --brand-foreground: oklch(0.145 0 0);
+    --border: #262626;
+    --input: #2a2a2d;
+    --ring: #f0924f80;
+    --brand: #f0924f;
+    --brand-foreground: #17130f;
   }
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: #0a0a0b;
+  --foreground: #f2f1ef;
+  --card: #141416;
+  --card-foreground: #f2f1ef;
+  --popover: #141416;
+  --popover-foreground: #f2f1ef;
+  --primary: #f2f1ef;
+  --primary-foreground: #17130f;
+  --secondary: #1e1e20;
+  --secondary-foreground: #f2f1ef;
+  --muted: #18181a;
+  --muted-foreground: #9a9a9e;
+  --accent: #1e1e20;
+  --accent-foreground: #f2f1ef;
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 18%);
-  --ring: oklch(0.556 0.02 260);
-  --brand: oklch(0.707 0.165 254.6);
-  --brand-foreground: oklch(0.145 0 0);
+  --border: #262626;
+  --input: #2a2a2d;
+  --ring: #f0924f80;
+  --brand: #f0924f;
+  --brand-foreground: #17130f;
 }
 
 :root[data-theme="light"] {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: #fafaf8;
+  --foreground: #17130f;
+  --card: #fdfcfa;
+  --card-foreground: #17130f;
+  --popover: #fdfcfa;
+  --popover-foreground: #17130f;
+  --primary: #17130f;
+  --primary-foreground: #fafaf8;
+  --secondary: #f1efea;
+  --secondary-foreground: #17130f;
+  --muted: #f1efea;
+  --muted-foreground: #6b6b6f;
+  --accent: #f1efea;
+  --accent-foreground: #17130f;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.556 0.02 260);
-  --brand: oklch(0.546 0.211 262.9);
-  --brand-foreground: oklch(0.985 0 0);
+  --border: #e5e2db;
+  --input: #e5e2db;
+  --ring: #f0924f80;
+  --brand: #f0924f;
+  --brand-foreground: #17130f;
 }
 
 @theme inline {
@@ -179,6 +180,10 @@
   --font-size-body: var(--text-body);
   --font-size-small: var(--text-small);
   --font-size-caption: var(--text-caption);
+
+  /* Two-tier type system (brief §1) — set by next/font in app/(site)/layout.tsx. */
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
 
   /* Aliases so components/views/shared/skip-link.tsx (shared with /legacy) resolves
      against this site's single brand accent instead of a per-view theme. */

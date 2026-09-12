@@ -97,6 +97,8 @@ export interface SiteContent {
   role: string
   /** §3 hero headline. */
   heroHeadline: string
+  /** The emphasized object of "I build ___" under the headline (design brief hero §3). */
+  heroSubline: string
   /** §3 supporting copy, one paragraph. */
   heroCopy: string
   email: string

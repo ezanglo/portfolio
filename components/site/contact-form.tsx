@@ -51,7 +51,7 @@ export function ContactForm() {
         toast.error(getErrorMessage(result.error));
         return;
       }
-      toast.success("Message sent — I'll get back to you soon.");
+      toast.success("Message sent. I'll get back to you soon.");
       form.reset();
     } catch (error) {
       toast.error(getErrorMessage(error));
