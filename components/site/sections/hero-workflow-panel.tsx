@@ -159,7 +159,7 @@ const STAGES: Stage[] = [
           </div>
           <Search aria-hidden className="size-3 text-muted-foreground" />
         </div>
-        <div className="rounded-xl bg-[#14151A] p-2.5 text-white">
+        <div className="rounded-sm bg-[#14151A] p-2.5 text-white">
           <p className="text-[7px] font-semibold tracking-(--text-caption-tracking) text-white/50 uppercase">
             Spend this month &middot; Sept
           </p>
@@ -294,21 +294,21 @@ const STAGES: Stage[] = [
           </p>
           <p className="font-display text-sm font-semibold">Healthy in production</p>
         </div>
-        <div className="flex items-center gap-1.5 rounded-xl bg-secondary/70 p-1.5">
+        <div className="flex items-center gap-1.5 rounded-sm bg-secondary/70 p-1.5">
           <Activity aria-hidden className="size-3.5 shrink-0 text-emerald-400" />
           <div>
             <p className="text-[10px] font-semibold">99.9% crash-free</p>
             <p className="text-[8px] text-muted-foreground">All systems operational</p>
           </div>
         </div>
-        <div className="flex items-center gap-1.5 rounded-xl bg-secondary/70 p-1.5">
+        <div className="flex items-center gap-1.5 rounded-sm bg-secondary/70 p-1.5">
           <span className="relative flex size-2 shrink-0">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-60" />
             <span className="relative inline-flex size-2 rounded-full bg-red-500" />
           </span>
           <p className="text-[8px] text-muted-foreground">Session replay recording &middot; posthog-react-native</p>
         </div>
-        <div className="rounded-xl bg-secondary/70 p-1.5">
+        <div className="rounded-sm bg-secondary/70 p-1.5">
           <p className="text-[7px] font-semibold tracking-(--text-caption-tracking) text-muted-foreground uppercase">
             Sessions &middot; 7 days
           </p>
@@ -318,7 +318,7 @@ const STAGES: Stage[] = [
             ))}
           </div>
         </div>
-        <div className="rounded-xl bg-secondary/70 p-1.5">
+        <div className="rounded-sm bg-secondary/70 p-1.5">
           <p className="text-[7px] font-semibold tracking-(--text-caption-tracking) text-muted-foreground uppercase">
             Version adoption
           </p>
@@ -398,15 +398,15 @@ function MonitorPanel() {
         </span>
       </div>
       <div className="grid grid-cols-2 gap-2.5 p-4 sm:grid-cols-3">
-        <div className="rounded-xl bg-secondary/60 p-3">
+        <div className="rounded-sm bg-secondary/60 p-3">
           <p className="text-(length:--text-caption) text-muted-foreground">Crash-free sessions</p>
           <p className="font-display text-lg font-semibold text-emerald-400">99.9%</p>
         </div>
-        <div className="rounded-xl bg-secondary/60 p-3">
+        <div className="rounded-sm bg-secondary/60 p-3">
           <p className="text-(length:--text-caption) text-muted-foreground">Sessions today</p>
           <p className="font-display text-lg font-semibold">482</p>
         </div>
-        <div className="hidden rounded-xl bg-secondary/60 p-3 sm:block">
+        <div className="hidden rounded-sm bg-secondary/60 p-3 sm:block">
           <p className="text-(length:--text-caption) text-muted-foreground">Autocapture</p>
           <p className="font-display text-lg font-semibold text-brand">On</p>
         </div>
