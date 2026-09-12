@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { buildPortfolioData, slugify, initials } from "./derive";
-import type { Experience, Project, SiteContent, Skill } from "@/content/types";
+import type { Experience, Skill } from "@/content/types";
+import type { LegacySourceProject, LegacySourceSite } from "./types";
 
-function makeProject(overrides: Partial<Project> = {}): Project {
+function makeProject(overrides: Partial<LegacySourceProject> = {}): LegacySourceProject {
   return {
     slug: "finn-ai-ops",
     title: "Finn AI Ops",
@@ -39,7 +40,7 @@ function makeSkill(overrides: Partial<Skill> = {}): Skill {
   return { name: "React", category: "frontend", featured: false, order: 1, ...overrides };
 }
 
-function makeSite(overrides: Partial<SiteContent> = {}): SiteContent {
+function makeSite(overrides: Partial<LegacySourceSite> = {}): LegacySourceSite {
   return {
     siteName: "Ezra Anglo Portfolio",
     name: "Ezra",

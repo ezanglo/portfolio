@@ -1,7 +1,13 @@
 import { SITE_NAME, SITE_URL } from "@/lib/site";
-import type { PortfolioIdentity } from "@/lib/portfolio/types";
 
-export default function PersonJsonLd({ identity }: { identity: PortfolioIdentity }) {
+interface PersonIdentity {
+  name: string;
+  role: string;
+  linkedinUrl: string;
+  githubUrl: string;
+}
+
+export default function PersonJsonLd({ identity }: { identity: PersonIdentity }) {
   const sameAs = [identity.linkedinUrl, identity.githubUrl].filter(Boolean);
 
   const data = {

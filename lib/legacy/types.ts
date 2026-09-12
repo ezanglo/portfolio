@@ -7,20 +7,21 @@
  * be built against these; the live site uses `content/types.ts`.
  */
 
-import type { EngineKey, ExperienceIcon, ProjectType, SkillCategory } from '@/content/types'
+import type { ExperienceIcon, SkillCategory } from '@/content/types'
+import type { LegacyEngineKey, LegacyProjectType } from './strings'
 
 export interface Project {
   id: number
   title: string
   description: string
-  type: ProjectType
+  type: LegacyProjectType
   tags: { tag: string }[] | null
   imageUrl: { url: string | null } | null
   liveUrl: string | null
   githubUrl: string | null
   order: number | null
   featured: boolean | null
-  aiEngine: EngineKey | null
+  aiEngine: LegacyEngineKey | null
   personal: boolean | null
 }
 

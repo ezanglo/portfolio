@@ -8,23 +8,45 @@
 
 import { EXPERIENCE, PROJECTS, SITE, SKILLS } from '@/content'
 import { FALLBACK_PITCH_POINTS, FALLBACK_PROCESS_STEPS } from '@/lib/portfolio/narrative'
+import {
+  LEGACY_ADDITIONAL_TECH,
+  LEGACY_CAREER_STATUS,
+  LEGACY_COPYRIGHT,
+  LEGACY_ENGINES_ORCHESTRATED,
+  LEGACY_MAIN_STACK,
+  LEGACY_PROJECT_CLASSIFICATION,
+  LEGACY_PROJECT_SLUG_ORDER,
+  LEGACY_TAGLINE,
+  LEGACY_TAGLINE_HIGHLIGHT,
+  LEGACY_TECH_STACK_DESCRIPTION,
+  LEGACY_TOKEN_SAVINGS,
+} from './strings'
 import type { Experience, NavigationLink, Project, SiteConfig, Skill } from './types'
 
-export const LEGACY_PROJECTS: Project[] = PROJECTS.map((p, i) => ({
-  id: i + 1,
-  title: p.title,
-  description: p.description,
-  type: p.type,
-  tags: p.tags.map((tag) => ({ tag })),
-  // `media` was empty in every environment; no project ever had an image.
-  imageUrl: null,
-  liveUrl: p.liveUrl,
-  githubUrl: p.githubUrl,
-  order: p.order,
-  featured: p.featured,
-  aiEngine: p.engine,
-  personal: p.personal,
-}))
+const projectsBySlug = new Map(PROJECTS.map((p) => [p.slug, p]))
+
+export const LEGACY_PROJECTS: Project[] = LEGACY_PROJECT_SLUG_ORDER.map((slug, i) => {
+  const p = projectsBySlug.get(slug)
+  const classification = LEGACY_PROJECT_CLASSIFICATION[slug]
+  if (!p || !classification) {
+    throw new Error(`Legacy project classification missing for slug "${slug}"`)
+  }
+  return {
+    id: i + 1,
+    title: p.title,
+    description: p.description,
+    type: classification.type,
+    tags: p.tags.map((tag) => ({ tag })),
+    // `media` was empty in every environment; no project ever had an image.
+    imageUrl: null,
+    liveUrl: p.liveUrl,
+    githubUrl: p.githubUrl,
+    order: classification.order,
+    featured: p.featured,
+    aiEngine: classification.engine,
+    personal: p.personal,
+  }
+})
 
 export const LEGACY_EXPERIENCES: Experience[] = EXPERIENCE.map((e, i) => ({
   id: i + 1,
@@ -50,7 +72,7 @@ export const LEGACY_SKILLS: Skill[] = SKILLS.map((s, i) => ({
 /**
  * The old `navigation-links` collection, frozen. These are the exact rows the CMS held —
  * hash links into the single-page classic layout. The live site uses
- * `lib/content/navigation.ts` instead.
+ * `content/navigation.ts` instead.
  */
 export const LEGACY_NAV_LINKS: NavigationLink[] = [
   { name: 'Home', hash: '#home', order: 10, visible: true },
@@ -67,29 +89,31 @@ export const LEGACY_SITE_CONFIG: SiteConfig = {
   hero: {
     photo: SITE.portraitUrl,
     name: SITE.name,
-    title: SITE.role,
-    description: SITE.tagline,
-    descriptionHighlight: SITE.taglineHighlight,
+    // The CMS's original "Full Stack Developer" title and Web/Mobile/Desktop tagline —
+    // content/site.ts now carries the rewritten §1/§3 positioning instead.
+    title: "Full Stack Developer",
+    description: LEGACY_TAGLINE,
+    descriptionHighlight: LEGACY_TAGLINE_HIGHLIGHT,
     cvDownloadUrl: SITE.cvUrl,
     linkedinUrl: SITE.linkedinUrl,
     githubUrl: SITE.githubUrl,
   },
   contact: { email: SITE.email },
   about: {
-    mainStack: SITE.mainStack,
-    additionalTech: SITE.additionalTech,
-    careerStatus: SITE.careerStatus,
+    mainStack: LEGACY_MAIN_STACK,
+    additionalTech: LEGACY_ADDITIONAL_TECH,
+    careerStatus: LEGACY_CAREER_STATUS,
   },
   howIWork: { intro: SITE.processIntro, steps: FALLBACK_PROCESS_STEPS },
   whyHireMe: { intro: SITE.pitchIntro, points: FALLBACK_PITCH_POINTS },
   aiEngineering: { intro: SITE.aiEngineeringIntro },
   stats: {
     yearsExperience: SITE.yearsExperience,
-    tokenSavings: SITE.tokenSavings,
-    enginesOrchestrated: SITE.enginesOrchestrated,
+    tokenSavings: LEGACY_TOKEN_SAVINGS,
+    enginesOrchestrated: LEGACY_ENGINES_ORCHESTRATED,
   },
   footer: {
-    copyrightText: SITE.copyright,
-    techStackDescription: SITE.techStack,
+    copyrightText: LEGACY_COPYRIGHT,
+    techStackDescription: LEGACY_TECH_STACK_DESCRIPTION,
   },
 }

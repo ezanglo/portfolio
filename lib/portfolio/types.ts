@@ -16,6 +16,51 @@ export type StoreCategory = 'AI' | 'Mobile' | 'Web' | 'Desktop'
 
 export type SkillGroupKey = 'core' | 'mobile' | 'ai' | 'cloud' | 'frontend' | 'backend' | 'other'
 
+/**
+ * The flat project/site shape every archived `/legacy/*` view was written against — `type` +
+ * `engine`, not the §2 re-classified `platform`/`categories`/`mobileFramework`/`aiPlatform`
+ * model in `content/types.ts`. `lib/portfolio/data.ts` builds these from the frozen
+ * `lib/legacy/strings.ts` values so the legacy views keep rendering exactly as they did.
+ */
+export interface LegacySourceProject {
+  slug: string
+  title: string
+  description: string
+  type: 'web' | 'mobile' | 'desktop' | 'iot'
+  tags: string[]
+  featured: boolean
+  personal: boolean
+  engine: EngineKey | null
+  liveUrl: string | null
+  githubUrl: string | null
+  order: number | null
+}
+
+export interface LegacySourceSite {
+  siteName: string
+  name: string
+  role: string
+  tagline: string
+  taglineHighlight: string
+  email: string
+  linkedinUrl: string
+  githubUrl: string
+  portraitUrl: string
+  cvUrl: string
+  mainStack: string
+  additionalTech: string
+  careerStatus: string
+  bio: string[]
+  yearsExperience: string
+  tokenSavings: string
+  enginesOrchestrated: string
+  processIntro: string
+  pitchIntro: string
+  aiEngineeringIntro: string
+  copyright: string
+  techStack: string
+}
+
 export interface NormalizedProject {
   id: number
   slug: string

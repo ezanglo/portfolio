@@ -7,7 +7,6 @@ import type { Experience } from './types'
  * entry below has an empty array. The old timeline rendered nothing for it.
  */
 export const EXPERIENCE: Experience[] = [
-  // REVIEW: job-seeking language — reword for the new positioning.
   {
     slug: "freelance-software-engineer-freelance",
     title: "Freelance Software Engineer",
@@ -15,7 +14,7 @@ export const EXPERIENCE: Experience[] = [
     location: "Malolos, Bulacan, PH",
     yearRange: "2024 - Present",
     dateRange: "Sept 2024 - Present",
-    description: "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, PHP and PostgreSQL. I'm open to full-time opportunities.",
+    description: "Working as a freelance full-stack developer. My stack includes React, Next.js, TypeScript, Tailwind, PHP and PostgreSQL.",
     icon: "star",
     responsibilities: [],
     order: 1,

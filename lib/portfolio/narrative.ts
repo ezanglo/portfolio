@@ -1,4 +1,3 @@
-import type { SiteContent } from '@/content/types'
 import type { PitchPoint, PortfolioPitch, PortfolioProcess, ProcessNote, ProcessStep } from './types'
 
 /**
@@ -79,7 +78,7 @@ export const FALLBACK_PITCH_POINTS: PitchPoint[] = [
   },
 ]
 
-export function buildProcess(site: SiteContent): PortfolioProcess {
+export function buildProcess(site: { processIntro: string }): PortfolioProcess {
   return {
     intro: site.processIntro || FALLBACK_PROCESS_INTRO,
     steps: FALLBACK_PROCESS_STEPS,
@@ -87,7 +86,7 @@ export function buildProcess(site: SiteContent): PortfolioProcess {
   }
 }
 
-export function buildPitch(site: SiteContent): PortfolioPitch {
+export function buildPitch(site: { pitchIntro: string }): PortfolioPitch {
   return {
     intro: site.pitchIntro || FALLBACK_PITCH_INTRO,
     points: FALLBACK_PITCH_POINTS,

@@ -1,8 +1,10 @@
-import type { Experience, Project, SiteContent, Skill } from '@/content/types'
+import type { Experience, Skill } from '@/content/types'
 import { gridTagsFor, iconBgFor, skillGroupFor, storeCategoryFor } from './taxonomy'
 import { buildBioVariants } from './bio'
 import { buildPitch, buildProcess } from './narrative'
 import type {
+  LegacySourceProject,
+  LegacySourceSite,
   NormalizedExperience,
   NormalizedProject,
   PortfolioData,
@@ -25,7 +27,7 @@ export function initials(title: string): string {
   return (words[0] ?? '??').slice(0, 2).toUpperCase()
 }
 
-function normalizeProjects(projects: Project[]): NormalizedProject[] {
+function normalizeProjects(projects: LegacySourceProject[]): NormalizedProject[] {
   const categoryCounters: Record<string, number> = {}
 
   return projects.map((p, index) => {
@@ -102,9 +104,9 @@ function groupSkills(skills: Skill[]): Record<SkillGroupKey, string[]> {
 
 export function buildPortfolioData(input: {
   experiences: Experience[]
-  projects: Project[]
+  projects: LegacySourceProject[]
   skills: Skill[]
-  site: SiteContent
+  site: LegacySourceSite
 }): PortfolioData {
   const { experiences, projects, skills, site } = input
 

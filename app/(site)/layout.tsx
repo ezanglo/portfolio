@@ -2,8 +2,13 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
-import { getPortfolioData } from "@/lib/portfolio/data";
+import { SITE } from "@/content";
 import PersonJsonLd from "@/components/seo/person-json-ld";
+import { ThemeProvider } from "@/components/theme-provider";
+import { SiteHeader } from "@/components/site/site-header";
+import { SiteFooter } from "@/components/site/site-footer";
+import SkipLink from "@/components/views/shared/skip-link";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,18 +40,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function SiteLayout({
+export default function SiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const data = await getPortfolioData();
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <PersonJsonLd identity={data.identity} />
-        {children}
+        <PersonJsonLd identity={SITE} />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <SkipLink />
+          <SiteHeader name={SITE.name} />
+          <main id="main">{children}</main>
+          <SiteFooter
+            githubUrl={SITE.githubUrl}
+            email={SITE.email}
+            cvUrl={SITE.cvUrl}
+            copyright={SITE.copyright}
+          />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

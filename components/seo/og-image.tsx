@@ -1,9 +1,7 @@
-import type { PortfolioIdentity } from "@/lib/portfolio/types";
-
 export const ogImageSize = { width: 1200, height: 630 };
 export const ogImageContentType = "image/png" as const;
 
-export function renderOgImage(identity: PortfolioIdentity) {
+export function renderOgImage(identity: { name: string; role: string }) {
   return (
     <div
       style={{
