@@ -62,7 +62,7 @@ export function SiteHeader({ name, cvUrl }: { name: string; cvUrl: string }) {
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -80,16 +80,19 @@ export function SiteHeader({ name, cvUrl }: { name: string; cvUrl: string }) {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <Button variant="outline" className="rounded-full" asChild>
+        <div className="hidden items-center gap-2 lg:flex">
+          <Button size="sm" variant="outline" className="rounded-full" asChild>
             <a href={cvUrl} target="_blank" rel="noreferrer">
               Resume
             </a>
           </Button>
+          <Button size="sm" className="rounded-full bg-brand text-brand-foreground hover:bg-brand/90" asChild>
+            <Link href="/#contact">Let&rsquo;s Talk</Link>
+          </Button>
           <ModeToggle />
         </div>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <ModeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetContent side="right" className="p-0">
@@ -108,7 +111,12 @@ export function SiteHeader({ name, cvUrl }: { name: string; cvUrl: string }) {
                   </SheetClose>
                 ))}
               </nav>
-              <div className="mt-auto p-4">
+              <div className="mt-auto flex flex-col gap-2 p-4">
+                <SheetClose asChild>
+                  <Button className="w-full rounded-full bg-brand text-brand-foreground hover:bg-brand/90" asChild>
+                    <Link href="/#contact">Let&rsquo;s Talk</Link>
+                  </Button>
+                </SheetClose>
                 <SheetClose asChild>
                   <Button variant="outline" className="w-full rounded-full" asChild>
                     <a href={cvUrl} target="_blank" rel="noreferrer">

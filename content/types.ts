@@ -8,12 +8,12 @@ export type RepoStatus = 'public' | 'private-client' | 'unspecified'
 
 export type SkillCategory =
   | 'mobile'
-  | 'frontend'
+  | 'interface'
   | 'backend'
-  | 'database'
-  | 'cloud'
+  | 'data'
   | 'integrations'
-  | 'tools'
+  | 'cloud'
+  | 'delivery'
 export type ExperienceIcon = 'star' | 'code' | 'monitor' | 'book' | 'graduation'
 
 /** A project image. `images: []` everywhere until real screenshots exist — every

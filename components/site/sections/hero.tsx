@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Download, Sparkles, Code2, Server, ShieldCheck, Search, GitBranch, Layers } from "lucide-react";
+import { ArrowRight, Download, Sparkles, Code2, Server, ShieldCheck, Search, GitBranch, Layers, Wifi, BatteryFull } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/site/container";
 import { SocialIcons } from "@/components/site/social-icons";
@@ -46,7 +46,7 @@ export function Hero({ site }: { site: SiteContent }) {
         <div>
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-(length:--text-caption) text-muted-foreground">
             <span className="size-1.5 rounded-full bg-brand" />
-            Available for React Native &amp; full-stack projects
+            Shipping with React Native, Expo &amp; AI-native workflows
           </div>
 
           <p className="mb-3.5 text-(length:--text-caption) font-semibold tracking-(--text-caption-tracking) text-brand uppercase">
@@ -105,7 +105,7 @@ export function Hero({ site }: { site: SiteContent }) {
           </div>
         </div>
 
-        <div className="relative pb-24 lg:pb-40">
+        <div className="relative pb-32 sm:pb-40 lg:pb-56">
           <div className="mb-3 flex items-center justify-between gap-3">
             <div className="flex items-center gap-2 text-(length:--text-caption) font-semibold tracking-(--text-caption-tracking) text-muted-foreground uppercase">
               <Sparkles aria-hidden className="size-3.5 text-brand" />
@@ -174,33 +174,46 @@ export function Hero({ site }: { site: SiteContent }) {
             </div>
           </div>
 
-          <div className="absolute -right-2 bottom-0 w-44 overflow-hidden rounded-[2.25rem] border-[6px] border-[#060607] bg-[#060607] shadow-2xl shadow-black/40 sm:w-48">
-            <div className="flex flex-col gap-3 rounded-[1.75rem] bg-card px-3.5 pt-4 pb-4">
-              <div>
-                <p className="text-(length:--text-caption) font-semibold tracking-(--text-caption-tracking) text-brand uppercase">
+          <div className="absolute -right-20 -bottom-20 aspect-9/19.5 w-48 overflow-hidden rounded-[3rem] border-10 border-[#060607] bg-[#060607] shadow-2xl shadow-black/40 sm:w-56 lg:w-64">
+            <div className="absolute inset-x-0 top-2.5 z-10 flex justify-center">
+              <span className="h-5 w-16 rounded-full bg-[#060607]" />
+            </div>
+            <div className="flex h-full flex-col gap-2.5 rounded-[2.5rem] bg-card px-4 pt-5 pb-4">
+              <div className="flex items-center justify-between px-1 text-foreground">
+                <span className="text-[8px] font-semibold">9:41</span>
+                <span className="flex items-center gap-1">
+                  <Wifi className="size-2" />
+                  <BatteryFull className="size-2" />
+                </span>
+              </div>
+              <div className="mt-1.5">
+                <p className="text-[8px] font-semibold tracking-(--text-caption-tracking) text-brand uppercase">
                   Live preview
                 </p>
-                <p className="font-display text-base font-semibold">Ready to ship.</p>
+                <p className="font-display text-sm font-semibold">Ready to ship.</p>
               </div>
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2 rounded-xl bg-secondary/70 p-2">
-                  <span className="size-5 shrink-0 rounded-md bg-brand/20" />
+              <div className="flex flex-col gap-1.5">
+                <div className="flex items-center gap-1.5 rounded-xl bg-secondary/70 p-1.5">
+                  <span className="size-4 shrink-0 rounded-md bg-brand/20" />
                   <div>
-                    <p className="text-(length:--text-caption) font-semibold">OPIC</p>
-                    <p className="text-[10px] text-muted-foreground">Nightlife discovery</p>
+                    <p className="text-[10px] font-semibold">OPIC</p>
+                    <p className="text-[8px] text-muted-foreground">Nightlife discovery</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 rounded-xl bg-secondary/70 p-2">
-                  <span className="size-5 shrink-0 rounded-md bg-brand/20" />
+                <div className="flex items-center gap-1.5 rounded-xl bg-secondary/70 p-1.5">
+                  <span className="size-4 shrink-0 rounded-md bg-brand/20" />
                   <div>
-                    <p className="text-(length:--text-caption) font-semibold">WIN(win) AI</p>
-                    <p className="text-[10px] text-muted-foreground">AI chat assistant</p>
+                    <p className="text-[10px] font-semibold">WIN(win) AI</p>
+                    <p className="text-[8px] text-muted-foreground">AI chat assistant</p>
                   </div>
                 </div>
               </div>
-              <p className="text-[10px] text-muted-foreground">Mobile UI + API + database. iOS &amp; Android.</p>
-              <div className="rounded-full bg-brand py-2.5 text-center text-(length:--text-caption) font-semibold text-brand-foreground">
+              <p className="text-[8px] text-muted-foreground">Mobile UI + API + database &middot; iOS &amp; Android</p>
+              <div className="mt-auto rounded-full bg-brand py-2 text-center text-[10px] font-semibold text-brand-foreground">
                 See the code
+              </div>
+              <div className="flex justify-center pb-0.5">
+                <span className="h-1 w-24 rounded-full bg-foreground/20" />
               </div>
             </div>
           </div>

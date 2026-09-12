@@ -3,22 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/site/container";
 import { Section } from "@/components/site/section";
 import { SectionHeading } from "@/components/site/section-heading";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
-import WorldMap from "@/components/ui/world-map";
 import type { SiteContent } from "@/content/types";
-
-/** Real remote engagements from `content/experience.ts` — Stream.TV (Cayman) and NET(net)
- * Inc. (Kentucky) — not invented client locations. */
-const REMOTE_WORK_DOTS = [
-  {
-    start: { lat: 14.5995, lng: 120.9842, label: "Philippines" },
-    end: { lat: 19.3133, lng: -81.2546, label: "Cayman Islands" },
-  },
-  {
-    start: { lat: 14.5995, lng: 120.9842, label: "Philippines" },
-    end: { lat: 38.2098, lng: -84.5586, label: "Kentucky, USA" },
-  },
-];
 
 export function About({
   site,
@@ -85,7 +70,7 @@ export function About({
             <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-card px-5 py-4">
               <div className="flex items-center gap-2.5 text-(length:--text-small)">
                 <span className="size-2 rounded-full bg-brand" />
-                Currently: Freelance Software Engineer, Remote.
+                Open to freelance projects &amp; full-time roles — Remote.
               </div>
             </div>
 
@@ -97,12 +82,6 @@ export function About({
               <ArrowRight className="size-3.5" />
             </a>
           </div>
-        </div>
-
-        <div className="relative mt-12 overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-8">
-          <GlowingEffect proximity={90} spread={35} borderWidth={2} />
-          <p className="mb-4 text-(length:--text-small) font-semibold">Based in the Philippines, working globally.</p>
-          <WorldMap dots={REMOTE_WORK_DOTS} lineColor="#f0924f" />
         </div>
       </Container>
     </Section>

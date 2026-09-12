@@ -1,4 +1,4 @@
-import { PROJECTS, SERVICES, SITE, SKILLS, WHAT_I_BUILD, WORK_EXPERIENCE } from "@/content";
+import { PROJECTS, SITE, SKILLS, WHAT_I_BUILD, WORK_EXPERIENCE } from "@/content";
 import { Hero } from "@/components/site/sections/hero";
 import { About } from "@/components/site/sections/about";
 import { WhyHireMe } from "@/components/site/sections/why-hire-me";
@@ -22,7 +22,7 @@ export default function HomePage() {
       <Skills skills={SKILLS} aiStats={SITE.aiStats} />
       <ExperienceSection experience={WORK_EXPERIENCE} />
       <Projects projects={PROJECTS} whatIBuild={WHAT_I_BUILD} />
-      <Contact site={SITE} services={SERVICES} />
+      <Contact site={SITE} />
     </>
   );
 }

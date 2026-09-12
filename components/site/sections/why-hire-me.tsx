@@ -47,10 +47,10 @@ const SHIP_STEPS = ["Discovery", "Architecture", "Development", "Testing", "Laun
  * make the concrete case. One panel, one message told three ways. */
 export function WhyHireMe() {
   return (
-    <Section id="why-hire-me" size="lg">
+    <Section id="why-hire-me" size="lg" className="border-t border-border">
       <Container>
         <SectionHeading
-          eyebrow="Why Hire Me"
+          eyebrow="Why Work With Me"
           heading="What I bring to a team."
           description="One person who can own a mobile product from the interface to the infrastructure behind it."
         />

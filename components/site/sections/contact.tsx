@@ -5,17 +5,16 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { ContactForm } from "@/components/site/contact-form";
 import { SocialIcons } from "@/components/site/social-icons";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import type { Service } from "@/content/services";
 import type { SiteContent } from "@/content/types";
 
-export function Contact({ site, services }: { site: SiteContent; services: Service[] }) {
+export function Contact({ site }: { site: SiteContent }) {
   return (
     <Section id="contact" size="lg" className="border-t border-border">
       <Container>
         <SectionHeading
           eyebrow="Contact"
           heading="Let's talk."
-          description="Open to freelance React Native and full-stack projects: new builds, existing codebases, and AI-powered features."
+          description="React Native, full-stack, and AI-powered work — open to freelance projects and full-time roles alike."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
@@ -29,14 +28,6 @@ export function Contact({ site, services }: { site: SiteContent; services: Servi
               <p className="mt-2.5 text-(length:--text-small) leading-relaxed text-muted-foreground">
                 Send a message with a bit of detail about your project and I&rsquo;ll get back to you.
               </p>
-
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {services.map((service) => (
-                  <li key={service.slug} className="rounded-full border border-border px-3 py-1.5 text-(length:--text-caption) text-muted-foreground">
-                    {service.title}
-                  </li>
-                ))}
-              </ul>
 
               <div className="mt-6 flex flex-col gap-4">
                 <div className="flex items-center gap-3.5">

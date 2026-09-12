@@ -73,7 +73,7 @@ export function Projects({ projects, whatIBuild }: { projects: Project[]; whatIB
               <div key={project.slug} className={`relative ${FEATURED_SPANS[i]}`}>
                 <GlowingEffect proximity={90} spread={35} borderWidth={2} />
                 <BentoGridItem
-                  className="h-full"
+                  className="h-full overflow-hidden"
                   header={<WordmarkHeader title={project.title} />}
                   title={
                     <span className="flex flex-wrap items-center gap-2.5">
@@ -85,7 +85,7 @@ export function Projects({ projects, whatIBuild }: { projects: Project[]; whatIB
                   }
                   description={
                     <div>
-                      <p className="text-(length:--text-small) leading-relaxed">{project.description}</p>
+                      <p className="line-clamp-3 text-(length:--text-small) leading-relaxed">{project.description}</p>
                       {project.tags.length > 0 ? (
                         <div className="mt-3 flex flex-wrap gap-2">
                           {project.tags.map((tag) => (

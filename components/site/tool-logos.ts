@@ -2,8 +2,10 @@
  * Real brand logos for the Skills "logo cloud" tiles, via Simple Icons (cdn.simpleicons.org).
  * Every slug below was checked for a 200 response before being added — anything without a
  * confirmed real logo (AWS's family, C#, WPF, VersionOne, Mantis, SQL Server, REST API, Xamarin,
- * Windows IoT) is left out on purpose rather than guessing, and falls back to a plain initial
- * tile instead of a broken image.
+ * Windows IoT, and — checked directly against the Simple Icons dataset — ChatGPT/OpenAI, Grok,
+ * Azure/Microsoft, Dokploy, and Inngest, none of which have an icon in the library at all) is
+ * left out on purpose rather than guessing, and falls back to a plain initial tile instead of
+ * a broken image.
  */
 export const TOOL_LOGO_SLUGS: Record<string, string> = {
   ReactJS: "react",
@@ -26,6 +28,8 @@ export const TOOL_LOGO_SLUGS: Record<string, string> = {
   "Payload CMS": "payloadcms",
   "Better Auth": "betterauth",
   Stripe: "stripe",
+  PostHog: "posthog",
+  Sentry: "sentry",
   "ASP.NET": "dotnet",
   CodeIgniter: "codeigniter",
   PostgreSQL: "postgresql",
@@ -33,11 +37,16 @@ export const TOOL_LOGO_SLUGS: Record<string, string> = {
   MySQL: "mysql",
   Firebase: "firebase",
   Firestore: "firebase",
+  Supabase: "supabase",
   Prisma: "prisma",
   Drizzle: "drizzle",
   OpenRouter: "openrouter",
-  "Google Vertex AI": "googlecloud",
-  "Google Generative AI": "googlegemini",
+  Claude: "claude",
+  Gemini: "googlegemini",
+  "Google Cloud": "googlecloud",
+  Coolify: "coolify",
+  Docker: "docker",
+  "GitHub Actions": "githubactions",
   Git: "git",
   GitHub: "github",
   Turborepo: "turborepo",

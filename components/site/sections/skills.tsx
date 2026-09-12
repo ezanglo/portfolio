@@ -1,4 +1,4 @@
-import { Code2, Smartphone, Server, Database, Cloud, Bot, Wrench, ArrowRight, Check } from "lucide-react";
+import { Smartphone, Code2, Server, Database, Plug, Cloud, Rocket, ArrowRight, Check } from "lucide-react";
 import { Container } from "@/components/site/container";
 import { Section } from "@/components/site/section";
 import { SectionHeading } from "@/components/site/section-heading";
@@ -7,7 +7,8 @@ import { CORE_STACK_LAYERS } from "@/components/site/stack-diagram";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import type { Skill, SiteContent } from "@/content/types";
 
-const AI_CHIPS = ["Claude", "Gemini", "Vertex AI", "OpenRouter"];
+const AI_PLATFORM_NAMES = ["Claude", "OpenRouter", "ChatGPT", "Gemini", "Grok"];
+
 const AI_CHECKLIST = [
   "Understand before implementing",
   "Review every AI-generated diff like a teammate's pull request",
@@ -22,16 +23,66 @@ export function Skills({
   aiStats: SiteContent["aiStats"];
 }) {
   const byCategory = (category: Skill["category"]) => skills.filter((s) => s.category === category);
+  const aiSkills = byCategory("integrations").filter((s) => AI_PLATFORM_NAMES.includes(s.name));
 
   const iconClass = "size-4.5";
   const categories: SkillCategoryTab[] = [
-    { num: "01", label: "Frontend", icon: <Code2 className={iconClass} />, skills: byCategory("frontend") },
-    { num: "02", label: "Mobile", icon: <Smartphone className={iconClass} />, skills: byCategory("mobile") },
-    { num: "03", label: "Backend", icon: <Server className={iconClass} />, skills: byCategory("backend") },
-    { num: "04", label: "Database", icon: <Database className={iconClass} />, skills: byCategory("database") },
-    { num: "05", label: "Cloud", icon: <Cloud className={iconClass} />, skills: byCategory("cloud") },
-    { num: "06", label: "AI Integrations", icon: <Bot className={iconClass} />, pointsToAi: true },
-    { num: "07", label: "Tools", icon: <Wrench className={iconClass} />, skills: byCategory("tools") },
+    {
+      num: "01",
+      label: "Mobile",
+      icon: <Smartphone className={iconClass} />,
+      heading: "Mobile engineering",
+      description: "Cross-platform product development with native-platform awareness and release discipline.",
+      skills: byCategory("mobile"),
+    },
+    {
+      num: "02",
+      label: "Interface",
+      icon: <Code2 className={iconClass} />,
+      heading: "Interface engineering",
+      description: "The web UI layer: frameworks, styling, and motion that ship fast and hold up under real use.",
+      skills: byCategory("interface"),
+    },
+    {
+      num: "03",
+      label: "Backend",
+      icon: <Server className={iconClass} />,
+      heading: "Backend engineering",
+      description: "The server frameworks behind these products, from current production stacks to earlier client work.",
+      skills: byCategory("backend"),
+    },
+    {
+      num: "04",
+      label: "State & Data",
+      icon: <Database className={iconClass} />,
+      heading: "State & data engineering",
+      description: "Databases and ORMs, plus the client-side state that keeps a product in sync.",
+      skills: byCategory("data"),
+    },
+    {
+      num: "05",
+      label: "Integrations",
+      icon: <Plug className={iconClass} />,
+      heading: "Third-party integrations",
+      description: "Payments, auth, BaaS platforms, analytics, error tracking, and the AI platforms wired into production.",
+      skills: byCategory("integrations"),
+    },
+    {
+      num: "06",
+      label: "Cloud",
+      icon: <Cloud className={iconClass} />,
+      heading: "Cloud & hosting",
+      description: "Where these products actually run, from managed platforms to self-hosted infrastructure.",
+      skills: byCategory("cloud"),
+    },
+    {
+      num: "07",
+      label: "Delivery",
+      icon: <Rocket className={iconClass} />,
+      heading: "Shipping & delivery",
+      description: "Version control, CI/CD, and the tooling that gets code from commit to production.",
+      skills: byCategory("delivery"),
+    },
   ];
 
   return (
@@ -40,7 +91,7 @@ export function Skills({
         <SectionHeading
           eyebrow="Skills"
           heading="Tools I work with."
-          description="My production toolkit, grouped by where it sits in a mobile product."
+          description="The frameworks, platforms, and AI tools behind my recent projects — grouped by where each sits in the stack."
         />
 
         <div className="mt-9 mb-10 flex flex-wrap items-center gap-1.5">
@@ -68,9 +119,9 @@ export function Skills({
               I treat AI models as another backend service to integrate, not as a novelty.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
-              {AI_CHIPS.map((chip) => (
-                <span key={chip} className="rounded-full border border-border px-3 py-1.5 text-(length:--text-caption) text-brand">
-                  {chip}
+              {aiSkills.map((skill) => (
+                <span key={skill.name} className="rounded-full border border-border px-3 py-1.5 text-(length:--text-caption) text-brand">
+                  {skill.name}
                 </span>
               ))}
             </div>

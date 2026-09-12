@@ -52,14 +52,16 @@ export function ExperienceSection({ experience }: { experience: Experience[] }) 
 
   return (
     <Section id="experience" size="lg" className="border-t border-border">
-      <Container size="narrow">
+      <Container>
         <SectionHeading
           eyebrow="Experience"
           heading="Where I've worked."
           description="10+ years across freelance, agency, and in-house mobile and full-stack roles."
         />
       </Container>
-      <Timeline data={timelineData} />
+      <Container>
+        <Timeline data={timelineData} />
+      </Container>
     </Section>
   );
 }

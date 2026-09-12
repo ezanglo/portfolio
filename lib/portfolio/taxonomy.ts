@@ -83,16 +83,15 @@ export const SKILL_NAME_GROUP: Record<string, SkillGroupKey> = {
   'postgresql': 'core',
   'php': 'core',
   'git': 'core',
-  'google vertex ai': 'ai',
-  'google generative ai': 'ai',
   'openrouter': 'ai',
+  'claude': 'ai',
+  'chatgpt': 'ai',
+  'gemini': 'ai',
+  'grok': 'ai',
   'react native': 'mobile',
   'xamarin': 'mobile',
   'ionic framework': 'mobile',
   'aws': 'cloud',
-  'aws api gateway': 'cloud',
-  'aws lambda': 'cloud',
-  'aws code commit': 'cloud',
   'firebase': 'cloud',
   'firestore': 'cloud',
   'node.js': 'backend',
@@ -108,14 +107,21 @@ export const SKILL_NAME_GROUP: Record<string, SkillGroupKey> = {
   'prisma': 'backend',
 }
 
+/**
+ * `content/skills.ts` groups by product function (mobile / interface / data / integrations /
+ * cloud / delivery); the legacy view groups by tech type instead (`SkillGroupKey`). The two
+ * taxonomies don't line up one-to-one, so most of that translation happens via the per-name
+ * overrides above (e.g. the AI platforms and backend frameworks living inside "data" and
+ * "integrations" still land in the right legacy group by name) rather than by category alone.
+ */
 export const SKILL_CATEGORY_GROUP: Record<SkillCategory, SkillGroupKey> = {
-  frontend: 'frontend',
-  backend: 'backend',
   mobile: 'mobile',
+  interface: 'frontend',
+  backend: 'backend',
+  data: 'backend',
+  integrations: 'other',
   cloud: 'cloud',
-  database: 'backend',
-  integrations: 'ai',
-  tools: 'other',
+  delivery: 'other',
 }
 
 export function skillGroupFor(skill: { name: string; category: SkillCategory }): SkillGroupKey {

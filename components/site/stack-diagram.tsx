@@ -55,6 +55,6 @@ export const CORE_STACK_LAYERS: StackLayer[] = [
   { label: "Authentication", detail: "Session and identity" },
   { label: "Backend", detail: "PHP, Node.js, C#" },
   { label: "PostgreSQL", detail: "The data layer" },
-  { label: "AWS / Infrastructure", detail: "Lambda, API Gateway, deployment" },
-  { label: "AI / Integrations", detail: "Claude, Gemini, Vertex AI" },
+  { label: "Cloud / Infrastructure", detail: "AWS, Google Cloud, Dokploy" },
+  { label: "AI / Integrations", detail: "Claude, OpenRouter, ChatGPT" },
 ];

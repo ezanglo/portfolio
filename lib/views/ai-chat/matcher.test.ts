@@ -46,7 +46,7 @@ const data = buildPortfolioData({
       personal: false,
     },
   ],
-  skills: [{ name: "React", category: "frontend", order: 1, featured: false }],
+  skills: [{ name: "React", category: "interface", order: 1, featured: false }],
   site: {
     siteName: "Ezra Anglo Portfolio",
     name: "Ezra",

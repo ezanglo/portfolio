@@ -37,7 +37,7 @@ function makeExperience(overrides: Partial<Experience> = {}): Experience {
 }
 
 function makeSkill(overrides: Partial<Skill> = {}): Skill {
-  return { name: "React", category: "frontend", featured: false, order: 1, ...overrides };
+  return { name: "React", category: "interface", featured: false, order: 1, ...overrides };
 }
 
 function makeSite(overrides: Partial<LegacySourceSite> = {}): LegacySourceSite {

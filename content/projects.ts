@@ -96,7 +96,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     personal: false,
     repoStatus: "unspecified",
-    liveUrl: "https://finnaiops.com/",
+    liveUrl: "https://app.finnaiops.com/",
     githubUrl: null,
     images: [],
     order: 5,
@@ -309,7 +309,7 @@ export const PROJECTS: Project[] = [
     // A self-directed starter kit, not client work.
     personal: true,
     repoStatus: "unspecified",
-    liveUrl: null,
+    liveUrl: "https://app.stratoscommand.com/",
     githubUrl: null,
     images: [],
     order: 17,

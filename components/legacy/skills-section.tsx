@@ -24,22 +24,22 @@ const fadeInAnimationVariants = {
 
 const CATEGORY_LABELS: Record<Skill["category"], string> = {
   mobile: "Mobile",
-  frontend: "Frontend",
+  interface: "Interface",
   backend: "Backend",
-  database: "Database",
-  cloud: "Cloud & DevOps",
-  integrations: "AI & Integrations",
-  tools: "Tools & Others",
+  data: "State & Data",
+  integrations: "Integrations",
+  cloud: "Cloud",
+  delivery: "Delivery",
 };
 
 const CATEGORY_ORDER: Skill["category"][] = [
   "mobile",
-  "integrations",
-  "frontend",
+  "interface",
   "backend",
-  "database",
+  "data",
+  "integrations",
   "cloud",
-  "tools",
+  "delivery",
 ];
 
 const AI_ENGINES: EngineKey[] = ["claude", "gemini", "vertex"];
