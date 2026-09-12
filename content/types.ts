@@ -14,7 +14,6 @@ export type SkillCategory =
   | 'integrations'
   | 'cloud'
   | 'delivery'
-export type ExperienceIcon = 'star' | 'code' | 'monitor' | 'book' | 'graduation'
 
 /** A project image. `images: []` everywhere until real screenshots exist — every
  * consumer must handle the empty case so adding assets later is a data-only change. */
@@ -56,7 +55,6 @@ export interface Experience {
   /** e.g. "January 2019 - July 2023" */
   dateRange: string
   description: string
-  icon: ExperienceIcon
   responsibilities: string[]
   order: number | null
 }
@@ -94,6 +92,9 @@ export interface CaseStudy {
   /** `null` omits the section; `{ confidential: true }` states it plainly (§9) instead of
    * silently dropping it; a string is a real, verifiable result. */
   outcome: { confidential: true } | { result: string } | null
+  /** ISO date this entry's content last actually changed. Feeds `sitemap.ts`'s
+   * `lastModified` — bump it whenever the case study is edited, don't leave it stale. */
+  updatedAt: string
 }
 
 /** One numeric AI claim — used only in the AI section, never the hero trust row. */

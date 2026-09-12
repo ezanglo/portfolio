@@ -12,6 +12,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { SITE_URL } from "@/lib/site";
 
 export function generateStaticParams() {
   return ARTICLES.map((a) => ({ slug: a.slug }));
@@ -38,9 +39,33 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const article = getArticle(slug);
   if (!article) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Insights", item: `${SITE_URL}/insights` },
+          { "@type": "ListItem", position: 2, name: article.title, item: `${SITE_URL}/insights/${slug}` },
+        ],
+      },
+      {
+        "@type": "BlogPosting",
+        headline: article.title,
+        description: article.description,
+        url: `${SITE_URL}/insights/${slug}`,
+        datePublished: article.publishedAt,
+        dateModified: article.updatedAt,
+        author: { "@id": `${SITE_URL}/#person` },
+      },
+    ],
+  };
+
   return (
     <Section size="lg">
       <Container size="narrow">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>

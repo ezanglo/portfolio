@@ -9,6 +9,11 @@ export interface Article {
   title: string
   description: string
   body: string[]
+  /** ISO date. Feeds `BlogPosting.datePublished`/`dateModified` (see
+   * `app/(site)/insights/[slug]/page.tsx`) and `sitemap.ts`'s `lastModified` — bump `updatedAt`
+   * whenever this entry's content actually changes. */
+  publishedAt: string
+  updatedAt: string
 }
 
 export const ARTICLES: Article[] = [
@@ -17,6 +22,8 @@ export const ARTICLES: Article[] = [
     title: "How I Use Claude Code as a Senior Full-Stack Developer",
     description:
       "AI accelerates development. Experience guides the engineering decisions — what that actually looks like day to day.",
+    publishedAt: "2026-09-12",
+    updatedAt: "2026-09-12",
     body: [
       "I treat Claude Code the way I'd treat a very fast, very literal junior engineer who never gets tired: genuinely useful for the mechanical work, and never the one making the calls that matter.",
       "The loop I run is the same one I'd run without it — understand the problem, plan the change, implement, review, test, ship — with one difference: the implementation step is now AI-assisted rather than something I type end to end myself. I still scope the slice small enough to ship in a day. I still decide what \"done\" means before opening an editor.",
@@ -30,6 +37,8 @@ export const ARTICLES: Article[] = [
     title: "What Full-Stack Experience Changes About Mobile Development",
     description:
       "A mobile app rarely exists on its own. Here's what owning the backend too actually changes about how I build the app.",
+    publishedAt: "2026-09-12",
+    updatedAt: "2026-09-12",
     body: [
       "A lot of React Native work stops at the screen: consume the API someone else built, render the data, handle the loading and error states, ship. That's a legitimate way to work, and plenty of good mobile engineers do exactly that. It's not how I got here, though, and it's not how I build now.",
       "Before I specialized in React Native, I spent years as a full-stack web developer — sole backend developer on YuVee (Laravel, MySQL, and the Docker deployment to AWS behind it), full-stack on the Real-time RFID Registration system, building APIs on AWS Lambda and API Gateway for Disguised Mari Web. On the SaaS Platform Mobile Application, I wasn't just the lead front-end developer for the React Native client — I helped plan and design the product, and set up its initial backend on PHP, Symfony, and API Platform, with PostgreSQL and MongoDB underneath.",

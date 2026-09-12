@@ -41,6 +41,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Instead of an ML model, I built a deterministic, explainable scoring pipeline: named-signal confidence scoring, separator-agnostic amount parsing, and footer-boundary detection to separate a receipt's real total from a trailing card-auth line. Low-confidence or ambiguous results surface as a soft 'needs attention' flag rather than a hard failure or a silent wrong answer, and the optional AI pass is layered strictly on top of that — it can add line items but can never override or block what the deterministic pass already extracted.",
     technology: ["Expo", "React Native", "TypeScript", "Expo Router", "expo-sqlite", "Drizzle ORM", "Apple Vision / ML Kit OCR", "Zustand", "Swift App Intents"],
     outcome: null,
+    updatedAt: "2026-09-12",
   },
   {
     projectSlug: "opic-nightlife-app",
@@ -75,6 +76,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       result:
         "Migrated real production data from the predecessor system into the new schema — 114 venues, 908 orders, 1,054 tickets, and 514 door scans — while the web dashboard shipped and moved into internal use.",
     },
+    updatedAt: "2026-09-12",
   },
   {
     projectSlug: "finn-ai-ops",
@@ -106,6 +108,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "A two-stage classifier: a heuristic pre-filter (message length, greeting patterns, code fences, list markers) resolves the obvious cases for free, and only ambiguous messages fall through to a structured-output LLM call that scores complexity and picks the model. Streaming responses and analytics writes are also decoupled — the chat stream finishes and persists messages on its own timeline, while cost/usage logging happens in a separate completion hook — so the two never compete for the same latency budget.",
     technology: ["Next.js", "Payload CMS", "PostgreSQL", "better-auth", "Vercel AI SDK", "OpenRouter", "pgvector", "Stripe", "TypeScript"],
     outcome: null,
+    updatedAt: "2026-09-12",
   },
   {
     projectSlug: "stratos-command",
@@ -137,6 +140,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "The support product is split into two explicit planes — a tenant plane gated by ordinary org membership, and an operator plane gated by membership in one designated internal org — rather than a role flag or a per-route exception list. Invite-only enforcement lives in a single Better Auth lifecycle hook that every signup path runs through, instead of being duplicated per auth method.",
     technology: ["Next.js", "Payload CMS", "Better Auth", "PostgreSQL", "Drizzle ORM", "Stripe", "OpenRouter", "Vercel AI SDK", "TypeScript"],
     outcome: null,
+    updatedAt: "2026-09-12",
   },
 ]
 

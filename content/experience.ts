@@ -1,12 +1,10 @@
 import type { Experience } from './types'
 
-/**
- * Exported 1:1 from the Payload `experiences` collection on 2026-09-12.
- *
- * REVIEW NEEDED — `responsibilities` was empty for every row in the CMS, so every
- * entry below has an empty array. The old timeline rendered nothing for it.
- */
-export const EXPERIENCE: Experience[] = [
+/** Work history. Exported 1:1 from the Payload `experiences` collection on 2026-09-12, minus
+ * the one CMS row that recorded a formal education entry (BS Computer Science) rather than a
+ * job — that fact already lives in `SITE.bio`, and the row was never rendered on its own by any
+ * part of the redesigned site, so it isn't carried forward as content nothing displays. */
+export const WORK_EXPERIENCE: Experience[] = [
   {
     slug: "freelance-software-engineer-freelance",
     title: "Freelance Software Engineer",
@@ -15,7 +13,6 @@ export const EXPERIENCE: Experience[] = [
     yearRange: "2024 - Present",
     dateRange: "Sept 2024 - Present",
     description: "Working as a freelance full-stack developer. My stack includes React, Next.js, TypeScript, Tailwind, PHP and PostgreSQL.",
-    icon: "star",
     responsibilities: [],
     order: 1,
   },
@@ -27,7 +24,6 @@ export const EXPERIENCE: Experience[] = [
     yearRange: "2023 - 2024",
     dateRange: "July 2023 - Present",
     description: "I worked as a full-stack developer, managing and maintaining the backend using Laravel and MySQL. I also introduced NextJS on the new web application and docker deployment to AWS.",
-    icon: "star",
     responsibilities: [],
     order: 2,
   },
@@ -39,7 +35,6 @@ export const EXPERIENCE: Experience[] = [
     yearRange: "2019 - 2023",
     dateRange: "January 2019 - July 2023",
     description: "I worked as full-stack developer, and started to work with the mobile project which introduced me to React Native and React",
-    icon: "code",
     responsibilities: [],
     order: 3,
   },
@@ -51,7 +46,6 @@ export const EXPERIENCE: Experience[] = [
     yearRange: "2017 - 2018",
     dateRange: "October 2017 - January 2018",
     description: "I worked as a .NET Developer for 3 months, my main responsibilities are to fix existing bugs and implement new features.",
-    icon: "monitor",
     responsibilities: [],
     order: 4,
   },
@@ -63,7 +57,6 @@ export const EXPERIENCE: Experience[] = [
     yearRange: "2015 - 2017",
     dateRange: "November 2015 - August 2017",
     description: "I finally started working in the IT Industry. I learned the fundamentals of software developement and how to work with a team.",
-    icon: "monitor",
     responsibilities: [],
     order: 5,
   },
@@ -75,7 +68,6 @@ export const EXPERIENCE: Experience[] = [
     yearRange: "2014 - 2015",
     dateRange: "June 2014 - May 2015",
     description: "I worked as an IT instructor for two semesters at my alma mater. I primarily tought introductory computer subjects to first-year students and some intermediate courses to fourth-year students.",
-    icon: "book",
     responsibilities: [],
     order: 6,
   },
@@ -87,28 +79,7 @@ export const EXPERIENCE: Experience[] = [
     yearRange: "2014 - 2018",
     dateRange: "April 2014 - December 2018",
     description: "After graduating, I started to actively look for freelance projects and has been doing it part-time until 2018. This gave me opportunity to explore on different platforms such as mobile and IoT",
-    icon: "monitor",
     responsibilities: [],
     order: 7,
   },
-  {
-    slug: "bs-computer-science-cavite-state-university",
-    title: "BS Computer Science",
-    company: "Cavite State University",
-    location: "Cavite, PH",
-    yearRange: "2010 - 2014",
-    dateRange: "June 2010 - April 2014",
-    description: "I graduated with a degree in BS Computer Science, my main programming language was C#. I also started accepting project commissions for non-IT students to help with their thesis.",
-    icon: "graduation",
-    responsibilities: [],
-    order: 8,
-  },
 ]
-
-/** Design-brief split (§ Experience / § Education): the CMS export modeled the one formal
- * education record as an 8th "experience" row (`icon: "graduation"`). `EXPERIENCE` above is
- * kept intact — the frozen `/legacy` pipeline (`lib/portfolio/data.ts`) reads it as one list —
- * these two are additive views over the same array for the redesigned homepage's separate
- * Experience and Education timelines. */
-export const WORK_EXPERIENCE: Experience[] = EXPERIENCE.filter((e) => e.icon !== "graduation")
-export const EDUCATION: Experience[] = EXPERIENCE.filter((e) => e.icon === "graduation")

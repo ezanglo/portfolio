@@ -7,7 +7,7 @@
  * left out on purpose rather than guessing, and falls back to a plain initial tile instead of
  * a broken image.
  */
-export const TOOL_LOGO_SLUGS: Record<string, string> = {
+const TOOL_LOGO_SLUGS: Record<string, string> = {
   ReactJS: "react",
   NextJS: "nextdotjs",
   VueJS: "vuedotjs",
@@ -61,7 +61,7 @@ export const TOOL_LOGO_SLUGS: Record<string, string> = {
 
 /** Muted neutral tone so the logo cloud reads as one cohesive gray wall (not a rainbow of brand
  * colors), matching the single-accent rule — brand color is reserved for our own amber. */
-export const TOOL_LOGO_COLOR = "8a8a8e"
+const TOOL_LOGO_COLOR = "8a8a8e"
 
 export function toolLogoUrl(name: string): string | null {
   const slug = TOOL_LOGO_SLUGS[name]
