@@ -223,7 +223,7 @@ function CodePanel({
           <span className="ml-auto text-(length:--text-caption) font-semibold text-brand">{tag}</span>
         </div>
         <div className="px-4 pt-2 text-(length:--text-caption) text-muted-foreground/70">{breadcrumb}</div>
-        <div className="animate-in fade-in slide-in-from-bottom-1 overflow-x-auto px-4 py-3.5 font-mono text-[11px] leading-[1.85] text-foreground/85 duration-500">
+        <div className="overflow-x-auto px-4 py-3.5 font-mono text-[11px] leading-[1.85] text-foreground/85">
           {lines.map((line, i) => (
             <div key={i} className="flex gap-3">
               <span className="w-3 shrink-0 select-none text-muted-foreground/40">{i + 1}</span>
@@ -346,11 +346,19 @@ export function HeroWorkflowPanel() {
           <span className="size-2.5 rounded-full bg-[#61c554]" />
           <span className="ml-1.5 text-(length:--text-caption) text-muted-foreground">{stage.windowLabel}</span>
         </div>
-        <div key={stage.key} className="animate-in fade-in duration-500">
-          {stage.kind === "code" && (
-            <CodePanel fileTab={stage.fileTab} breadcrumb={stage.breadcrumb} tag={stage.tag} lines={stage.lines} />
-          )}
-          {stage.kind === "monitor" && <MonitorPanel />}
+        <div className="grid">
+          {STAGES.map((s) => (
+            <div
+              key={s.key}
+              aria-hidden={s.key !== stage.key}
+              className={`col-start-1 row-start-1 ${s.key === stage.key ? "" : "invisible"}`}
+            >
+              {s.kind === "code" && (
+                <CodePanel fileTab={s.fileTab} breadcrumb={s.breadcrumb} tag={s.tag} lines={s.lines} />
+              )}
+              {s.kind === "monitor" && <MonitorPanel />}
+            </div>
+          ))}
         </div>
         <StageFooter kind={stage.kind} branchLabel={stage.branchLabel} languageLabel={stage.languageLabel} />
       </div>
@@ -360,14 +368,11 @@ export function HeroWorkflowPanel() {
           <span className="h-5 w-16 rounded-full bg-[#060607]" />
         </div>
         {stage.screenshot ? (
-          <div key={stage.key} className="animate-in fade-in relative h-full w-full rounded-[2.5rem] duration-500">
+          <div className="relative h-full w-full rounded-[2.5rem]">
             <Image src={stage.screenshot.src} alt={stage.screenshot.alt} fill sizes="256px" className="rounded-[2.5rem] object-cover" />
           </div>
         ) : (
-          <div
-            key={stage.key}
-            className="animate-in fade-in flex h-full flex-col gap-2.5 rounded-[2.5rem] bg-card px-4 pt-5 pb-4 duration-500"
-          >
+          <div className="flex h-full flex-col gap-2.5 rounded-[2.5rem] bg-card px-4 pt-5 pb-4">
             <div className="flex items-center justify-between px-1 text-foreground">
               <span className="text-[8px] font-semibold">9:41</span>
               <span className="flex items-center gap-1">
