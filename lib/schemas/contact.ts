@@ -7,46 +7,33 @@ export const PROJECT_TYPE_OPTIONS = [
   "Full-Stack Mobile Application",
   "AI-Powered Mobile App",
   "Other",
-  "Just Want to Chat",
 ] as const;
 
-export const BUDGET_OPTIONS = ["Under $5k", "$5k–$15k", "$15k–$50k", "$50k+", "Not sure yet"] as const;
-
-export const TIMELINE_OPTIONS = ["ASAP", "Within 1 month", "1–3 months", "Flexible"] as const;
-
-export const CASUAL_PROJECT_TYPES = ["Just Want to Chat"] as const satisfies readonly (typeof PROJECT_TYPE_OPTIONS)[number][];
-
-export function isCasualProjectType(projectType: string) {
-  return (CASUAL_PROJECT_TYPES as readonly string[]).includes(projectType);
+export function isCasualProjectType(projectType?: string) {
+  return !projectType;
 }
 
-export const contactFormSchema = z
-  .object({
-    name: z
-      .string()
-      .min(1, { message: "Name is required" })
-      .max(200, { message: "Maximum length is 200" }),
-    email: z
-      .string()
-      .min(1, { message: "Email is required" })
-      .max(500, { message: "Maximum length is 500" })
-      .email({ message: "Invalid email" }),
-    projectType: z.enum(PROJECT_TYPE_OPTIONS, { message: "Select a project type" }),
-    message: z
-      .string()
-      .min(1, { message: "Message is required" })
-      .max(2000, { message: "Maximum length is 2000" }),
-    budget: z.enum(BUDGET_OPTIONS).optional(),
-    timeline: z.enum(TIMELINE_OPTIONS).optional(),
-  })
-  .superRefine((data, ctx) => {
-    if (isCasualProjectType(data.projectType)) return;
-    if (!data.budget) {
-      ctx.addIssue({ code: "custom", message: "Select a budget", path: ["budget"] });
-    }
-    if (!data.timeline) {
-      ctx.addIssue({ code: "custom", message: "Select a timeline", path: ["timeline"] });
-    }
-  });
+export const contactFormSchema = z.object({
+  name: z
+    .string()
+    .min(1, { message: "Name is required" })
+    .max(200, { message: "Maximum length is 200" }),
+  email: z
+    .string()
+    .min(1, { message: "Email is required" })
+    .max(500, { message: "Maximum length is 500" })
+    .email({ message: "Invalid email" }),
+  projectType: z.enum(PROJECT_TYPE_OPTIONS).optional(),
+  message: z
+    .string()
+    .min(1, { message: "Message is required" })
+    .max(2000, { message: "Maximum length is 2000" }),
+  company: z.string().max(200).optional(),
+});
 
 export type ContactFormType = z.infer<typeof contactFormSchema>;
+
+// `company` is a honeypot: it's hidden from real visitors, so anything filling it in is a bot.
+export function isSpamSubmission(data: Pick<ContactFormType, "company">) {
+  return Boolean(data.company);
+}

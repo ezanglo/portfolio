@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/site/container";
 import { Section } from "@/components/site/section";
 import { SectionHeading } from "@/components/site/section-heading";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
 import type { SiteContent } from "@/content/types";
 
 export function About({
@@ -32,14 +33,17 @@ export function About({
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[22rem_1fr] lg:items-start">
           <div>
-            <div className="overflow-hidden rounded-2xl border border-border bg-card">
-              <Image
-                src={site.portraitUrl}
-                alt={`${site.name} Anglo`}
-                width={440}
-                height={550}
-                className="aspect-4/5 w-full object-cover"
-              />
+            <div className="relative rounded-2xl">
+              <GlowingEffect disabled={false} proximity={80} spread={30} borderWidth={2} />
+              <div className="overflow-hidden rounded-2xl border border-border bg-card">
+                <Image
+                  src={site.portraitUrl}
+                  alt={`${site.name} Anglo`}
+                  width={440}
+                  height={550}
+                  className="aspect-4/5 w-full object-cover"
+                />
+              </div>
             </div>
             <div className="mt-3.5 text-center">
               <p className="font-display text-(length:--text-small) font-semibold">{site.name} Anglo</p>

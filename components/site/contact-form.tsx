@@ -1,13 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import {
-  BUDGET_OPTIONS,
   PROJECT_TYPE_OPTIONS,
-  TIMELINE_OPTIONS,
   contactFormSchema,
   isCasualProjectType,
   type ContactFormType,
@@ -24,14 +22,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { getErrorMessage } from "@/lib/utils";
+import { cn, getErrorMessage } from "@/lib/utils";
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -44,13 +35,6 @@ export function ContactForm() {
     },
   });
   const isCasual = isCasualProjectType(form.watch("projectType"));
-
-  useEffect(() => {
-    if (!isCasual) return;
-    form.setValue("budget", undefined);
-    form.setValue("timeline", undefined);
-    form.clearErrors(["budget", "timeline"]);
-  }, [isCasual, form]);
 
   async function onSubmit(values: ContactFormType) {
     setIsSubmitting(true);
@@ -72,30 +56,15 @@ export function ContactForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" noValidate>
-        <FormField
-          control={form.control}
-          name="projectType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Project type</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a project type" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {PROJECT_TYPE_OPTIONS.map((option) => (
-                    <SelectItem key={option} value={option}>
-                      {option}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div className="absolute h-0 w-0 overflow-hidden opacity-0" aria-hidden="true">
+          <label htmlFor="company">Company</label>
+          <input
+            id="company"
+            tabIndex={-1}
+            autoComplete="off"
+            {...form.register("company")}
+          />
+        </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
           <FormField
@@ -144,56 +113,36 @@ export function ContactForm() {
           )}
         />
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          <FormField
-            control={form.control}
-            name="budget"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Budget</FormLabel>
-                <Select onValueChange={field.onChange} value={field.value} disabled={isCasual}>
-                  <FormControl>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select a budget" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {BUDGET_OPTIONS.map((option) => (
-                      <SelectItem key={option} value={option}>
+        <FormField
+          control={form.control}
+          name="projectType"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Project type (optional)</FormLabel>
+              <FormControl>
+                <div className="flex flex-wrap gap-2">
+                  {PROJECT_TYPE_OPTIONS.map((option) => {
+                    const selected = field.value === option;
+                    return (
+                      <Button
+                        key={option}
+                        type="button"
+                        variant={selected ? "default" : "outline"}
+                        size="sm"
+                        aria-pressed={selected}
+                        className={cn("rounded-full", !selected && "font-normal")}
+                        onClick={() => field.onChange(selected ? undefined : option)}
+                      >
                         {option}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="timeline"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Timeline</FormLabel>
-                <Select onValueChange={field.onChange} value={field.value} disabled={isCasual}>
-                  <FormControl>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select a timeline" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    {TIMELINE_OPTIONS.map((option) => (
-                      <SelectItem key={option} value={option}>
-                        {option}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+                      </Button>
+                    );
+                  })}
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto">
           {isSubmitting ? "Sending…" : "Send Message"}

@@ -11,17 +11,15 @@ import {
   Text,
 } from "@react-email/components";
 import { Tailwind } from "@react-email/components";
-import { ContactFormType } from "@/lib/schemas/contact";
+import { ContactFormType, isCasualProjectType } from "@/lib/schemas/contact";
 
 export default function ContactFormEmail({
   name,
   email,
   projectType,
-  budget,
-  timeline,
   message,
 }: ContactFormType) {
-  const isCasual = projectType === "Just Want to Chat";
+  const isCasual = isCasualProjectType(projectType);
 
   return (
     <Html>
@@ -37,17 +35,9 @@ export default function ContactFormEmail({
                 <strong>From:</strong> {name} ({email})
               </Text>
               {!isCasual && (
-                <>
-                  <Text>
-                    <strong>Project type:</strong> {projectType}
-                  </Text>
-                  <Text>
-                    <strong>Budget:</strong> {budget}
-                  </Text>
-                  <Text>
-                    <strong>Timeline:</strong> {timeline}
-                  </Text>
-                </>
+                <Text>
+                  <strong>Project type:</strong> {projectType}
+                </Text>
               )}
               <Hr />
               <Text>{message}</Text>

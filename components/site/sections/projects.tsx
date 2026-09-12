@@ -84,7 +84,7 @@ export function Projects({ projects, whatIBuild }: { projects: Project[]; whatIB
             const link = projectLink(project);
             return (
               <div key={project.slug} className={`relative ${FEATURED_SPANS[i]}`}>
-                <GlowingEffect proximity={90} spread={35} borderWidth={2} />
+                <GlowingEffect disabled={false} proximity={90} spread={35} borderWidth={2} />
                 <BentoGridItem
                   className="h-full overflow-hidden"
                   header={<WordmarkHeader title={project.title} logoUrl={project.logoUrl} />}

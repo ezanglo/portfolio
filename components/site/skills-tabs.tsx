@@ -85,15 +85,15 @@ export function SkillsTabs({ categories }: { categories: SkillCategoryTab[] }) {
             <div className="mt-6 border-t border-border pt-6">
               {/* Fixed to ~2 rows so tabs with a dozen-plus skills (State & Data, Delivery) don't
                   blow out the panel height — the rest scrolls instead of pushing the page layout. */}
-              <div className="grid max-h-56 grid-cols-2 gap-3 overflow-y-auto pr-1 sm:grid-cols-3 lg:grid-cols-4">
+              <div className="grid max-h-55 grid-cols-2 gap-3 overflow-y-auto pr-1 sm:grid-cols-3 lg:grid-cols-4 scrollbar-thin pb-1 scrollbar-thumb-border scrollbar-track-transparent">
                 {active.skills.map((skill) => {
                   const logoUrl = toolLogoUrl(skill.name);
                   return (
                     <div
                       key={skill.name}
-                      className="relative rounded-2xl border border-border bg-background p-4 transition-transform duration-200 hover:-translate-y-0.5"
+                      className="relative rounded-2xl border border-border bg-background p-3"
                     >
-                      <GlowingEffect proximity={60} spread={20} borderWidth={2} />
+                      <GlowingEffect disabled={false} proximity={60} spread={20} borderWidth={2} />
                       <span className="flex size-9 items-center justify-center rounded-[10px] bg-brand/10">
                         {logoUrl ? (
                           // eslint-disable-next-line @next/next/no-img-element

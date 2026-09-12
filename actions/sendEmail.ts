@@ -1,7 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
-import { ContactFormType, contactFormSchema } from "@/lib/schemas/contact";
+import { ContactFormType, contactFormSchema, isCasualProjectType, isSpamSubmission } from "@/lib/schemas/contact";
 import { rateLimit } from "@/lib/rate-limit";
 import { SITE } from "@/content";
 import ContactFormEmail from "@/email/contact-form-email";
@@ -19,6 +19,10 @@ export const sendEmail = async (payload: ContactFormType) => {
     return { error: new Error("Invalid submission") };
   }
 
+  if (isSpamSubmission(parsed.data)) {
+    return {};
+  }
+
   const ip = (await headers()).get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   const { ok } = rateLimit(`contact:${ip}`, RATE_LIMIT.max, RATE_LIMIT.windowMs);
   if (!ok) {
@@ -29,10 +33,9 @@ export const sendEmail = async (payload: ContactFormType) => {
     return await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: SITE.email,
-      subject:
-        parsed.data.projectType === "Just Want to Chat"
-          ? `New message from ${parsed.data.name}`
-          : `New project inquiry from ${parsed.data.name}`,
+      subject: isCasualProjectType(parsed.data.projectType)
+        ? `New message from ${parsed.data.name}`
+        : `New project inquiry from ${parsed.data.name}`,
       react: React.createElement(ContactFormEmail, parsed.data),
     });
   } catch (error: unknown) {
