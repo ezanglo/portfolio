@@ -86,6 +86,10 @@ const SHIP_LINES: React.ReactNode[] = [
   <>
     <span className="text-emerald-400/80">&#10003;</span> Submitted com.projectez.reseebo to Google Play Console
   </>,
+  <>&nbsp;</>,
+  <>
+    <span className="text-emerald-400/80">&#10003;</span> Live on the App Store &amp; Google Play
+  </>,
 ];
 
 const MONITOR_EVENTS = [
