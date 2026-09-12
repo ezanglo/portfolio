@@ -12,15 +12,6 @@ import {
   Search,
   Wifi,
   BatteryFull,
-  Star,
-  House,
-  Receipt,
-  Camera,
-  Bell,
-  Settings,
-  Sparkles,
-  Gamepad2,
-  LayoutGrid,
 } from "lucide-react";
 
 type StageKind = "code" | "monitor";
@@ -33,7 +24,8 @@ type StageBase = {
   tag: string;
   branchLabel: string;
   languageLabel: string;
-  phone: React.ReactNode;
+  phone?: React.ReactNode;
+  screenshot?: { src: string; alt: string };
 };
 
 type Stage =
@@ -96,34 +88,6 @@ const SHIP_LINES: React.ReactNode[] = [
   </>,
 ];
 
-const RECENT_RECEIPTS = [
-  { name: "Starbucks", amount: "₱210", color: "#6B4A32" },
-  { name: "SM Supermarket", amount: "₱1,845", color: "#3E7A66" },
-  { name: "Grab", amount: "₱185", color: "#2C5A75" },
-];
-
-const BUILD_TABS = [
-  { icon: House, label: "Home", active: true },
-  { icon: Receipt, label: "Receipts" },
-  { icon: Bell, label: "Reminders" },
-  { icon: Settings, label: "Settings" },
-];
-
-const RATING_BREAKDOWN = [
-  { stars: 5, pct: 82 },
-  { stars: 4, pct: 12 },
-  { stars: 3, pct: 4 },
-  { stars: 2, pct: 1 },
-  { stars: 1, pct: 1 },
-];
-
-const APP_STORE_TABS = [
-  { icon: Sparkles, label: "Today" },
-  { icon: Gamepad2, label: "Games" },
-  { icon: LayoutGrid, label: "Apps", active: true },
-  { icon: Search, label: "Search" },
-];
-
 const MONITOR_EVENTS = [
   { event: "receipt_scanned", device: "iPhone 15 Pro · iOS 18", time: "2m ago" },
   { event: "reminder_created", device: "Pixel 8 · Android 15", time: "6m ago" },
@@ -150,65 +114,7 @@ const STAGES: Stage[] = [
     lines: BUILD_LINES,
     branchLabel: "feature/home-dashboard",
     languageLabel: "TypeScript",
-    phone: (
-      <>
-        <div className="mt-1.5 flex items-center justify-between px-0.5">
-          <div>
-            <p className="text-[8px] text-muted-foreground">Good evening</p>
-            <p className="font-display text-sm font-semibold">Ezra</p>
-          </div>
-          <Search aria-hidden className="size-3 text-muted-foreground" />
-        </div>
-        <div className="rounded-sm bg-[#14151A] p-2.5 text-white">
-          <p className="text-[7px] font-semibold tracking-(--text-caption-tracking) text-white/50 uppercase">
-            Spend this month &middot; Sept
-          </p>
-          <p className="font-display text-base font-semibold">&#8369;18,450</p>
-          <p className="mt-1 text-[8px] text-white/60">12 receipts &middot; See details</p>
-        </div>
-        <div className="flex gap-1.5">
-          {["Scan", "Manual", "Ask"].map((label) => (
-            <div key={label} className="flex-1 rounded-lg bg-secondary/70 py-1.5 text-center text-[7px] font-semibold">
-              {label}
-            </div>
-          ))}
-        </div>
-        <div className="flex items-center justify-between px-0.5">
-          <p className="text-[7px] font-semibold tracking-(--text-caption-tracking) text-muted-foreground uppercase">
-            Recent receipts
-          </p>
-          <p className="text-[7px] font-semibold text-brand">See all</p>
-        </div>
-        <div className="flex flex-col gap-1.5">
-          {RECENT_RECEIPTS.map((r) => (
-            <div key={r.name} className="flex items-center justify-between rounded-lg bg-secondary/50 p-1.5">
-              <div className="flex items-center gap-1.5">
-                <span className="size-3 rounded-full" style={{ backgroundColor: `${r.color}33` }} />
-                <p className="text-[9px] font-semibold">{r.name}</p>
-              </div>
-              <p className="text-[8px] text-muted-foreground">{r.amount}</p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-auto flex items-center justify-between px-2 pt-2">
-          {BUILD_TABS.slice(0, 2).map(({ icon: Icon, label, active }) => (
-            <div key={label} className="flex flex-col items-center gap-0.5">
-              <Icon className={active ? "size-3.5 text-brand" : "size-3.5 text-muted-foreground/60"} />
-              <p className={active ? "text-[6px] font-semibold text-brand" : "text-[6px] text-muted-foreground/60"}>{label}</p>
-            </div>
-          ))}
-          <div className="-mt-5 flex size-8 shrink-0 items-center justify-center rounded-full bg-brand shadow-lg shadow-brand/30">
-            <Camera className="size-3.5 text-brand-foreground" />
-          </div>
-          {BUILD_TABS.slice(2).map(({ icon: Icon, label }) => (
-            <div key={label} className="flex flex-col items-center gap-0.5">
-              <Icon className="size-3.5 text-muted-foreground/60" />
-              <p className="text-[6px] text-muted-foreground/60">{label}</p>
-            </div>
-          ))}
-        </div>
-      </>
-    ),
+    screenshot: { src: "/images/resiboo-home.PNG", alt: "Resiboo home screen" },
   },
   {
     key: "ship",
@@ -222,60 +128,7 @@ const STAGES: Stage[] = [
     lines: SHIP_LINES,
     branchLabel: "main",
     languageLabel: "Shell",
-    phone: (
-      <>
-        <div className="mt-1.5 flex items-center gap-2">
-          <Image
-            src="/images/resiboo-icon.png"
-            alt="Resiboo app icon"
-            width={30}
-            height={30}
-            className="shrink-0 rounded-[9px]"
-          />
-          <div className="min-w-0 flex-1">
-            <p className="text-[10px] font-semibold">Resiboo!</p>
-            <p className="text-[7px] text-muted-foreground">Receipts &amp; Expenses</p>
-          </div>
-          <span className="shrink-0 rounded-full bg-brand px-2 py-0.5 text-[7px] font-semibold text-brand-foreground">
-            GET
-          </span>
-        </div>
-        <div className="flex items-center gap-1 text-amber-400">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <Star key={i} className="size-2 fill-current" />
-          ))}
-          <span className="ml-1 text-[7px] text-muted-foreground">4.9 &middot; 128 Ratings</span>
-        </div>
-        <div className="flex gap-1.5">
-          <div className="h-14 w-9 shrink-0 rounded-lg bg-[#14151A]" />
-          <div className="h-14 w-9 shrink-0 rounded-lg bg-secondary" />
-          <div className="h-14 w-9 shrink-0 rounded-lg bg-secondary/70" />
-        </div>
-        <p className="text-[8px] text-muted-foreground">Live on the App Store &amp; Google Play</p>
-        <div className="flex flex-col gap-0.5">
-          {RATING_BREAKDOWN.map((r) => (
-            <div key={r.stars} className="flex items-center gap-1">
-              <span className="w-1.5 text-[6px] text-muted-foreground">{r.stars}</span>
-              <div className="h-1 flex-1 rounded-full bg-secondary">
-                <div className="h-1 rounded-full bg-amber-400" style={{ width: `${r.pct}%` }} />
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="rounded-lg bg-secondary/50 p-1.5">
-          <p className="text-[7px] font-semibold">What&rsquo;s New &middot; 1.1.1</p>
-          <p className="text-[7px] text-muted-foreground">Faster scanning and a few bug fixes.</p>
-        </div>
-        <div className="mt-auto flex items-center justify-between px-1 pt-1">
-          {APP_STORE_TABS.map(({ icon: Icon, label, active }) => (
-            <div key={label} className="flex flex-col items-center gap-0.5">
-              <Icon className={active ? "size-3.5 text-brand" : "size-3.5 text-muted-foreground/60"} />
-              <p className={active ? "text-[6px] font-semibold text-brand" : "text-[6px] text-muted-foreground/60"}>{label}</p>
-            </div>
-          ))}
-        </div>
-      </>
-    ),
+    screenshot: { src: "/images/appstore.PNG", alt: "Resiboo listing on the App Store" },
   },
   {
     key: "own",
@@ -506,22 +359,28 @@ export function HeroWorkflowPanel() {
         <div className="absolute inset-x-0 top-2.5 z-10 flex justify-center">
           <span className="h-5 w-16 rounded-full bg-[#060607]" />
         </div>
-        <div
-          key={stage.key}
-          className="animate-in fade-in flex h-full flex-col gap-2.5 rounded-[2.5rem] bg-card px-4 pt-5 pb-4 duration-500"
-        >
-          <div className="flex items-center justify-between px-1 text-foreground">
-            <span className="text-[8px] font-semibold">9:41</span>
-            <span className="flex items-center gap-1">
-              <Wifi className="size-2" />
-              <BatteryFull className="size-2" />
-            </span>
+        {stage.screenshot ? (
+          <div key={stage.key} className="animate-in fade-in relative h-full w-full rounded-[2.5rem] duration-500">
+            <Image src={stage.screenshot.src} alt={stage.screenshot.alt} fill sizes="256px" className="rounded-[2.5rem] object-cover" />
           </div>
-          {stage.phone}
-          <div className="flex justify-center pb-0.5">
-            <span className="h-1 w-24 rounded-full bg-foreground/20" />
+        ) : (
+          <div
+            key={stage.key}
+            className="animate-in fade-in flex h-full flex-col gap-2.5 rounded-[2.5rem] bg-card px-4 pt-5 pb-4 duration-500"
+          >
+            <div className="flex items-center justify-between px-1 text-foreground">
+              <span className="text-[8px] font-semibold">9:41</span>
+              <span className="flex items-center gap-1">
+                <Wifi className="size-2" />
+                <BatteryFull className="size-2" />
+              </span>
+            </div>
+            {stage.phone}
+            <div className="flex justify-center pb-0.5">
+              <span className="h-1 w-24 rounded-full bg-foreground/20" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
