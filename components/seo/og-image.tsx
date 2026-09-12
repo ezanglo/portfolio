@@ -1,7 +1,20 @@
 export const ogImageSize = { width: 1200, height: 630 };
 export const ogImageContentType = "image/png" as const;
 
-export function renderOgImage(identity: { name: string; role: string }) {
+export function truncate(text: string, maxLength: number) {
+  if (text.length <= maxLength) return text;
+  return `${text.slice(0, maxLength - 1).trimEnd()}…`;
+}
+
+export function renderOgImage({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description?: string;
+}) {
   return (
     <div
       style={{
@@ -25,10 +38,34 @@ export function renderOgImage(identity: { name: string; role: string }) {
           color: "#8b93a3",
         }}
       >
-        Portfolio
+        {eyebrow}
       </div>
-      <div style={{ display: "flex", fontSize: 84, fontWeight: 700, marginTop: 24 }}>{identity.name}</div>
-      <div style={{ display: "flex", fontSize: 36, marginTop: 20, color: "#c7cdd6" }}>{identity.role}</div>
+      <div
+        style={{
+          display: "flex",
+          fontSize: 76,
+          fontWeight: 700,
+          marginTop: 24,
+          maxWidth: 1000,
+          lineHeight: 1.1,
+        }}
+      >
+        {title}
+      </div>
+      {description ? (
+        <div
+          style={{
+            display: "flex",
+            fontSize: 32,
+            marginTop: 24,
+            color: "#c7cdd6",
+            maxWidth: 960,
+            lineHeight: 1.4,
+          }}
+        >
+          {description}
+        </div>
+      ) : null}
     </div>
   );
 }

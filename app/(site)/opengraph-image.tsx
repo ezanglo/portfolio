@@ -10,5 +10,8 @@ export const contentType = ogImageContentType;
 export const alt = "Ezra Anglo — Senior React Native & Full-Stack Developer";
 
 export default function Image() {
-  return new ImageResponse(renderOgImage({ name: SITE.name, role: SITE.role }), { ...size });
+  return new ImageResponse(
+    renderOgImage({ eyebrow: "Portfolio", title: SITE.name, description: SITE.role }),
+    { ...size }
+  );
 }
