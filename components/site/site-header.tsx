@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import { useMotionValueEvent, useScroll } from "motion/react";
 import { Menu, ArrowUpRight } from "lucide-react";
 import { NAV_LINKS } from "@/content/navigation";
 import { Button } from "@/components/ui/button";
@@ -47,57 +47,36 @@ function useActiveSection(ids: string[]) {
   return active;
 }
 
-/** Hides the header on downward scroll and reveals it on upward scroll, and tracks
- * whether the page has scrolled past the top so the header can pick up its blurred
- * background only once it's no longer sitting directly over the hero. Reads the
- * scroll motion value's onChange (no re-render per frame) and only calls setState
- * when a value actually flips, so it's cheap enough to run on every frame. */
-function useRevealOnScroll() {
+/** Tracks whether the page has scrolled past the top so the header can pick up its
+ * blurred background only once it's no longer sitting directly over the hero. Reads
+ * the scroll motion value's onChange (no re-render per frame) and only calls setState
+ * when the value actually flips, so it's cheap enough to run on every frame. */
+function useScrolledPastTop() {
   const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (current) => {
-    const previous = scrollY.getPrevious() ?? current;
-    const delta = current - previous;
-
     setScrolled(current > 8);
-
-    if (current < 96) {
-      setHidden(false);
-      return;
-    }
-    if (delta > 4) {
-      setHidden(true);
-    } else if (delta < -4) {
-      setHidden(false);
-    }
   });
 
-  return { hidden, scrolled };
+  return scrolled;
 }
 
 export function SiteHeader({ name, cvUrl }: { name: string; cvUrl: string }) {
   const [open, setOpen] = useState(false);
   const active = useActiveSection(NAV_IDS);
-  const { hidden, scrolled } = useRevealOnScroll();
-
-  useEffect(() => {
-    if (hidden) setOpen(false);
-  }, [hidden]);
+  const scrolled = useScrolledPastTop();
 
   return (
-    <motion.header
+    <header
       className={cn(
         "sticky top-0 z-40 border-b transition-colors duration-300",
         scrolled ? "border-border bg-background/80 backdrop-blur-md" : "border-transparent bg-transparent"
       )}
-      animate={{ y: hidden ? "-100%" : "0%" }}
-      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link href="/" aria-label="Ezra Anglo — Home" className="flex items-center gap-2.5">
-          <LogoMark className="size-8 text-brand" />
+          <LogoMark className="size-8" />
           <span className="hidden leading-tight sm:block">
             <span className="block font-display text-(length:--text-small) font-semibold">{name} Anglo</span>
             <span className="block text-(length:--text-caption) text-muted-foreground">React Native Developer</span>
@@ -177,6 +156,6 @@ export function SiteHeader({ name, cvUrl }: { name: string; cvUrl: string }) {
           </Sheet>
         </div>
       </Container>
-    </motion.header>
+    </header>
   );
 }

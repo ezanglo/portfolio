@@ -29,7 +29,7 @@ export function SiteFooter({
         <div className="grid grid-cols-2 gap-10 text-(length:--text-small) sm:grid-cols-4">
           <div className="col-span-2 space-y-4 sm:col-span-2">
             <Link href="/" aria-label="Ezra Anglo — Home" className="flex items-center gap-2.5">
-              <LogoMark className="size-8 text-brand" />
+              <LogoMark className="size-8" />
               <span aria-hidden="true" className="font-display font-semibold">Ezra Anglo</span>
             </Link>
             <p className="max-w-xs text-muted-foreground">

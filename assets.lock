@@ -29,21 +29,21 @@
     },
     "logo/logo": {
       "exports/logo/1024.png": {
-        "sourceChecksum": "sha256:d8e7b2bdf764aaeadfcaefed8a8d5c8b3aac52e1f5ee58b87f689418fb386a68",
+        "sourceChecksum": "sha256:934797c773e734bbcfd45adf8b7d73ae2f3a6feb3181cb0ceabdb1464a26a6b7",
         "outputPath": "exports/logo/1024.png",
-        "exportedAt": "2026-09-12T14:27:43.893Z",
+        "exportedAt": "2026-09-12T15:29:05.230Z",
         "exportChecksum": "sha256:34fbda550402d1e0180c418018efe3c7d0f2abf5461cd5eb76c6841fb481e724"
       },
       "exports/logo/180.png": {
-        "sourceChecksum": "sha256:d8e7b2bdf764aaeadfcaefed8a8d5c8b3aac52e1f5ee58b87f689418fb386a68",
+        "sourceChecksum": "sha256:934797c773e734bbcfd45adf8b7d73ae2f3a6feb3181cb0ceabdb1464a26a6b7",
         "outputPath": "exports/logo/180.png",
-        "exportedAt": "2026-09-12T14:27:43.893Z",
+        "exportedAt": "2026-09-12T15:29:05.231Z",
         "exportChecksum": "sha256:c2e889c0963c3c70783c88dd0a3dc6a35bccb044ac19884b0cd0c3b960dd3140"
       },
       "exports/logo/32.png": {
-        "sourceChecksum": "sha256:d8e7b2bdf764aaeadfcaefed8a8d5c8b3aac52e1f5ee58b87f689418fb386a68",
+        "sourceChecksum": "sha256:934797c773e734bbcfd45adf8b7d73ae2f3a6feb3181cb0ceabdb1464a26a6b7",
         "outputPath": "exports/logo/32.png",
-        "exportedAt": "2026-09-12T14:27:43.893Z",
+        "exportedAt": "2026-09-12T15:29:05.231Z",
         "exportChecksum": "sha256:0316f40891fffbde460b4bf5d4d11070047bea6cf3ae83dde4469f34690edf75"
       }
     }

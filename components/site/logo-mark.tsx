@@ -4,17 +4,16 @@
  * to a generic sans-serif. Inline SVG lives in the page DOM and picks up --font-display for free. */
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 512 512" className={className} fill="none" aria-hidden="true">
-      <circle cx="256" cy="256" r="224" stroke="currentColor" strokeWidth="40" />
+    <svg viewBox="0 0 512 512" className={className} aria-hidden="true">
+      <rect x="0" y="0" width="512" height="512" rx="56" ry="56" className="fill-brand" />
       <text
         x="256"
-        y="332"
+        y="326"
         textAnchor="middle"
-        fontSize="240"
+        fontSize="230"
         fontWeight="800"
         letterSpacing="-8"
-        fill="currentColor"
-        className="font-display"
+        className="fill-brand-foreground font-display"
       >
         EA
       </text>
