@@ -10,8 +10,8 @@ const TAGS_BY_SLUG: Record<string, string[]> = {
   "freelance-software-engineer-freelance": ["React", "Next.js", "TypeScript", "Tailwind", "PHP", "PostgreSQL"],
   "full-stack-developer-stream-tv-cayman": ["Laravel", "MySQL", "NextJS", "Docker", "AWS"],
   "senior-full-stack-developer-net-net-inc": ["React Native", "React"],
-  "net-developer-quad-it-solutions": [".NET"],
-  "freelance-software-developer-freelance": ["Mobile", "IoT"],
+  "software-developer-egis-projects-philippines": [".NET", "MSSQL", "Javascript"],
+  "freelance-software-developer-freelance": ["Mobile", "IoT", "Xamarin", "Raspberry Pi"],
 };
 
 export function ExperienceSection({ experience }: { experience: Experience[] }) {
@@ -19,6 +19,7 @@ export function ExperienceSection({ experience }: { experience: Experience[] }) 
     const current = e.dateRange.includes("Present");
     const tags = TAGS_BY_SLUG[e.slug];
     return {
+      key: e.slug,
       title: e.yearRange,
       content: (
         <div className="pb-4">

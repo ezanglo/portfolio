@@ -38,8 +38,7 @@ export const SKILLS: Skill[] = [
   { name: "Better Auth", category: "backend", featured: true, order: 3 },
   { name: "Laravel", category: "backend", featured: false, order: 4 },
   { name: "Symfony", category: "backend", featured: false, order: 5 },
-  { name: "C#", category: "backend", featured: false, order: 6 },
-  { name: "ASP.NET", category: "backend", featured: false, order: 7 },
+  { name: ".NET", category: "backend", featured: false, order: 7 },
   { name: "CodeIgniter", category: "backend", featured: false, order: 8 },
 
   // data ("State & Data" tab) — databases/ORMs I run myself, plus the client-side state that
@@ -54,9 +53,8 @@ export const SKILLS: Skill[] = [
   { name: "Redux", category: "data", featured: false, order: 5 },
   { name: "Zod", category: "data", featured: false, order: 6 },
   { name: "MongoDB", category: "data", featured: false, order: 7 },
-  { name: "MySQL", category: "data", featured: false, order: 8 },
-  { name: "SQL Server", category: "data", featured: false, order: 9 },
-  { name: "FCM", category: "data", featured: false, order: 10 },
+  { name: "Vector Database", category: "data", featured: false, order: 8 },
+  { name: "RAG", category: "data", featured: false, order: 9 },
 
   // integrations — third-party services and AI platforms actually wired into these apps,
   // including managed BaaS/auth platforms (Firebase, Supabase, Clerk) rather than databases
@@ -71,7 +69,6 @@ export const SKILLS: Skill[] = [
   { name: "Sentry", category: "integrations", featured: true, order: 8 },
   { name: "Inngest", category: "integrations", featured: true, order: 9 },
   { name: "Firebase", category: "integrations", featured: true, order: 10 },
-  { name: "Firestore", category: "integrations", featured: true, order: 11 },
   { name: "Supabase", category: "integrations", featured: true, order: 12 },
   { name: "Clerk", category: "integrations", featured: false, order: 13 },
 
@@ -93,14 +90,10 @@ export const SKILLS: Skill[] = [
   // are platform facts from two old embedded/desktop projects, kept as real history.
   { name: "Git", category: "delivery", featured: true, order: 1 },
   { name: "GitHub", category: "delivery", featured: true, order: 2 },
-  { name: "GitHub Actions", category: "delivery", featured: true, order: 3 },
   { name: "Docker", category: "delivery", featured: true, order: 4 },
   { name: "Turborepo", category: "delivery", featured: true, order: 5 },
   { name: "BitBucket", category: "delivery", featured: false, order: 6 },
   { name: "JIRA", category: "delivery", featured: false, order: 7 },
-  { name: "VersionOne", category: "delivery", featured: false, order: 8 },
-  { name: "Mantis", category: "delivery", featured: false, order: 9 },
-  { name: "WPF", category: "delivery", featured: false, order: 10 },
-  { name: "Windows IoT", category: "delivery", featured: false, order: 11 },
-  { name: "Raspberry Pi", category: "delivery", featured: false, order: 12 },
+  { name: "Windows IoT", category: "delivery", featured: false, order: 8 },
+  { name: "Raspberry Pi", category: "delivery", featured: false, order: 9 },
 ]

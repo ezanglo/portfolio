@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
@@ -9,6 +9,7 @@ import {
   PROJECT_TYPE_OPTIONS,
   TIMELINE_OPTIONS,
   contactFormSchema,
+  isCasualProjectType,
   type ContactFormType,
 } from "@/lib/schemas/contact";
 import { sendEmail } from "@/actions/sendEmail";
@@ -42,6 +43,14 @@ export function ContactForm() {
       message: "",
     },
   });
+  const isCasual = isCasualProjectType(form.watch("projectType"));
+
+  useEffect(() => {
+    if (!isCasual) return;
+    form.setValue("budget", undefined);
+    form.setValue("timeline", undefined);
+    form.clearErrors(["budget", "timeline"]);
+  }, [isCasual, form]);
 
   async function onSubmit(values: ContactFormType) {
     setIsSubmitting(true);
@@ -63,6 +72,31 @@ export function ContactForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" noValidate>
+        <FormField
+          control={form.control}
+          name="projectType"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Project type</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a project type" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {PROJECT_TYPE_OPTIONS.map((option) => (
+                    <SelectItem key={option} value={option}>
+                      {option}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <div className="grid gap-6 sm:grid-cols-2">
           <FormField
             control={form.control}
@@ -94,37 +128,16 @@ export function ContactForm() {
 
         <FormField
           control={form.control}
-          name="projectType"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Project type</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a project type" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {PROJECT_TYPE_OPTIONS.map((option) => (
-                    <SelectItem key={option} value={option}>
-                      {option}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Project description</FormLabel>
+              <FormLabel>{isCasual ? "Message" : "Project description"}</FormLabel>
               <FormControl>
-                <Textarea rows={5} placeholder="What are you looking to build?" {...field} />
+                <Textarea
+                  rows={5}
+                  placeholder={isCasual ? "What's on your mind?" : "What are you looking to build?"}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -138,7 +151,7 @@ export function ContactForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Budget</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} value={field.value} disabled={isCasual}>
                   <FormControl>
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select a budget" />
@@ -162,7 +175,7 @@ export function ContactForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Timeline</FormLabel>
-                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <Select onValueChange={field.onChange} value={field.value} disabled={isCasual}>
                   <FormControl>
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select a timeline" />

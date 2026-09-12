@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { motion } from "motion/react";
 import {
   Code2,
   Store,
@@ -351,18 +352,25 @@ export function HeroWorkflowPanel() {
           <span className="ml-1.5 text-(length:--text-caption) text-muted-foreground">{stage.windowLabel}</span>
         </div>
         <div className="grid">
-          {STAGES.map((s) => (
-            <div
-              key={s.key}
-              aria-hidden={s.key !== stage.key}
-              className={`col-start-1 row-start-1 ${s.key === stage.key ? "" : "invisible"}`}
-            >
-              {s.kind === "code" && (
-                <CodePanel fileTab={s.fileTab} breadcrumb={s.breadcrumb} tag={s.tag} lines={s.lines} />
-              )}
-              {s.kind === "monitor" && <MonitorPanel />}
-            </div>
-          ))}
+          {STAGES.map((s) => {
+            const isActive = s.key === stage.key;
+            return (
+              <motion.div
+                key={s.key}
+                aria-hidden={!isActive}
+                className="col-start-1 row-start-1"
+                initial={false}
+                animate={{ opacity: isActive ? 1 : 0 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                style={{ pointerEvents: isActive ? "auto" : "none" }}
+              >
+                {s.kind === "code" && (
+                  <CodePanel fileTab={s.fileTab} breadcrumb={s.breadcrumb} tag={s.tag} lines={s.lines} />
+                )}
+                {s.kind === "monitor" && <MonitorPanel />}
+              </motion.div>
+            );
+          })}
         </div>
         <StageFooter kind={stage.kind} branchLabel={stage.branchLabel} languageLabel={stage.languageLabel} />
       </div>
@@ -373,7 +381,14 @@ export function HeroWorkflowPanel() {
         </div>
         {stage.screenshot ? (
           <div className="relative h-full w-full rounded-[2.5rem]">
-            <Image src={stage.screenshot.src} alt={stage.screenshot.alt} fill sizes="256px" className="rounded-[2.5rem] object-cover" />
+            <Image
+              src={stage.screenshot.src}
+              alt={stage.screenshot.alt}
+              fill
+              sizes="256px"
+              priority
+              className="rounded-[2.5rem] object-cover"
+            />
           </div>
         ) : (
           <div className="flex h-full flex-col gap-2.5 rounded-[2.5rem] bg-card px-4 pt-5 pb-4">

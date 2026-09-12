@@ -17,7 +17,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "win-win-ai",
     title: "WIN(win) AI",
-    description: "AI Chat enabled mobile and web application. Used internally for NET(net) with they own data as knowledge base",
+    description: "AI-enabled chat application for mobile and web, built for internal use at NET(net) using their own data as the knowledge base.",
     platform: "mobile",
     categories: ["Mobile", "AI"],
     // No stack tags were ever recorded for this project — can't confirm React Native.
@@ -54,7 +54,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "saas-platform-mobile-application",
     title: "SaaS Platform Mobile Application",
-    description: "I was lead front-end developer for this project, helped plan, design and setup initial back-end. This project is the mobile version of an existing SaaS Platform",
+    description: "Led front-end development for the mobile version of an existing SaaS platform, and helped plan, design, and set up the initial back-end.",
     platform: "mobile",
     categories: ["Mobile", "SaaS", "Full-Stack"],
     mobileFramework: "react-native",
@@ -109,7 +109,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "ai-persona-chat-bot",
     title: "AI Persona Chat Bot",
-    description: "An AI Persona Chat Bot that helps you with specific topics the model is trained on. I worked solo on this project using the latest tech stack with NextJS and AI Technology",
+    description: "An AI persona chat bot for topic-specific conversations, built solo with Next.js and generative AI.",
     // Was "mobile" + featured in the CMS; the stack (NextJS, ReactJS, Prisma, Clerk,
     // Vercel, Generative AI, Vertex AI) is a web app, not React Native.
     platform: "web",
@@ -129,7 +129,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "yuvee",
     title: "YuVee",
-    description: "I worked as a full-stack developer on this project, working as the sole backend developer and front-end web developer. I also handled maintaining devops and deployment to AWS, introducing docker in deploying the new web application.",
+    description: "Sole full-stack developer on this project, owning both the backend and front-end. Also managed DevOps and AWS deployment, introducing Docker for the new web application.",
     platform: "web",
     categories: ["Web", "Full-Stack"],
     mobileFramework: null,
@@ -147,7 +147,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "real-time-rfid-registration",
     title: "Real-time RFID Registration",
-    description: "I worked as full-stack developer on this project, working with a team. Appointment system for the company's customers to install their RFID Stickers to be used in the expressway Toll Systems.",
+    description: "Full-stack developer on a team building an appointment system for customers to install RFID stickers used in expressway toll systems.",
     // Was "mobile" in the CMS; the stack (ReactJS, Vite, ASP.NET, MSSQL) is a web app.
     platform: "web",
     categories: ["Web", "Full-Stack"],
@@ -166,7 +166,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "plant-tea-ta",
     title: "Plant Tea-ta",
-    description: "Web Application for our local Milk Tea business. This serves as the POS System as well as inventory system and gives us sales analytics. I have a also integrated rewards systems for frequent buyers.",
+    description: "Web application for a local milk tea business, serving as the POS and inventory system with built-in sales analytics and a rewards program for frequent buyers.",
     platform: "web",
     categories: ["Web", "Full-Stack"],
     mobileFramework: null,
@@ -184,7 +184,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "tara-tracking-and-routing",
     title: "TARA: Tracking and Routing",
-    description: "Tracking and routing application like Grab and Uber to reserve seats and view user location",
+    description: "Ride-hailing style tracking and routing application, similar to Grab or Uber, for reserving seats and viewing real-time user location.",
     platform: "mobile",
     categories: ["Mobile", "Full-Stack"],
     // Was engine `native`, which rendered as "React Native" — the stack (C#, Xamarin) is not.
@@ -203,7 +203,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "shop-diggy",
     title: "Shop Diggy",
-    description: "I worked as the front-end developer on this project, this is a mobile application to help users get the best deal from different e-commerce websites",
+    description: "Front-end developer on a mobile application that helps users compare deals across different e-commerce websites.",
     platform: "mobile",
     categories: ["Mobile"],
     mobileFramework: "xamarin",
@@ -221,7 +221,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "plokernow",
     title: "PlokerNow",
-    description: "A public web application for easily setting up a Planning Poker Session. This is a personal project",
+    description: "A public web application for quickly setting up Planning Poker sessions. Personal project.",
     platform: "web",
     categories: ["Web"],
     mobileFramework: null,
@@ -240,7 +240,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "disguised-mari-web",
     title: "Disguised Mari Web",
-    description: "Web Application of the Discord Bot for managing and updating recommendation data.",
+    description: "Web application for the Discord bot, used to manage and update its recommendation data.",
     platform: "web",
     categories: ["Web", "Full-Stack"],
     mobileFramework: null,
@@ -258,7 +258,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "disguised-mari-bot",
     title: "Disguised Mari Bot",
-    description: "A Discord Bot I created for the game Grand Chase. This bot accepts commands and gives specific recommendations based on the user input.",
+    description: "A Discord bot built for the game Grand Chase, providing tailored recommendations based on user commands.",
     platform: "web",
     categories: ["Web", "Full-Stack"],
     mobileFramework: null,
@@ -277,7 +277,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "home-vision-face-recognition",
     title: "HOME VISION: Face Recognition",
-    description: "Security system that uses face recognition to detect unrecognized persons entering the home",
+    description: "Home security system that uses face recognition to detect unrecognized individuals entering the premises.",
     // Was "mobile" in the CMS; the stack (C#, EmguCV, WPF) is a Windows desktop app.
     platform: "desktop",
     categories: [],
@@ -296,7 +296,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "halomet-voice-command-navigation-system",
     title: "HALOMET: Voice Command Navigation System",
-    description: "A navigating system embedded on a helmet that utilizes speech recognition to navigate, including collision sensors.",
+    description: "A helmet-embedded navigation system using speech recognition for hands-free navigation, with collision sensors for added safety.",
     // Was "mobile" in the CMS; Raspberry Pi + Windows 10 IoT is an embedded device, not a phone.
     platform: "iot",
     categories: [],

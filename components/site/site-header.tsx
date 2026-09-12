@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useMotionValueEvent, useScroll } from "motion/react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Menu, ArrowUpRight } from "lucide-react";
 import { NAV_LINKS } from "@/content/navigation";
 import { Button } from "@/components/ui/button";
@@ -95,7 +95,11 @@ export function SiteHeader({ name, cvUrl }: { name: string; cvUrl: string }) {
             >
               {link.label}
               {active === link.id ? (
-                <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-brand" />
+                <motion.span
+                  layoutId="nav-underline"
+                  className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-brand"
+                  transition={{ type: "spring", duration: 0.4, bounce: 0.15 }}
+                />
               ) : null}
             </a>
           ))}

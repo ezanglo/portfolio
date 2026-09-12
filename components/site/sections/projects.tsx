@@ -138,7 +138,7 @@ export function Projects({ projects, whatIBuild }: { projects: Project[]; whatIB
                 return (
                   <div
                     key={project.slug}
-                    className="flex flex-wrap items-center gap-4 border-b border-border bg-card p-5 last:border-b-0 hover:bg-secondary/40"
+                    className="flex flex-wrap items-center gap-4 border-b border-border bg-card p-5 transition-colors duration-150 last:border-b-0 hover:bg-secondary/40"
                   >
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2.5">

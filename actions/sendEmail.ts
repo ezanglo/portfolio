@@ -29,7 +29,10 @@ export const sendEmail = async (payload: ContactFormType) => {
     return await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: SITE.email,
-      subject: `New project inquiry from ${parsed.data.name}`,
+      subject:
+        parsed.data.projectType === "Just Want to Chat"
+          ? `New message from ${parsed.data.name}`
+          : `New project inquiry from ${parsed.data.name}`,
       react: React.createElement(ContactFormEmail, parsed.data),
     });
   } catch (error: unknown) {
