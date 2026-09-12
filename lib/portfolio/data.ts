@@ -6,6 +6,7 @@ import {
   LEGACY_CAREER_STATUS,
   LEGACY_COPYRIGHT,
   LEGACY_ENGINES_ORCHESTRATED,
+  LEGACY_EXPERIENCE_DESCRIPTIONS,
   LEGACY_MAIN_STACK,
   LEGACY_PROJECT_CLASSIFICATION,
   LEGACY_PROJECT_SLUG_ORDER,
@@ -17,6 +18,7 @@ import {
 } from '@/lib/legacy/strings'
 import { buildPortfolioData } from './derive'
 import type { LegacySourceProject, LegacySourceSite, PortfolioData } from './types'
+import type { Experience } from '@/content/types'
 
 const projectsBySlug = new Map(PROJECTS.map((p) => [p.slug, p]))
 
@@ -49,6 +51,10 @@ const LEGACY_PROJECTS: LegacySourceProject[] = LEGACY_PROJECT_SLUG_ORDER.map((sl
   }
 })
 
+const LEGACY_EXPERIENCE: Experience[] = EXPERIENCE.map((e) =>
+  e.slug in LEGACY_EXPERIENCE_DESCRIPTIONS ? { ...e, description: LEGACY_EXPERIENCE_DESCRIPTIONS[e.slug] } : e
+)
+
 const LEGACY_SITE: LegacySourceSite = {
   siteName: SITE.siteName,
   name: SITE.name,
@@ -80,7 +86,7 @@ const LEGACY_SITE: LegacySourceSite = {
  */
 export const getPortfolioData = cache(async (): Promise<PortfolioData> => {
   return buildPortfolioData({
-    experiences: EXPERIENCE,
+    experiences: LEGACY_EXPERIENCE,
     projects: LEGACY_PROJECTS,
     skills: SKILLS,
     site: LEGACY_SITE,
