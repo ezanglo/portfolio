@@ -1,32 +1,42 @@
-import { ChevronDown } from "lucide-react";
+import type { StackLayer } from "@/content/types";
 import { cn } from "@/lib/utils";
 
-export interface StackLayer {
-  label: string;
-  detail: string;
-}
+export type { StackLayer };
 
 /**
  * The layered React Native/Expo -> API -> Auth -> Backend -> PostgreSQL -> AWS -> AI visual
  * (brief §5/§12, build-plan §9). Hand-built rather than an Aceternity component — nothing in
  * the registry models "one product, layered systems underneath" — reused on the homepage,
- * /services, /about, and case studies via the `layers` prop.
+ * /services, /about, and case studies via the `layers` prop. A numbered vertical step list
+ * rather than boxes-and-arrows: a horizontal flow wraps unevenly the moment the item count
+ * doesn't divide cleanly into a row (ragged trailing row, no connector into it), and this
+ * has no row count to break at any width.
  */
 export function StackDiagram({ layers, className }: { layers: StackLayer[]; className?: string }) {
   return (
-    <ol className={cn("mx-auto flex w-full max-w-sm flex-col items-stretch", className)}>
+    <ol className={cn("flex flex-col", className)}>
       {layers.map((layer, i) => {
         const isProduct = i === 0;
+        const isLast = i === layers.length - 1;
         return (
-          <li key={layer.label} className="flex flex-col items-center">
+          <li key={layer.label} className={cn("relative flex gap-4", !isLast && "pb-6")}>
+            {!isLast ? (
+              <span
+                aria-hidden
+                className="absolute top-8 left-4 -ml-px h-[calc(100%-1.75rem)] w-px bg-border"
+              />
+            ) : null}
             <div
               className={cn(
-                "w-full rounded-lg border px-5 py-3 text-center",
+                "relative z-10 flex size-8 shrink-0 items-center justify-center rounded-full border text-(length:--text-caption) font-semibold",
                 isProduct
-                  ? "border-brand bg-brand/5"
-                  : "border-border bg-card"
+                  ? "border-brand bg-brand text-brand-foreground"
+                  : "border-border bg-card text-muted-foreground"
               )}
             >
+              {i + 1}
+            </div>
+            <div className="pt-1">
               <p
                 className={cn(
                   "text-(length:--text-small) font-semibold",
@@ -35,11 +45,8 @@ export function StackDiagram({ layers, className }: { layers: StackLayer[]; clas
               >
                 {layer.label}
               </p>
-              <p className="text-(length:--text-caption) text-muted-foreground">{layer.detail}</p>
+              <p className="mt-0.5 text-(length:--text-caption) text-muted-foreground">{layer.detail}</p>
             </div>
-            {i < layers.length - 1 ? (
-              <ChevronDown aria-hidden className="my-1 size-4 shrink-0 text-muted-foreground/60" />
-            ) : null}
           </li>
         );
       })}

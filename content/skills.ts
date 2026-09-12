@@ -75,14 +75,18 @@ export const SKILLS: Skill[] = [
   { name: "Supabase", category: "integrations", featured: true, order: 12 },
   { name: "Clerk", category: "integrations", featured: false, order: 13 },
 
-  // cloud — hosting/deployment platforms only, most-used first. Google Vertex AI is folded
-  // into "Google Cloud" rather than listed separately; the individual AWS sub-services are
-  // dropped in favor of "AWS" alone. CI/CD and containerization live under "Delivery" instead.
+  // cloud — hosting/deployment platforms plus the object storage services actually wired into
+  // these apps (Vercel Blob, Supabase Storage, Cloudflare R2), most-used first. Google Vertex AI
+  // is folded into "Google Cloud" rather than listed separately; the individual AWS sub-services
+  // are dropped in favor of "AWS" alone. CI/CD and containerization live under "Delivery" instead.
   { name: "AWS", category: "cloud", featured: true, order: 1 },
   { name: "Google Cloud", category: "cloud", featured: true, order: 2 },
-  { name: "Dokploy", category: "cloud", featured: true, order: 3 },
-  { name: "Coolify", category: "cloud", featured: true, order: 4 },
-  { name: "Azure", category: "cloud", featured: true, order: 5 },
+  { name: "Vercel Blob", category: "cloud", featured: true, order: 3 },
+  { name: "Supabase Storage", category: "cloud", featured: true, order: 4 },
+  { name: "Cloudflare R2", category: "cloud", featured: true, order: 5 },
+  { name: "Dokploy", category: "cloud", featured: true, order: 6 },
+  { name: "Coolify", category: "cloud", featured: true, order: 7 },
+  { name: "Azure", category: "cloud", featured: true, order: 8 },
 
   // delivery — version control, CI/CD, containerization, and project tracking; Turborepo/pnpm
   // monorepos are how the current projects are actually built. WPF/Windows IoT/Raspberry Pi

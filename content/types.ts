@@ -68,6 +68,13 @@ export interface Skill {
   order: number | null
 }
 
+/** One box in a project's architecture diagram — `label` is the layer/technology, `detail`
+ * is what it actually does in that project (not a generic category description). */
+export interface StackLayer {
+  label: string
+  detail: string
+}
+
 /** §9 case-study schema. Unknown narrative is a literal `[ADD REAL … HERE]` string, never a
  * plausible-sounding placeholder — visible in the UI until real detail is added. */
 export interface CaseStudy {
@@ -77,6 +84,10 @@ export interface CaseStudy {
   role: string
   whatIBuilt: string[]
   architecture: string
+  /** The project's own real stack, top-to-bottom, for the case-study architecture diagram.
+   * `null` when the underlying `architecture` narrative is still an `[ADD REAL … HERE]`
+   * placeholder — an invented-looking diagram would be worse than no diagram (§8/§31). */
+  architectureLayers: StackLayer[] | null
   challenges: string
   solution: string
   technology: string[]
