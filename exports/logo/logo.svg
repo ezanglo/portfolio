@@ -1,8 +1,0 @@
-<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800&amp;display=swap');
-    text { font-family: 'Space Grotesk', sans-serif; }
-  </style>
-  <rect x="0" y="0" width="512" height="512" rx="56" ry="56" fill="#4c9fe8" />
-  <text x="256" y="326" text-anchor="middle" font-size="230" font-weight="800" letter-spacing="-8" fill="#071019">EA</text>
-</svg>
