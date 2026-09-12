@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/site/container";
@@ -19,7 +20,7 @@ function projectLink(project: Project) {
   return null;
 }
 
-function WordmarkHeader({ title }: { title: string }) {
+function WordmarkHeader({ title, logoUrl }: { title: string; logoUrl: string | null }) {
   return (
     <div className="relative flex h-24 items-center justify-center overflow-hidden rounded-xl border border-border bg-background">
       <div
@@ -31,9 +32,21 @@ function WordmarkHeader({ title }: { title: string }) {
           backgroundSize: "22px 22px",
         }}
       />
-      <p className="relative px-4 text-center font-display text-xl font-bold tracking-tight text-balance sm:text-2xl">
-        {title}
-      </p>
+      <div className="relative flex items-center gap-3 px-4">
+        {logoUrl ? (
+          <Image
+            src={logoUrl}
+            alt=""
+            width={48}
+            height={48}
+            className="size-12 shrink-0 rounded-[14px] object-cover"
+            aria-hidden
+          />
+        ) : null}
+        <p className="text-center font-display text-xl font-bold tracking-tight text-balance sm:text-2xl">
+          {title}
+        </p>
+      </div>
     </div>
   );
 }
@@ -74,7 +87,7 @@ export function Projects({ projects, whatIBuild }: { projects: Project[]; whatIB
                 <GlowingEffect proximity={90} spread={35} borderWidth={2} />
                 <BentoGridItem
                   className="h-full overflow-hidden"
-                  header={<WordmarkHeader title={project.title} />}
+                  header={<WordmarkHeader title={project.title} logoUrl={project.logoUrl} />}
                   title={
                     <span className="flex flex-wrap items-center gap-2.5">
                       <span className="font-display text-(length:--text-h3)">{project.title}</span>

@@ -30,6 +30,7 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://ai.winwinit.com/",
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 1,
   },
   {
@@ -47,6 +48,7 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://opic-app.com/",
     githubUrl: null,
     images: [],
+    logoUrl: "/images/opic-icon.png",
     order: 2,
   },
   {
@@ -64,6 +66,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 3,
   },
   {
@@ -82,6 +85,7 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://www.resiboo.com/",
     githubUrl: null,
     images: [],
+    logoUrl: "/images/resiboo-icon.png",
     order: 4,
   },
   {
@@ -99,6 +103,7 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://app.finnaiops.com/",
     githubUrl: null,
     images: [],
+    logoUrl: "/images/finn-icon.png",
     order: 5,
   },
   {
@@ -118,6 +123,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 6,
   },
   {
@@ -135,6 +141,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 7,
   },
   {
@@ -153,6 +160,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 8,
   },
   {
@@ -170,6 +178,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 9,
   },
   {
@@ -188,6 +197,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 10,
   },
   {
@@ -205,6 +215,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 11,
   },
   {
@@ -223,6 +234,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 12,
   },
   {
@@ -240,6 +252,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 13,
   },
   {
@@ -258,6 +271,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 14,
   },
   {
@@ -276,6 +290,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 15,
   },
   {
@@ -294,6 +309,7 @@ export const PROJECTS: Project[] = [
     liveUrl: null,
     githubUrl: null,
     images: [],
+    logoUrl: null,
     order: 16,
   },
   {
@@ -312,6 +328,7 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://app.stratoscommand.com/",
     githubUrl: null,
     images: [],
+    logoUrl: "/images/stratos-icon.png",
     order: 17,
   },
 ]

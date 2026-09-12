@@ -41,6 +41,8 @@ export interface Project {
   liveUrl: string | null
   githubUrl: string | null
   images: ProjectImage[]
+  /** Square app icon or brand mark, e.g. "/images/resiboo-icon.png". `null` until sourced. */
+  logoUrl: string | null
   order: number | null
 }
 
