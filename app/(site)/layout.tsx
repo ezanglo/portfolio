@@ -59,6 +59,7 @@ export default function SiteLayout({
           <SiteHeader name={SITE.name} cvUrl={SITE.cvUrl} />
           <main id="main">{children}</main>
           <SiteFooter
+            linkedinUrl={SITE.linkedinUrl}
             githubUrl={SITE.githubUrl}
             email={SITE.email}
             cvUrl={SITE.cvUrl}

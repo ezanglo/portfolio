@@ -5,7 +5,7 @@
 
 /*
  * Design system — redesigned against docs/Portfolio design brief (2026-09-12): dark-tech
- * editorial language, one amber/burnt-orange brand accent, Space Grotesk display + Inter body.
+ * editorial language, one electric-blue brand accent, Space Grotesk display + Inter body.
  * shadcn's semantic tokens (neutral, new-york) plus a layer on top: a type scale, container
  * widths, section rhythm, and a reduced-motion block every Aceternity component respects.
  */
@@ -30,12 +30,12 @@
   --destructive-foreground: oklch(0.985 0 0);
   --border: #e5e2db;
   --input: #e5e2db;
-  --ring: #f0924f80;
+  --ring: #4c9fe880;
 
-  /* Single brand accent — CTAs, eyebrows, active nav, timeline nodes. One warm burnt-orange,
+  /* Single brand accent — CTAs, eyebrows, active nav, timeline nodes. One electric blue,
      identical in both themes so the brand mark never shifts (design brief §1). */
-  --brand: #f0924f;
-  --brand-foreground: #17130f;
+  --brand: #4c9fe8;
+  --brand-foreground: #071019;
 
   /* Type scale — paired line-height/tracking. Typography + spacing discipline over motion.
      Titles bumped 2026-09-14 for more visual weight; body/small/caption left as-is. */
@@ -92,9 +92,9 @@
     --destructive-foreground: oklch(0.985 0 0);
     --border: #262626;
     --input: #2a2a2d;
-    --ring: #f0924f80;
-    --brand: #f0924f;
-    --brand-foreground: #17130f;
+    --ring: #4c9fe880;
+    --brand: #4c9fe8;
+    --brand-foreground: #071019;
   }
 }
 
@@ -117,9 +117,9 @@
   --destructive-foreground: oklch(0.985 0 0);
   --border: #262626;
   --input: #2a2a2d;
-  --ring: #f0924f80;
-  --brand: #f0924f;
-  --brand-foreground: #17130f;
+  --ring: #4c9fe880;
+  --brand: #4c9fe8;
+  --brand-foreground: #071019;
 }
 
 :root[data-theme="light"] {
@@ -141,9 +141,9 @@
   --destructive-foreground: oklch(0.985 0 0);
   --border: #e5e2db;
   --input: #e5e2db;
-  --ring: #f0924f80;
-  --brand: #f0924f;
-  --brand-foreground: #17130f;
+  --ring: #4c9fe880;
+  --brand: #4c9fe8;
+  --brand-foreground: #071019;
 }
 
 @theme inline {

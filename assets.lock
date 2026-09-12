@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "assets": {
+    "favicon/favicon": {
+      "exports/favicon/256.png": {
+        "sourceChecksum": "sha256:c630e7fd49d4575022654c37db208f1b029074bfdca0d20a9c4a049e474d3220",
+        "outputPath": "exports/favicon/256.png",
+        "exportedAt": "2026-09-12T14:27:43.677Z",
+        "exportChecksum": "sha256:10531e7f97b33bf44a1d0380db0292d6ec352e47953d57b6a7fa181c2c459fcc"
+      },
+      "exports/favicon/48.png": {
+        "sourceChecksum": "sha256:c630e7fd49d4575022654c37db208f1b029074bfdca0d20a9c4a049e474d3220",
+        "outputPath": "exports/favicon/48.png",
+        "exportedAt": "2026-09-12T14:27:43.678Z",
+        "exportChecksum": "sha256:6fa2bd7b19f6d63607bf162b6e9c9a6c1cce994c58c53babe46abe70b254083f"
+      },
+      "exports/favicon/32.png": {
+        "sourceChecksum": "sha256:c630e7fd49d4575022654c37db208f1b029074bfdca0d20a9c4a049e474d3220",
+        "outputPath": "exports/favicon/32.png",
+        "exportedAt": "2026-09-12T14:27:43.678Z",
+        "exportChecksum": "sha256:0316f40891fffbde460b4bf5d4d11070047bea6cf3ae83dde4469f34690edf75"
+      },
+      "exports/favicon/16.png": {
+        "sourceChecksum": "sha256:c630e7fd49d4575022654c37db208f1b029074bfdca0d20a9c4a049e474d3220",
+        "outputPath": "exports/favicon/16.png",
+        "exportedAt": "2026-09-12T14:27:43.678Z",
+        "exportChecksum": "sha256:0112d8dcc05cfa4f5bf047cb90dbe35593a1c66148ff8b54fb1e810ed27b2b8f"
+      }
+    },
+    "logo/logo": {
+      "exports/logo/1024.png": {
+        "sourceChecksum": "sha256:d8e7b2bdf764aaeadfcaefed8a8d5c8b3aac52e1f5ee58b87f689418fb386a68",
+        "outputPath": "exports/logo/1024.png",
+        "exportedAt": "2026-09-12T14:27:43.893Z",
+        "exportChecksum": "sha256:34fbda550402d1e0180c418018efe3c7d0f2abf5461cd5eb76c6841fb481e724"
+      },
+      "exports/logo/180.png": {
+        "sourceChecksum": "sha256:d8e7b2bdf764aaeadfcaefed8a8d5c8b3aac52e1f5ee58b87f689418fb386a68",
+        "outputPath": "exports/logo/180.png",
+        "exportedAt": "2026-09-12T14:27:43.893Z",
+        "exportChecksum": "sha256:c2e889c0963c3c70783c88dd0a3dc6a35bccb044ac19884b0cd0c3b960dd3140"
+      },
+      "exports/logo/32.png": {
+        "sourceChecksum": "sha256:d8e7b2bdf764aaeadfcaefed8a8d5c8b3aac52e1f5ee58b87f689418fb386a68",
+        "outputPath": "exports/logo/32.png",
+        "exportedAt": "2026-09-12T14:27:43.893Z",
+        "exportChecksum": "sha256:0316f40891fffbde460b4bf5d4d11070047bea6cf3ae83dde4469f34690edf75"
+      }
+    }
+  }
+}
