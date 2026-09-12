@@ -12,6 +12,7 @@ import type { Project } from "@/content/types";
 export function ProjectCard({ project }: { project: Project }) {
   const caseStudy = getCaseStudy(project.slug);
   const href = caseStudy ? `/work/${project.slug}` : project.liveUrl;
+  const showWebsiteLink = caseStudy && project.liveUrl;
 
   return (
     <div className="relative rounded-xl border border-border bg-card p-6">
@@ -38,15 +39,28 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
       ) : null}
       {href ? (
-        <Link
-          href={href}
-          target={caseStudy ? undefined : "_blank"}
-          rel={caseStudy ? undefined : "noreferrer"}
-          className="mt-5 inline-flex items-center gap-1 text-(length:--text-small) font-medium text-brand hover:underline"
-        >
-          {caseStudy ? "Read the case study" : "Visit the live product"}
-          <ArrowUpRight className="size-4" />
-        </Link>
+        <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <Link
+            href={href}
+            target={caseStudy ? undefined : "_blank"}
+            rel={caseStudy ? undefined : "noreferrer"}
+            className="inline-flex items-center gap-1 text-(length:--text-small) font-medium text-brand hover:underline"
+          >
+            {caseStudy ? "Read the case study" : "Visit the live product"}
+            <ArrowUpRight className="size-4" />
+          </Link>
+          {showWebsiteLink ? (
+            <Link
+              href={project.liveUrl!}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 text-(length:--text-small) font-medium text-muted-foreground hover:text-foreground hover:underline"
+            >
+              Visit website
+              <ArrowUpRight className="size-4" />
+            </Link>
+          ) : null}
+        </div>
       ) : null}
     </div>
   );

@@ -13,11 +13,14 @@ import type { BuildCategory } from "@/content/what-i-build";
 const FEATURED_SLUGS = ["reseebo", "opic-nightlife-app", "finn-ai-ops", "stratos-command"];
 const FEATURED_SPANS = ["md:col-span-2", "md:col-span-1", "md:col-span-1", "md:col-span-2"];
 
-function projectLink(project: Project) {
+type ProjectLink = { href: string; label: string; external: boolean };
+
+function projectLinks(project: Project): ProjectLink[] {
   const caseStudy = getCaseStudy(project.slug);
-  if (caseStudy) return { href: `/work/${project.slug}`, label: "Case study", external: false };
-  if (project.liveUrl) return { href: project.liveUrl, label: "Website", external: true };
-  return null;
+  const links: ProjectLink[] = [];
+  if (caseStudy) links.push({ href: `/work/${project.slug}`, label: "Case study", external: false });
+  if (project.liveUrl) links.push({ href: project.liveUrl, label: "Website", external: true });
+  return links;
 }
 
 function WordmarkHeader({ title, logoUrl }: { title: string; logoUrl: string | null }) {
@@ -81,7 +84,7 @@ export function Projects({ projects, whatIBuild }: { projects: Project[]; whatIB
 
         <BentoGrid className="mt-12 max-w-none md:auto-rows-[24rem]">
           {featured.map((project, i) => {
-            const link = projectLink(project);
+            const links = projectLinks(project);
             return (
               <div key={project.slug} className={`relative ${FEATURED_SPANS[i]}`}>
                 <GlowingEffect disabled={false} proximity={90} spread={35} borderWidth={2} />
@@ -108,16 +111,21 @@ export function Projects({ projects, whatIBuild }: { projects: Project[]; whatIB
                           ))}
                         </div>
                       ) : null}
-                      {link ? (
-                        <Link
-                          href={link.href}
-                          target={link.external ? "_blank" : undefined}
-                          rel={link.external ? "noreferrer" : undefined}
-                          className="mt-4 inline-flex items-center gap-1.5 text-(length:--text-small) font-semibold text-brand"
-                        >
-                          {link.label}
-                          <ArrowRight className="size-3.5" />
-                        </Link>
+                      {links.length > 0 ? (
+                        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                          {links.map((link) => (
+                            <Link
+                              key={link.href}
+                              href={link.href}
+                              target={link.external ? "_blank" : undefined}
+                              rel={link.external ? "noreferrer" : undefined}
+                              className="inline-flex items-center gap-1.5 text-(length:--text-small) font-semibold text-brand"
+                            >
+                              {link.label}
+                              <ArrowRight className="size-3.5" />
+                            </Link>
+                          ))}
+                        </div>
                       ) : null}
                     </div>
                   }
@@ -134,7 +142,7 @@ export function Projects({ projects, whatIBuild }: { projects: Project[]; whatIB
             </p>
             <div className="overflow-hidden rounded-2xl border border-border">
               {more.map((project) => {
-                const link = projectLink(project);
+                const links = projectLinks(project);
                 return (
                   <div
                     key={project.slug}
@@ -149,16 +157,21 @@ export function Projects({ projects, whatIBuild }: { projects: Project[]; whatIB
                       </div>
                       <p className="mt-1 text-(length:--text-caption) text-muted-foreground">{project.description}</p>
                     </div>
-                    {link ? (
-                      <Link
-                        href={link.href}
-                        target={link.external ? "_blank" : undefined}
-                        rel={link.external ? "noreferrer" : undefined}
-                        className="inline-flex shrink-0 items-center gap-1 text-(length:--text-small) font-semibold text-brand"
-                      >
-                        {link.label}
-                        <ArrowRight className="size-3.5" />
-                      </Link>
+                    {links.length > 0 ? (
+                      <div className="flex shrink-0 flex-wrap items-center gap-x-4 gap-y-1.5">
+                        {links.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            target={link.external ? "_blank" : undefined}
+                            rel={link.external ? "noreferrer" : undefined}
+                            className="inline-flex items-center gap-1 text-(length:--text-small) font-semibold text-brand"
+                          >
+                            {link.label}
+                            <ArrowRight className="size-3.5" />
+                          </Link>
+                        ))}
+                      </div>
                     ) : null}
                   </div>
                 );
