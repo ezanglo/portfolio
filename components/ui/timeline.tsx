@@ -54,7 +54,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
               <h3 className="mb-4 block text-left font-display text-(length:--text-h2) font-semibold text-muted-foreground md:hidden">
                 {item.title}
               </h3>
-              {item.content}{" "}
+              <span>{item.content}</span>
             </div>
           </div>
         ))}
