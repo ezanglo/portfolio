@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 
 export const size = ogImageSize;
 export const contentType = ogImageContentType;
-export const alt = "Insights — Ezra Anglo";
+export const alt = "Insights | Ezra Anglo";
 
 export function generateStaticParams() {
   return ARTICLES.map((a) => ({ slug: a.slug }));

@@ -24,14 +24,14 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Ezra Anglo — Senior React Native & Full-Stack Developer",
+  title: "Ezra Anglo | Senior Product Engineer, React Native & Full-Stack",
   description:
-    "Senior React Native and full-stack developer building production-ready iOS and Android applications with React Native, Expo, TypeScript, and full-stack engineering expertise.",
+    "Senior product engineer specializing in React Native and Expo, with full-stack engineering across React/Next.js, PostgreSQL, and AWS. I build and ship production iOS and Android products, from architecture to backend, infrastructure, and AI integrations.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Ezra Anglo — Senior React Native & Full-Stack Developer",
+    title: "Ezra Anglo | Senior Product Engineer, React Native & Full-Stack",
     description:
-      "Senior React Native and full-stack developer building production-ready iOS and Android applications with React Native, Expo, TypeScript, and full-stack engineering expertise.",
+      "Senior product engineer specializing in React Native and Expo, with full-stack engineering across React/Next.js, PostgreSQL, and AWS. I build and ship production iOS and Android products, from architecture to backend, infrastructure, and AI integrations.",
     siteName: SITE_NAME,
     type: "website",
     locale: "en_US",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ezra Anglo — Senior React Native & Full-Stack Developer",
+    title: "Ezra Anglo | Senior Product Engineer, React Native & Full-Stack",
     description:
-      "Senior React Native and full-stack developer building production-ready iOS and Android applications with React Native, Expo, TypeScript, and full-stack engineering expertise.",
+      "Senior product engineer specializing in React Native and Expo, with full-stack engineering across React/Next.js, PostgreSQL, and AWS. I build and ship production iOS and Android products, from architecture to backend, infrastructure, and AI integrations.",
   },
 };
 

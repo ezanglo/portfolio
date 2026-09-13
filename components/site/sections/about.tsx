@@ -28,7 +28,7 @@ export function About({
         <SectionHeading
           eyebrow="About"
           heading="A little about me."
-          description="I'm a mobile developer who moved into React Native through a full-stack background, not the other way around."
+          description="A senior product engineer who moved into React Native through a full-stack background, not the other way around."
         />
 
         <div className="mt-12 grid gap-12 lg:grid-cols-[22rem_1fr] lg:items-start">
@@ -74,7 +74,7 @@ export function About({
             <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-card px-5 py-4">
               <div className="flex items-center gap-2.5 text-(length:--text-small)">
                 <span className="size-2 rounded-full bg-brand" />
-                Open to freelance projects &amp; full-time roles — Remote.
+                Open to senior engineering roles &amp; select product engagements, remote.
               </div>
             </div>
 

@@ -1,4 +1,4 @@
-import { Rocket, Smartphone, Layers, ShieldCheck, Sparkles, ArrowRight } from "lucide-react";
+import { ShieldCheck, Smartphone, Layers, RefreshCw, Sparkles, ArrowRight } from "lucide-react";
 import { Container } from "@/components/site/container";
 import { Section } from "@/components/site/section";
 import { SectionHeading } from "@/components/site/section-heading";
@@ -7,35 +7,35 @@ import { cn } from "@/lib/utils";
 
 const CARDS = [
   {
-    icon: Rocket,
-    title: "10+ Years of Engineering Experience",
+    icon: ShieldCheck,
+    title: "Technical & Product Ownership",
     description:
-      "I've worked across software engineering, web, backend, mobile, infrastructure, and production systems.",
+      "10+ years across engineering roles, independently taking a product from requirements and architecture through implementation, deployment, and production support.",
     span: "lg:col-span-2",
   },
   {
     icon: Smartphone,
-    title: "React Native Focus",
-    description: "I specialize in building mobile applications with React Native and Expo.",
+    title: "Mobile Product Development",
+    description: "Production iOS and Android apps built with React Native and Expo, from architecture to app store release.",
     span: "lg:col-span-1",
   },
   {
     icon: Layers,
-    title: "Full-Stack Capability",
-    description: "I can work across the mobile app and the systems behind it.",
+    title: "Full-Stack Product Development",
+    description: "The APIs, databases, and infrastructure behind the app (React/Next.js, PostgreSQL, and AWS), not just the mobile interface.",
     span: "lg:col-span-1",
   },
   {
-    icon: ShieldCheck,
-    title: "Production Mindset",
+    icon: RefreshCw,
+    title: "Product Modernization",
     description:
-      "The goal isn't just to make something work. It's to build something maintainable, testable, deployable, and ready for real users.",
+      "Migrated legacy stacks to modern architectures in production, introducing Next.js, typed APIs, and Dockerized deployments into existing systems.",
     span: "lg:col-span-1",
   },
   {
     icon: Sparkles,
-    title: "AI-Accelerated Workflow",
-    description: "Modern AI tools help me move faster while engineering judgment remains human-led.",
+    title: "AI-Powered Products",
+    description: "AI models integrated as production features: routing, retrieval, and cost-aware model selection wired into real products.",
     span: "lg:col-span-1",
   },
 ];
@@ -50,9 +50,9 @@ export function WhyHireMe() {
     <Section id="why-hire-me" size="lg" className="border-t border-border">
       <Container>
         <SectionHeading
-          eyebrow="Why Work With Me"
-          heading="What I bring to a team."
-          description="One person who can own a mobile product from the interface to the infrastructure behind it."
+          eyebrow="Capabilities"
+          heading="Full ownership, from product to production."
+          description="One senior engineer who can own a mobile product from the interface to the infrastructure behind it."
         />
 
         <div className="mt-12 rounded-2xl border border-border bg-card p-6 sm:p-8">

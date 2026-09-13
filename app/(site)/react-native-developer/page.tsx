@@ -9,9 +9,9 @@ import { ProjectCard } from "@/components/site/project-card";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Senior React Native Developer for Hire — Ezra Anglo",
+  title: "Senior React Native Developer for Hire | Ezra Anglo",
   description:
-    "Hire a senior React Native developer with 10+ years of software engineering experience and a full-stack background — for new apps, MVPs, or existing codebases.",
+    "Hire a senior React Native developer with 10+ years of software engineering experience and a full-stack background, for new apps, MVPs, or existing codebases.",
   alternates: { canonical: "/react-native-developer" },
 };
 
@@ -30,7 +30,7 @@ export default function ReactNativeDeveloperPage() {
             as="h1"
             eyebrow="React Native Developer"
             heading="A senior React Native developer for hire, with a full-stack background."
-            description={`${SITE.yearsExperience} years of software engineering experience, now focused on building production-ready iOS and Android applications with React Native, Expo, and TypeScript. The full-stack background means the app doesn't stop at the screen — I can work across the API, database, and infrastructure behind it too.`}
+            description={`${SITE.yearsExperience} years of software engineering experience, now focused on building production-ready iOS and Android applications with React Native, Expo, and TypeScript. The full-stack background means the app doesn't stop at the screen: I can work across the API, database, and infrastructure behind it too.`}
           />
           <Button size="lg" className="mt-8" asChild>
             <Link href="/#contact">

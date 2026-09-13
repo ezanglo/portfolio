@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 
 export const size = ogImageSize;
 export const contentType = ogImageContentType;
-export const alt = "Case study — Ezra Anglo";
+export const alt = "Case study | Ezra Anglo";
 
 export function generateStaticParams() {
   return CASE_STUDIES.map((c) => ({ slug: c.projectSlug }));

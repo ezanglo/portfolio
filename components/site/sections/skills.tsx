@@ -91,7 +91,7 @@ export function Skills({
         <SectionHeading
           eyebrow="Skills"
           heading="Tools I work with."
-          description="The frameworks, platforms, and AI tools behind my recent projects — grouped by where each sits in the stack."
+          description="The frameworks, platforms, and AI tools behind my recent projects, grouped by where each sits in the stack."
         />
 
         <div className="mt-9 mb-10 flex flex-wrap items-center gap-1.5">

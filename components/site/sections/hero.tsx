@@ -8,9 +8,9 @@ import { HeroWorkflowPanel } from "@/components/site/sections/hero-workflow-pane
 import type { SiteContent } from "@/content/types";
 
 const HERO_STATS = [
-  { value: "10+ years", label: "building mobile & full-stack products" },
-  { value: "iOS + Android", label: "cross-platform delivery" },
-  { value: "Full-stack", label: "app to backend, one person" },
+  { value: "10+ years", label: "building production mobile & full-stack products" },
+  { value: "iOS + Android", label: "end-to-end mobile delivery" },
+  { value: "Full-stack", label: "interface to backend, one owner" },
 ];
 
 /** Design brief hero (no nav entry). Server component: the headline is the five-second test,
@@ -22,7 +22,7 @@ export function Hero({ site }: { site: SiteContent }) {
         <div>
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 text-(length:--text-caption) text-muted-foreground">
             <span className="size-1.5 rounded-full bg-brand" />
-            Shipping with React Native, Expo &amp; AI-native workflows
+            React Native, full-stack &amp; AI-powered product engineering
           </div>
 
           <p className="mb-3.5 text-(length:--text-caption) font-semibold tracking-(--text-caption-tracking) uppercase">
@@ -30,11 +30,11 @@ export function Hero({ site }: { site: SiteContent }) {
           </p>
 
           <h1 className="max-w-xl font-display text-(length:--text-display) leading-(--text-display-lh) tracking-(--text-display-tracking) font-semibold text-balance">
-            Senior
+            Senior Product
             <br />
-            React Native &amp;
+            Engineer building
             <br />
-            <span className="text-brand">Full-Stack Developer.</span>
+            <span className="text-brand">production mobile products.</span>
           </h1>
 
           <p className="mt-4 text-(length:--text-h3) font-medium text-foreground/90">
@@ -47,8 +47,8 @@ export function Hero({ site }: { site: SiteContent }) {
 
           <div className="mt-8 flex flex-wrap items-center gap-3.5">
             <Button size="lg" className="rounded-full bg-brand text-brand-foreground hover:bg-brand/90" asChild>
-              <Link href="/#contact">
-                Let&rsquo;s Build Your App
+              <Link href="/#projects">
+                View My Work
                 <ArrowRight className="size-4" />
               </Link>
             </Button>
@@ -61,8 +61,8 @@ export function Hero({ site }: { site: SiteContent }) {
           </div>
 
           <Button size="sm" variant="ghost" className="rounded-full mt-2" asChild>
-            <Link href="/#projects" className="text-xs">
-              Check out my work
+            <Link href="/#contact" className="text-xs">
+              Get in touch
               <ArrowDownRight className="size-3.5" />
             </Link>
           </Button>

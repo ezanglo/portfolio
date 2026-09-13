@@ -17,7 +17,7 @@ export const WORK_EXPERIENCE: Experience[] = [
     location: "Malolos, Bulacan, PH",
     yearRange: "2024 - Present",
     dateRange: "Sept 2024 - Present",
-    description: "Freelance full-stack developer building web applications with React, Next.js, TypeScript, Tailwind, PHP, and PostgreSQL.",
+    description: "Independent full-stack engineer, owning web and mobile products end to end (architecture, implementation, and production deployment) with React, Next.js, React Native, TypeScript, PHP, and PostgreSQL.",
     responsibilities: [
       "Built and deployed full-stack web and mobile apps with Next.js, React Native (Expo), and PostgreSQL, optimized for performance and scalability.",
       "Developed AI-powered solutions using LLMs, chatbots, and NLP pipelines to enhance user interaction.",
@@ -50,7 +50,7 @@ export const WORK_EXPERIENCE: Experience[] = [
     location: "Georgetown, KY",
     yearRange: "2019 - 2023",
     dateRange: "January 2019 - July 2023",
-    description: "Worked as a full-stack developer before moving onto the mobile team, where I began building with React Native and React.",
+    description: "Designed and built the company's SaaS platform as a full-stack developer, then moved onto the mobile team to build and maintain the production React Native app for iOS and Android.",
     responsibilities: [
       "Designed and developed the company's SaaS platform (WIN(win)) using PHP, Symfony, and React.",
       "Built and documented RESTful APIs with RAML specifications for scalable service integration.",

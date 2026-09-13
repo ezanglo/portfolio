@@ -27,7 +27,7 @@ export async function generateMetadata({
   const article = getArticle(slug);
   if (!article) return {};
   return {
-    title: `${article.title} — Ezra Anglo`,
+    title: `${article.title} | Ezra Anglo`,
     description: article.description,
     alternates: { canonical: `/insights/${slug}` },
     openGraph: { title: article.title, description: article.description, type: "article" },

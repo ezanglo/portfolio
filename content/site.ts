@@ -10,13 +10,13 @@ import type { SiteContent } from './types'
 export const SITE: SiteContent = {
   siteName: "Ezra Anglo Portfolio",
   name: "Ezra",
-  role: "Senior React Native & Full-Stack Developer",
+  role: "Senior Product Engineer, React Native & Full-Stack",
   // Design brief §3 headline — rendered as three lines, the last in the brand accent.
-  heroHeadline: "Senior React Native & Full-Stack Developer.",
-  heroSubline: "production-ready mobile products.",
-  // §3 supporting copy, verbatim.
+  heroHeadline: "Senior Product Engineer building and shipping production mobile products.",
+  heroSubline: "production mobile products, end to end.",
+  // §3 supporting copy — product ownership from requirements/architecture through production.
   heroCopy:
-    "I'm Ezra, a senior React Native and full-stack developer with 10+ years of software engineering experience. I build and ship iOS and Android applications using React Native and Expo, with the full-stack expertise to take a product from mobile interface to API, database, infrastructure, and AI-powered features.",
+    "I'm Ezra, a senior product engineer with 10+ years of software engineering experience. I build and ship iOS and Android applications with React Native and Expo, and own the product beyond the interface: requirements, architecture, backend and API development, PostgreSQL, AWS infrastructure, and AI integrations, through to production.",
   email: "dev.ezraanglo@gmail.com",
   linkedinUrl: "https://www.linkedin.com/in/ezraanglo",
   githubUrl: "https://www.github.com/ezanglo",
@@ -38,7 +38,7 @@ export const SITE: SiteContent = {
     "Full-Stack Engineering",
     "iOS + Android",
     "AI-Powered Products",
-    "Production Experience",
+    "Production Ownership",
   ],
   // AI section only (Phase 8) — never the hero trust row. Left empty (2026-09-12): the "92%
   // lower token costs" / "4 engines orchestrated" claims were Finn AI Ops' old self-described

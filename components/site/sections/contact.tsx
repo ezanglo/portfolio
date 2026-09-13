@@ -14,10 +14,31 @@ export function Contact({ site }: { site: SiteContent }) {
         <SectionHeading
           eyebrow="Contact"
           heading="Let's talk."
-          description="React Native, full-stack, and AI-powered work — open to freelance projects and full-time roles alike."
+          description="Open to senior engineering roles and select product work."
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+        <div className="mt-8 grid gap-3 sm:grid-cols-2">
+          <div className="relative rounded-2xl border border-border bg-card px-5 py-4">
+            <GlowingEffect proximity={70} spread={25} borderWidth={2} />
+            <p className="text-(length:--text-caption) font-semibold tracking-(--text-caption-tracking) text-brand uppercase">
+              Engineering opportunities
+            </p>
+            <p className="mt-1 text-(length:--text-small) text-muted-foreground">
+              Open to senior React Native, mobile, and full-stack roles.
+            </p>
+          </div>
+          <div className="relative rounded-2xl border border-border bg-card px-5 py-4">
+            <GlowingEffect proximity={70} spread={25} borderWidth={2} />
+            <p className="text-(length:--text-caption) font-semibold tracking-(--text-caption-tracking) text-brand uppercase">
+              Product work
+            </p>
+            <p className="mt-1 text-(length:--text-small) text-muted-foreground">
+              Available for selected startup/product engagements.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
           <div className="relative flex flex-col justify-between rounded-2xl border border-border bg-card p-7 sm:p-8">
             <GlowingEffect proximity={80} spread={30} borderWidth={2} />
             <div>

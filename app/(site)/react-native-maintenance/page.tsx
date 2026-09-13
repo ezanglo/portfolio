@@ -7,9 +7,9 @@ import { SectionHeading } from "@/components/site/section-heading";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "React Native App Maintenance & Takeover — Ezra Anglo",
+  title: "React Native App Maintenance & Takeover | Ezra Anglo",
   description:
-    "Already have a React Native app? I take over existing codebases — debugging, refactoring, modernizing, and extending them — without a rebuild from scratch.",
+    "Already have a React Native app? I take over existing codebases (debugging, refactoring, modernizing, and extending them) without a rebuild from scratch.",
   alternates: { canonical: "/react-native-maintenance" },
 };
 
@@ -29,7 +29,7 @@ const CAPABILITIES = [
   {
     icon: Layers,
     title: "Extend safely",
-    description: "Add new features and integrations — including full-stack and AI-powered ones — without destabilizing what already works.",
+    description: "Add new features and integrations, including full-stack and AI-powered ones, without destabilizing what already works.",
   },
 ];
 
@@ -46,7 +46,7 @@ export default function ReactNativeMaintenancePage() {
             as="h1"
             eyebrow="Existing React Native Applications"
             heading="Already have a React Native app? I can take it from here."
-            description="Taking over someone else's codebase is a different skill from greenfield development — reading the existing structure, understanding the decisions already made, and making changes that don't break what's already shipped. That's the work here, not a rebuild from scratch."
+            description="Taking over someone else's codebase is a different skill from greenfield development: reading the existing structure, understanding the decisions already made, and making changes that don't break what's already shipped. That's the work here, not a rebuild from scratch."
           />
           <Button size="lg" className="mt-8" asChild>
             <Link href="/#contact">

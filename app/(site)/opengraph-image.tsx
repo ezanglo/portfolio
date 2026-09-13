@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 
 export const size = ogImageSize;
 export const contentType = ogImageContentType;
-export const alt = "Ezra Anglo — Senior React Native & Full-Stack Developer";
+export const alt = "Ezra Anglo | Senior Product Engineer, React Native & Full-Stack";
 
 export default function Image() {
   return new ImageResponse(

@@ -26,7 +26,7 @@ export const sendEmail = async (payload: ContactFormType) => {
   const ip = (await headers()).get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
   const { ok } = rateLimit(`contact:${ip}`, RATE_LIMIT.max, RATE_LIMIT.windowMs);
   if (!ok) {
-    return { error: new Error("Too many submissions — please try again later.") };
+    return { error: new Error("Too many submissions, please try again later.") };
   }
 
   try {

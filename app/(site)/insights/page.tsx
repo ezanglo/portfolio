@@ -7,7 +7,7 @@ import { Section } from "@/components/site/section";
 import { SectionHeading } from "@/components/site/section-heading";
 
 export const metadata: Metadata = {
-  title: "Insights — Ezra Anglo | Senior React Native & Full-Stack Developer",
+  title: "Insights | Ezra Anglo, Senior Product Engineer",
   description: "Notes on React Native, full-stack mobile development, and building with AI-assisted engineering.",
   alternates: { canonical: "/insights" },
 };

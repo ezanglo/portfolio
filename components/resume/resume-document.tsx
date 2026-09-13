@@ -237,7 +237,7 @@ export function ResumeDocument() {
 
   return (
     <Document
-      title={`${SITE.name} Anglo — Resume`}
+      title={`${SITE.name} Anglo Resume`}
       author={SITE.name}
       subject={SITE.role}
     >
@@ -295,7 +295,7 @@ export function ResumeDocument() {
                 <Text style={styles.entryDate}>{job.dateRange}</Text>
               </View>
               <Text style={styles.entrySubtitle}>
-                {job.company} — {job.location}
+                {job.company}, {job.location}
               </Text>
               {(job.responsibilities.length > 0
                 ? job.responsibilities

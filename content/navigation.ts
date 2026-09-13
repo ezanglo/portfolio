@@ -11,7 +11,7 @@ export interface NavLink {
 
 export const NAV_LINKS: NavLink[] = [
   { label: "About", href: "/#about", id: "about" },
-  { label: "Why Work With Me", href: "/#why-hire-me", id: "why-hire-me" },
+  { label: "Capabilities", href: "/#why-hire-me", id: "why-hire-me" },
   { label: "Skills", href: "/#skills", id: "skills" },
   { label: "Experience", href: "/#experience", id: "experience" },
   { label: "Projects", href: "/#projects", id: "projects" },

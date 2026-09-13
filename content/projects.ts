@@ -81,7 +81,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "reseebo",
     title: "Resiboo",
-    description: "An offline-first receipt scanner I started for my wife because we kept losing our receipts. Scan a receipt and Resiboo reads the merchant, total, and every line item, then files it for later — no account, no cloud required.",
+    description: "An offline-first receipt scanner I started for my wife because we kept losing our receipts. Scan a receipt and Resiboo reads the merchant, total, and every line item, then files it for later. No account, no cloud required.",
     platform: "mobile",
     categories: ["Mobile"],
     mobileFramework: "expo",
@@ -308,7 +308,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "stratos-command",
     title: "Stratos Command",
-    description: "A multi-tenant B2B SaaS starter kit: organizations, invitations, and SSO/SAML via Better Auth, a Payload CMS backend, Stripe billing, audit logs, and an AI-powered support chat (Stratos Support) built on OpenRouter — forked and rebranded as the foundation for new products.",
+    description: "A multi-tenant B2B SaaS starter kit: organizations, invitations, and SSO/SAML via Better Auth, a Payload CMS backend, Stripe billing, audit logs, and an AI-powered support chat (Stratos Support) built on OpenRouter, forked and rebranded as the foundation for new products.",
     platform: "web",
     categories: ["Web", "Full-Stack", "AI", "SaaS"],
     mobileFramework: null,

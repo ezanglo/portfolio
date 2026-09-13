@@ -75,11 +75,11 @@ export function SiteHeader({ name, cvUrl }: { name: string; cvUrl: string }) {
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
-        <Link href="/" aria-label="Ezra Anglo — Home" className="flex items-center gap-2.5">
+        <Link href="/" aria-label="Ezra Anglo Home" className="flex items-center gap-2.5">
           <LogoMark className="size-8" />
           <span className="hidden leading-tight sm:block">
             <span className="block font-display text-(length:--text-small) font-semibold">{name} Anglo</span>
-            <span className="block text-(length:--text-caption) text-muted-foreground">React Native Developer</span>
+            <span className="block text-(length:--text-caption) text-muted-foreground">Senior Product Engineer</span>
           </span>
         </Link>
 

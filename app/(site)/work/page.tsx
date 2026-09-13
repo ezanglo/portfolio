@@ -9,9 +9,9 @@ import { ProjectCard } from "@/components/site/project-card";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Work — Ezra Anglo | Senior React Native & Full-Stack Developer",
+  title: "Work | Ezra Anglo, Senior Product Engineer",
   description:
-    "React Native, full-stack, and AI-powered projects built by Ezra Anglo — a senior React Native and full-stack developer.",
+    "React Native, full-stack, and AI-powered projects built by Ezra Anglo, a senior product engineer specializing in React Native and full-stack development.",
   alternates: { canonical: "/work" },
 };
 
@@ -35,7 +35,7 @@ export default async function WorkPage({
           as="h1"
           eyebrow="Work"
           heading="Real projects, organized by capability."
-          description="Mobile is the default view — the current specialization — with the full-stack and AI breadth behind it one click away."
+          description="Mobile is the default view (the current specialization), with the full-stack and AI breadth behind it one click away."
         />
 
         <nav aria-label="Filter by category" className="mt-8 flex flex-wrap gap-2">

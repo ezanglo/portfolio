@@ -54,7 +54,7 @@ export async function generateMetadata({
   const entry = findEntry(slug);
   if (!entry) return {};
   const { project, caseStudy } = entry;
-  const title = `${project.title} — Case Study | Ezra Anglo`;
+  const title = `${project.title} Case Study | Ezra Anglo`;
   return {
     title,
     description: caseStudy.overview,
@@ -253,7 +253,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                   </div>
                   <p className="mt-3 max-w-2xl text-(length:--text-body) leading-(--text-body-lh) text-muted-foreground">
                     {"confidential" in caseStudy.outcome
-                      ? "Outcome confidential — private client project."
+                      ? "Outcome confidential: private client project."
                       : caseStudy.outcome.result}
                   </p>
                 </div>
